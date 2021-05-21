@@ -36,7 +36,7 @@
                                 <td>{{$item->cmnd}}</td>
                                 <td>{{$item->ngay_cap}}</td>
                                 <td>{{$item->noi_cap}}</td>
-                                <td>{{$item->thutuc_id}}</td>
+                                <td>{{$item->tt_id}}</td>
 
                                 <td class="text-center">
                                     <a href="{{ route('hoso.edit', $item->id)}}" class="btn btn-primary btn-sm btn-circle" ><i class="far fa-edit"></i></a>
@@ -46,6 +46,60 @@
                                         @method('DELETE')
                                         <button class="btn btn-danger btn-sm btn-circle" type="submit"><i class="fas fa-trash"></i></button>
                                     </form>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Khoa</td>
+                            <td>Bộ môn</td>
+                            <td> Lớp</td>
+                            <td> Lý do</td>
+                            <td> Từ ngày</td>
+                            <td>Đến ngày</td>
+                            <td>Học kỳ</td>
+                            <td>Lớp học phần </td>
+                            <td>Tệp </td>
+                            {{--<td class="text-center">Hành động</td>--}}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($form as $item)
+                            <tr>
+                                <td>{{$item->id}}</td>
+                                <td>{{$item->khoa}}</td>
+                                <td>{{$item->bo_mon}}</td>
+                                <td>{{$item->lop}}</td>
+                                <td>{{$item->ly_do}}</td>
+                                <td>{{$item->tu_ngay}}</td>
+                                <td>{{$item->den_ngay}}</td>
+                                <td>{{$item->hoc_ky}}</td>
+                                <td>{{$item->lophp}}</td>
+                                <td>{{$item->file_dinh_kem}}</td>
+
+                                <td class="text-center">
+                                    {{--<a href="{{ route('hoso.edit', $item->id)}}" class="btn btn-primary btn-sm btn-circle" ><i class="far fa-edit"></i></a>--}}
+                                    {{--<form action="{{ route('hoso.destroy', $item->id)}}" method="post"--}}
+                                          {{--style="display: inline-block">--}}
+                                        {{--@csrf--}}
+                                        {{--@method('DELETE')--}}
+                                        {{--<button class="btn btn-danger btn-sm btn-circle" type="submit"><i class="fas fa-trash"></i></button>--}}
+                                    {{--</form>--}}
 
                                 </td>
                             </tr>

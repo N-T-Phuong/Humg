@@ -88,7 +88,7 @@
                                             <a href="{{route('gioi_thieu')}}">Giới thiệu</a>
                                         </li>
                                         <li>
-                                            <a href="{{route('auth.login')}}">Đăng nhập</a>
+                                            <a href="{{route('login')}}">Đăng nhập</a>
                                         </li>
                                     </ul>
                                 </div>

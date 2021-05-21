@@ -7,11 +7,8 @@ use App\Http\Controllers\HomeController;
 
 
 
-//Auth::routes();
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-Route::match(['get', 'post'], '/login', [LoginController::class, 'login'])->name('auth.login');
+Auth::routes();
+
 Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/huong-dan', [HomeController::class, 'huongdan'])->name('huong_dan');
@@ -35,3 +32,4 @@ Route::group([
     Route::resource('qt','Backend\QuyTrinhController')->only('index','create', 'store', 'edit', 'update', 'destroy');
 });
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

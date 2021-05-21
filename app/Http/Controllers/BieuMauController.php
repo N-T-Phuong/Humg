@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\ThuTuc;
 use Illuminate\Http\Request;
 
 class BieuMauController extends Controller
@@ -10,6 +11,7 @@ class BieuMauController extends Controller
     public function index($id)
     {
         $view = '';
+        $thutuc = ThuTuc::where('maTT', $id)->firstOrFail();
         switch ($id)
         {
             case 'TT_1':
@@ -55,6 +57,6 @@ class BieuMauController extends Controller
                 $view = 'backend.bieumau.gheplop';
                 break;
         }
-        return view($view);
+        return view($view, compact('thutuc'));
     }
 }

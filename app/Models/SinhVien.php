@@ -10,7 +10,7 @@ class SinhVien extends Model
     use HasFactory;
     protected $table = 'sinhvien';
     protected $primaryKey = 'id';
-    protected $fillable = ['id', 'maSV', 'tenSV', 'khoa', 'lop', 'phone', 'diachi'];
+    protected $fillable = ['id', 'maSV', 'tenSV', 'khoa', 'lop',];
     public function Hoso()
     {
         return $this->hasMany(HoSo::class,'sv_id','id');
