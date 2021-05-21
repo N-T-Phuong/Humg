@@ -18,8 +18,5 @@ class ThuTuc extends Model
     public function hoso()
     {
         return $this->hasMany(HoSo::class,'thutuc_id');
-    }public function quytrinh()
-    {
-        return $this->hasMany(QuyTrinh::class,'thutuc_id');
     }
 }

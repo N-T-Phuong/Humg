@@ -9,6 +9,7 @@
     <link href="{{asset('hs/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('fe/BotDetectCaptcha.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('fe/css/css.css')}}" rel="stylesheet"/>
+    <link href="{{asset('hs/css/style.css')}}" rel="stylesheet"/>
     <link href="{{asset('hs/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
 </head>
@@ -16,41 +17,40 @@
 <div id="page" class="wrap-main">
     <div class="main-container">
         <div class="wrap-site">
-            <header class="header ">
+            <header class="header" style="background-color: rgb(129, 189, 238)">
                 <div class="container container-fixed">
                     <div class="row">
                         <div class="header__wrap">
-                            <div class="col-sm-12 col-xs-5 full-xs">
+                            <div class="col-sm-6 col-xs-7 full-xs">
                                 <div class="header__logo">
                                     <a href="/">
-                                        <img src="{{asset('hs/img/humg1.jpg')}} " width="300%" height="55px" alt="LOGO">
+                                        <img src="{{asset('hs/img/logo1.png')}}" alt="LOGO">
                                     </a>
                                 </div>
-                                <div class="header__account account col-xs-3 pull-right  " style="margin-top: -3em;">
-                                    {{--<div class="account__action">--}}
-                                        {{--<a href="{{route('auth.login')}}" class="text-uppercase color-header font-size-13 font-weight-bold text-red">Đăng nhập</a>--}}
-                                    {{--</div>--}}
-                                    @if( Auth::check())
-                                    <div class="heli" style="display:inline-block">
-                                        <a href="#" class="text-capitalize font-italic color-header font-size-14 font-weight-bold text-red" data-toggle="dropdown" id="drop55" role="button" aria-haspopup="true" aria-expanded="false">
-                                            User: {{ Auth::user()->name }}
-                                        </a>
-                                        <ul class="dropdown-menu" id="menu22" aria-labelledby="drop55" style="left:unset">
-                                            <li>
-                                                <a class="dropdown-item" href="#">
-                                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                    Profile
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="{{route('auth.logout')}}">
-                                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                    Đăng xuất
-                                                </a>
-                                            </li>
-                                        </ul>
+                            </div>
+                            <div class="col-sm-6 col-xs-5 full-xs">
+                                <div class="header__right pull-right">
+                                    <div class="header__hotline hotline display-flex-center table-xs justify-content-end  " style="margin: 2em 5px;">
+                                        @if( Auth::check())
+                                        <div class="account__action">
+                                            <a href="" class="text-capitalize font-italic text-red font-size-14 font-weight-bold color-header" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">User: {{ Auth::user()->name }}</a>
+                                            <ul class="dropdown-menu" id="menu22" aria-labelledby="drop55" style="left:unset">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">
+                                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                        Profile
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="{{route('logout')}}">
+                                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                        Đăng xuất
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        @endif
                                     </div>
-                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                                             <a href="{{route('gioi_thieu')}}">Giới thiệu</a>
                                         </li>
                                         <li>
-                                            <a href="{{route('login')}}">Đăng nhập</a>
+                                            <a href="{{route('dang_nhap')}}">Đăng nhập</a>
                                         </li>
                                     </ul>
                                 </div>

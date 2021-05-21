@@ -10,7 +10,7 @@ use App\Http\Controllers\HomeController;
 Auth::routes();
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('dang_nhap');
 Route::get('/huong-dan', [HomeController::class, 'huongdan'])->name('huong_dan');
 Route::get('/gioi-thieu', [HomeController::class, 'gioithieu'])->name('gioi_thieu');
 Route::get('/thutuc/{id}', 'Backend\ThuTucController@show')->name('tt.show');

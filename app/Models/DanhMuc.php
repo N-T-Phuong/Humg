@@ -13,9 +13,5 @@ class DanhMuc extends Model
     {
         return $this->hasMany(ThuTuc::class, 'danhmuc_id','id');
     }
-    public  function canbo()
-    {
-        return $this->hasMany(CanBo::class, 'danhmuc_id','id');
-    }
 
 }

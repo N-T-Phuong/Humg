@@ -9,6 +9,11 @@
     background-position: center;
     background-size: cover;
 }
+.header-humg {
+    background-image: url(" {{asset('hs/img/humg1.jpg')}}");
+    background-position: center;
+    background-size: cover;
+}
 .color-red{
     color: red;
 }
