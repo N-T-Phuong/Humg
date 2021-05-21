@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateCanboTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('canbo', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->tinyInteger('user_id')->nullable();
+            $table->string('danhmuc_id')->nullable();
+//            $table->string('ma_CB');
+//            $table->string('ten_CB');
+//            $table->string('email')->unique();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('canbo');
+    }
+}
