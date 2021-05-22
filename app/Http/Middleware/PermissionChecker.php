@@ -20,8 +20,7 @@ class PermissionChecker
         //dd($role);
         //dd(explode('|', $role);
         $allowsRoles = explode('|', $role);
-        if (in_array(Auth::user()->getStrRole(), $allowsRoles))
-        {
+        if (in_array(Auth::user()->getStrRole(), $allowsRoles)) {
             return $next($request);
         }
         return redirect()->back()

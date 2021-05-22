@@ -35,7 +35,7 @@ class HoSoController extends Controller
     {
         $sinhvien = SinhVien::all();
         $thutuc  = ThuTuc::where($id)->first();
-        return view('backend.bieumau.gheplop', compact( 'thutuc', 'sinhvien'));
+        return view('backend.bieumau.gheplop', compact('thutuc', 'sinhvien'));
     }
     /**
      * Store a newly created resource in storage.
@@ -58,7 +58,7 @@ class HoSoController extends Controller
         if ($request->hasFile('file_dinh_kem')) {
             $files = $request->file('file_dinh_kem');
             foreach ($request->file_dinh_kem as $file) {
-                $fileName = time() . '.' .$file->getClientOriginalExtension() ;
+                $fileName = time() . '.' . $file->getClientOriginalExtension();
                 $file->storeAs('file_bm', $fileName);
                 $hoso->form->create([
                     'id_hoso' => $hoso->id,
@@ -122,7 +122,6 @@ class HoSoController extends Controller
      */
     public function update(Request $request, $id)
     {
-
     }
 
     /**
@@ -136,8 +135,8 @@ class HoSoController extends Controller
         $hoso = HoSo::findOrFail($id);
         $hoso->delete();
         return redirect(route('hoso.index'))->with('error', 'xóa thành công');
-//        if ( ) {
-//            Storage::delete(config('file.storage') . $file);
-//        }
+        //        if ( ) {
+        //            Storage::delete(config('file.storage') . $file);
+        //        }
     }
 }

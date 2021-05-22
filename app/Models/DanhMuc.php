@@ -11,11 +11,10 @@ class DanhMuc extends Model
     protected $table = 'danhmuc';
     public  function thutuc()
     {
-        return $this->hasMany(ThuTuc::class, 'danhmuc_id','id');
+        return $this->hasMany(ThuTuc::class, 'danhmuc_id', 'id');
     }
     public  function canbo()
     {
-        return $this->hasMany(CanBo::class, 'danhmuc_id','id');
+        return $this->hasMany(CanBo::class, 'danhmuc_id', 'id');
     }
-
 }

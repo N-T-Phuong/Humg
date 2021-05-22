@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DanhMuc;
 use App\Models\ThuTuc;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class ThuTucController extends Controller
 {
@@ -28,9 +29,9 @@ class ThuTucController extends Controller
     public function create()
     {
         $danhmuc = DanhMuc::all();
-//        $thutuc = ThuTuc::all();
+        //        $thutuc = ThuTuc::all();
         //thutuc::where('trangthai',Thutuc::hienthi)->get();
-        return view('backend.thutuc.create', compact( 'danhmuc'));
+        return view('backend.thutuc.create', compact('danhmuc'));
     }
 
     /**
@@ -65,11 +66,11 @@ class ThuTucController extends Controller
     public function edit($id)
     {
         $thutuc = ThuTuc::findOrFail($id);
-//        if (!$thutuc) {
-//            return (404);
-//        }
+        //        if (!$thutuc) {
+        //            return (404);
+        //        }
         $danhmuc = DanhMuc::all();
-        return view('backend.thutuc.edit', compact('thutuc','danhmuc'));
+        return view('backend.thutuc.edit', compact('thutuc', 'danhmuc'));
     }
 
     /**
@@ -104,9 +105,25 @@ class ThuTucController extends Controller
         $thutuc->delete();
         return redirect(route('tt.index'))->with('error', 'xóa thành công');
     }
-    public function nop_ho_so()
+
+    public function nop_ho_so(Request $request)
     {
-        $thutuc = ThuTuc::with('danhmuc')->get();
+        $params = $request->all();
+        $searchKey = Arr::get($params, 'search_key', null);
+        $limit = Arr::get($params, 'limit', 10);
+        $sort = Arr::get($params, 'sort', 'id');
+        $sortType = Arr::get($params, 'sort', 'asc');
+        if ($sortType != 'asc' && $sortType != 'desc') $sortType = 'asc';
+        if (!in_array($sort, ['id', 'tenTT', 'tg_giai_quyet', 'tenDM'])) $sort = 'id';
+        $thutuc = ThuTuc::join('danhmuc', 'danhmuc.id', 'thutuc.danhmuc_id')
+            ->select('thutuc.*', 'danhmuc.tenDM');
+        if ($searchKey) {
+            $thutuc = $thutuc->where('tenTT', 'like', '%' . $searchKey . '%')
+                ->orWhere('mota', 'like', '%' . $searchKey . '%')
+                ->orWhere('maTT', 'like', '%' . $searchKey . '%')
+                ->orWhere('danhmuc.tenDM', 'like', '%' . $searchKey . '%');
+        }
+        $thutuc = $thutuc->orderBy($sort, $sortType)->paginate($limit);
         return view('fontend.nop_ho_so.show_thutuc', compact('thutuc'));
     }
 }

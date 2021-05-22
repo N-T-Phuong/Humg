@@ -9,25 +9,25 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
 
-    public function dashboard ()
-    {
+     public function dashboard()
+     {
 
-         return view('backend.dash.index');
-    }
-    public function index ()
-    {
-         return view('fontend.include.master');
-    }
-    public function huongdan ()
-    {
-         return view('fontend.huong_dan');
-    }
-    public function gioithieu ()
-    {
-         return view('fontend.gioithieu');
-    }
-    public function tracuuhoso()
-    {
-        return view('fontend.tracuuhoso');
-    }
+          return view('backend.dash.index');
+     }
+     public function index()
+     {
+          return view('fontend.include.master');
+     }
+     public function huongdan()
+     {
+          return view('fontend.huong_dan');
+     }
+     public function gioithieu()
+     {
+          return view('fontend.gioithieu');
+     }
+     public function tracuuhoso()
+     {
+          return view('fontend.tracuuhoso');
+     }
 }

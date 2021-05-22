@@ -6,21 +6,28 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRoles;
     protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+
     protected $fillable = [
         'name',
         'email',
         'password',
-        'role',
+        'phone',
+        'ma',
+        'khoa',
+        'lop',
+        'diachi',
+        'gioitinh',
     ];
 
     /**
@@ -41,15 +48,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-//    public  function  profile()
-//    {
-//        return $this->hasOne(Profile::class,'user_id','id' );
-//    }
+    //    public  function  profile()
+    //    {
+    //        return $this->hasOne(Profile::class,'user_id','id' );
+    //    }
 
     public function getStrRole()
     {
         //đảo mảng array_flip đẻ lấy mảng key=>value(string)
-         $permissionMapping = array_flip(config('permission'));//tìm file per
-         return $permissionMapping[$this->role];
+        $permissionMapping = array_flip(config('permission')); //tìm file per
+        return $permissionMapping[$this->role];
     }
 }

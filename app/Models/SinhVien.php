@@ -13,6 +13,6 @@ class SinhVien extends Model
     protected $fillable = ['id', 'maSV', 'tenSV', 'khoa', 'lop', 'phone', 'diachi'];
     public function Hoso()
     {
-        return $this->hasMany(HoSo::class,'sv_id','id');
+        return $this->hasMany(HoSo::class, 'sv_id', 'id');
     }
 }

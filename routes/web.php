@@ -11,7 +11,8 @@ use App\Http\Controllers\HomeController;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::match(['get', 'post'], '/login', [LoginController::class, 'login'])->name('auth.login');
+Route::post('login', [LoginController::class, 'login'])->name('auth.login');
+Route::view('login', 'backend.auth.login')->name('auth.login')->middleware('guest');
 Route::get('/logout', [LoginController::class, 'logout'])->name('auth.logout');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/huong-dan', [HomeController::class, 'huongdan'])->name('huong_dan');
@@ -22,16 +23,13 @@ Route::get('/tra-cuu-ho-so-truc-tuyen', 'HomeController@tracuuhoso')->name('tra_
 Route::get('/thutuc-view/{id}', 'BieuMauController@index')->name('bieumau_form');
 Route::group([
     'middleware' => 'auth',
-    'prefix' => 'user/'
-], function() {
+    'prefix' => 'user'
+], function () {
     Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard');
-    Route::resource('danhmuc','Backend\DanhMucController')->only('index', 'create', 'store', 'edit', 'update', 'destroy');;
-    Route::resource('sinhvien','Backend\SinhVienController')->only('index', 'create', 'store', 'edit', 'update', 'destroy');;
-    Route::resource('tt','Backend\ThuTucController')->only('index', 'create', 'store', 'edit', 'update', 'destroy');;
-
+    Route::resource('danhmuc', 'Backend\DanhMucController')->only('index', 'create', 'store', 'edit', 'update', 'destroy');;
+    Route::resource('sinhvien', 'Backend\SinhVienController')->only('index', 'create', 'store', 'edit', 'update', 'destroy');;
+    Route::resource('tt', 'Backend\ThuTucController')->only('index', 'create', 'store', 'edit', 'update', 'destroy');;
     Route::get('/nop-ho-so', 'Backend\ThuTucController@nop_ho_so')->name('nop_ho_so');
-
-    Route::resource('hoso','Backend\HoSoController');
-    Route::resource('qt','Backend\QuyTrinhController')->only('index','create', 'store', 'edit', 'update', 'destroy');
+    Route::resource('hoso', 'Backend\HoSoController');
+    Route::resource('qt', 'Backend\QuyTrinhController')->only('index', 'create', 'store', 'edit', 'update', 'destroy');
 });
-

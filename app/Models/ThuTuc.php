@@ -10,16 +10,17 @@ class ThuTuc extends Model
     use HasFactory;
     protected $table = 'thutuc';
     protected $primaryKey = 'id';
-    protected $fillable = ['id','maTT', 'tenTT','danhmuc_id','mota','tg_giai_quyet'];
+    protected $fillable = ['id', 'maTT', 'tenTT', 'danhmuc_id', 'mota', 'tg_giai_quyet'];
     public function danhmuc()
     {
-        return $this->belongsTo(DanhMuc::class,'danhmuc_id');
+        return $this->belongsTo(DanhMuc::class, 'danhmuc_id');
     }
     public function hoso()
     {
-        return $this->hasMany(HoSo::class,'thutuc_id');
-    }public function quytrinh()
+        return $this->hasMany(HoSo::class, 'thutuc_id');
+    }
+    public function quytrinh()
     {
-        return $this->hasMany(QuyTrinh::class,'thutuc_id');
+        return $this->hasMany(QuyTrinh::class, 'thutuc_id');
     }
 }

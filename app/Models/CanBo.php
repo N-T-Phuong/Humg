@@ -13,10 +13,10 @@ class CanBo extends Model
     protected  $fillable = ['id', 'ma_CB', 'ten_CB', 'danhmuc_id'];
     public function xulyhoso()
     {
-        return $this->hasMany(XuLyHoSo::class,'canbo_id','id');
+        return $this->hasMany(XuLyHoSo::class, 'canbo_id', 'id');
     }
     public  function danhmuc()
     {
-        return $this->belongsTo(DanhMuc::class,'danhmuc_id','id');
+        return $this->belongsTo(DanhMuc::class, 'danhmuc_id', 'id');
     }
 }

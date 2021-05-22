@@ -22,14 +22,15 @@
     </li>
 
     {{--<li class="nav-item">--}}
-        {{--<a class="nav-link" href="{{route('nop_ho_so')}}">--}}
-            {{--<i class="fas fa-fw fa-table"></i>--}}
-            {{--<span>Nộp hồ sơ trực tuyến</span></a>--}}
+    {{--<a class="nav-link" href="{{route('nop_ho_so')}}">--}}
+    {{--<i class="fas fa-fw fa-table"></i>--}}
+    {{--<span>Nộp hồ sơ trực tuyến</span></a>--}}
     {{--</li>--}}
     <hr class="sidebar-divider ">
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+            aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
             <span>Quản Lý Danh Mục</span>
         </a>
@@ -50,20 +51,21 @@
             <span>Quản lý hồ sơ</span></a>
     </li>
     {{--<li class="nav-item">--}}
-        {{--<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">--}}
-            {{--<i class="fas fa-fw fa-folder"></i>--}}
-            {{--<span>Quản lý Sinh Viên</span>--}}
-        {{--</a>--}}
-        {{--<div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"--}}
-             {{--data-parent="#accordionSidebar">--}}
-            {{--<div class="bg-white py-2 collapse-inner rounded">--}}
-                {{--<a class="collapse-item" href="{{route('sinhvien.index')}}">Sinh Viên</a>--}}
-            {{--</div>--}}
-        {{--</div>--}}
+    {{--<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">--}}
+    {{--<i class="fas fa-fw fa-folder"></i>--}}
+    {{--<span>Quản lý Sinh Viên</span>--}}
+    {{--</a>--}}
+    {{--<div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"--}}
+    {{--data-parent="#accordionSidebar">--}}
+    {{--<div class="bg-white py-2 collapse-inner rounded">--}}
+    {{--<a class="collapse-item" href="{{route('sinhvien.index')}}">Sinh Viên</a>--}}
+    {{--</div>--}}
+    {{--</div>--}}
     {{--</li>--}}
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+            aria-controls="collapsePages">
             <i class="fas fa-fw fa-wrench"></i>
             <span>Cài đặt</span>
         </a>

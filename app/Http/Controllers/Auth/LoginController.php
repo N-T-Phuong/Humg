@@ -11,17 +11,16 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        if ($request->getMethod() == 'GET') {
-            return view('backend.auth.login');
-        }
         $credentials = $request->only(['email', 'password']);
-        if (Auth::attempt($credentials)) {
-//            return redirect()->route('dashboard');
-            if (Auth::user()->role == 0) {
+        $fieldType = filter_var($request->email, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        if (Auth::attempt(array($fieldType => $credentials['email'], 'password' => $credentials['password']))) {
+            //            return redirect()->route('dashboard');
+            if (Auth::user()->hasRole('admin')) // Check admin => dashboard
                 return redirect()->route('dashboard');
-            } else if (Auth::user()->role == 1) {
+            if (Auth::user()->hasRole('canbo')) // check can bo => canbo
                 return redirect()->route('huong_dan');
-            }
+            return redirect()->route('huong_dan');
         } else {
             return redirect()->route('auth.login')->with('thongbao', 'Tài khoản hoặc mật khẩu không đúng');
         }

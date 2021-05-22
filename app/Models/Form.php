@@ -9,13 +9,13 @@ class Form extends Model
 {
     use HasFactory;
     protected $table = 'form';
-    protected $fillable = ['id', 'id_hoso', 'mahp', 'tenhp', 'nhomhp','lydo','tu_ngay','den_ngay','hoc-ky','lophp'];
+    protected $fillable = ['id', 'id_hoso', 'mahp', 'tenhp', 'nhomhp', 'lydo', 'tu_ngay', 'den_ngay', 'hoc-ky', 'lophp'];
     public function hoso()
     {
-        return $this->belongsTo(HoSo::class,'id_hoso','id');
+        return $this->belongsTo(HoSo::class, 'id_hoso', 'id');
     }
     public function hocphan()
     {
-        return $this->hasMany(HocPhan::class,'form_id');
+        return $this->hasMany(HocPhan::class, 'form_id');
     }
 }
