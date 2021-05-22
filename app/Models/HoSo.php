@@ -11,10 +11,7 @@ class HoSo extends Model
     protected $table = 'hoso';
     protected $primaryKey = 'id';
     protected  $fillable = ['id', 'sv_id', 'phone', 'dia_chi', 'cmnd', 'ngay_cap', 'noi_cap', 'thutuc_id'];
-    public  function  sinhvien()
-    {
-        return $this->belongsTo(SinhVien::class, 'sv_id');
-    }
+
     public  function  thutuc()
     {
         return $this->belongsTo(ThuTuc::class, 'thutuc_id');

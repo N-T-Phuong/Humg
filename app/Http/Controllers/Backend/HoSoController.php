@@ -45,7 +45,6 @@ class HoSoController extends Controller
      */
     public function store(Request $request)
     {
-
         $hoso = HoSo::create([
             'sv_id' => Auth::id(),
             'phone' => $request->phone,
@@ -55,30 +54,36 @@ class HoSoController extends Controller
             'noi_cap' => $request->noi_cap,
             'thutuc_id' => $request->tt_id,
         ]);
+        $fileName = "";
         if ($request->hasFile('file_dinh_kem')) {
             $files = $request->file('file_dinh_kem');
-            foreach ($request->file_dinh_kem as $file) {
-                $fileName = time() . '.' . $file->getClientOriginalExtension();
-                $file->storeAs('file_bm', $fileName);
-                $hoso->form->create([
-                    'id_hoso' => $hoso->id,
-                    'khoa' => $request->khoa,
-                    'bo_mon' => $request->bo_mon,
-                    'lop' => $request->lop,
-                    'ly_do' => $request->ly_do,
-                    'tu_ngay' => $request->tu_ngay,
-                    'den_ngay' => $request->den_ngay,
-                    'hoc_ky' => $request->hoc_ky,
-                    'lophp' => $request->lophp,
-                    'dia_diem' => $request->dia_diem,
-                    'dia_diem_moi' => $request->dia_diem_moi,
-                    'do_an' => $request->do_an,
-                    'file_dinh_kem' => $fileName,
-                ]);
+            $fileName = time() . '.' . $files->getClientOriginalExtension();
+            $files->storeAs('public/file_bm', $fileName);
+        }
+
+        $form = Form::create([
+            'id_hoso' => $hoso->id,
+            'khoa' => $request->khoa,
+            'bo_mon' => $request->bo_mon,
+            'lop' => $request->lop,
+            'ly_do' => $request->ly_do,
+            'tu_ngay' => $request->tu_ngay,
+            'den_ngay' => $request->den_ngay,
+            'hoc_ky' => $request->hoc_ky,
+            'lophp' => $request->lophp,
+            'dia_diem' => $request->dia_diem,
+            'dia_diem_moi' => $request->dia_diem_moi,
+            'do_an' => $request->do_an,
+            'file_dinh_kem' => $fileName,
+        ]);
+
+        if ($request->tenhp) {
+            for ($i = 0; $i < count($request->tenhp); $i++) {
                 HocPhan::create([
-                    'mahp' => $request->mahp,
-                    'tenhp' => $request->tenhp,
-                    'nhomhp' => $request->nhomhp,
+                    'form_id' => $form->id,
+                    'mahp' => $request->mahp[$i],
+                    'tenhp' => $request->tenhp[$i],
+                    'nhomhp' => $request->nhomhp[$i],
                 ]);
             }
         }

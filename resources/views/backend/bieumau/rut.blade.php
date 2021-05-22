@@ -19,7 +19,7 @@
                     <span class="label-content">Tên học phần</span>
                     <span class="color-err" title="Trường bắt buộc">*</span>
                 </label>
-                <input id="tenhp" name="tenhp" type="text" class="form-control" value="">
+                <input id="tenhp" name="tenhp[]" type="text" class="form-control" value="">
             </div>
         </div>
         <div id="column-4" class="col-md-4 col ui-sortable ui-sortable-handle">
@@ -28,7 +28,7 @@
                     <span class="label-content">Mã học phần</span>
                     <span class="color-err" title="Trường bắt buộc">*</span>
                 </label>
-                <input id="mahp" name="mahp" type="text" class="form-control" value="">
+                <input id="mahp" name="mahp[]" type="text" class="form-control" value="">
             </div>
         </div>
         <div id="column-3" class="col-md-3 col ui-sortable ui-sortable-handle">
@@ -37,7 +37,7 @@
                     <span class="label-content">Nhóm học phần</span>
                     <span class="color-err" title="Trường bắt buộc">*</span>
                 </label>
-                <input id="nhomhp" name="nhomhp" type="text" class="form-control" value="">
+                <input id="nhomhp" name="nhomhp[]" type="text" class="form-control" value="">
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@
                     <span class="label-content">Tên học phần</span>
                     {{--<span class="color-err" title="Trường bắt buộc">*</span>--}}
                 </label>
-                <input id="tenhp" name="tenhp" type="text" class="form-control" value="">
+                <input id="tenhp" name="tenhp[]" type="text" class="form-control" value="">
             </div>
         </div>
         <div id="column-4" class="col-md-4 col ui-sortable ui-sortable-handle">
@@ -57,7 +57,7 @@
                     <span class="label-content">Mã học phần</span>
                     {{--<span class="color-err" title="Trường bắt buộc">*</span>--}}
                 </label>
-                <input id="mahp" name="mahp" type="text" class="form-control" value="">
+                <input id="mahp" name="mahp[]" type="text" class="form-control" value="">
             </div>
         </div>
         <div id="column-3" class="col-md-3 col ui-sortable ui-sortable-handle">
@@ -66,7 +66,7 @@
                     <span class="label-content">Nhóm học phần</span>
                     {{--<span class="color-err" title="Trường bắt buộc">*</span>--}}
                 </label>
-                <input id="nhomhp" name="nhomhp" type="text" class="form-control" value="">
+                <input id="nhomhp" name="nhomhp[]" type="text" class="form-control" value="">
             </div>
         </div>
     </div>

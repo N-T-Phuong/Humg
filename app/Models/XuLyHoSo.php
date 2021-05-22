@@ -18,8 +18,4 @@ class XuLyHoSo extends Model
     {
         return $this->belongsTo(HoSo::class, 'hoso_id', 'id');
     }
-    public function Canbo()
-    {
-        return $this->belongsTo(CanBo::class, 'canbo_id', 'id');
-    }
 }

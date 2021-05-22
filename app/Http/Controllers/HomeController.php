@@ -11,8 +11,11 @@ class HomeController extends Controller
 
      public function dashboard()
      {
-
           return view('backend.dash.index');
+     }
+     public function home()
+     {
+          return view('fontend.dang_nhap');
      }
      public function index()
      {
