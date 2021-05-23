@@ -21,6 +21,7 @@ class LoginController extends Controller
     |
     */
     use AuthenticatesUsers;
+
     public function login(Request $request)
     {
         $credentials = $request->only(['email', 'password']);
@@ -32,9 +33,9 @@ class LoginController extends Controller
                 return redirect()->route('dashboard');
             if (Auth::user()->hasRole('canbo')) // check can bo => canbo
                 return redirect()->route('huong_dan');
-            return redirect()->route('huong_dan');
+            return redirect()->route('nop_ho_so');
         } else {
-            return redirect()->route('auth.login')->with('thongbao', 'Tài khoản hoặc mật khẩu không đúng');
+            return redirect()->route('login')->with('thongbao', 'Tài khoản hoặc mật khẩu không đúng');
         }
     }
 }

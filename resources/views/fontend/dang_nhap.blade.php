@@ -56,15 +56,6 @@
                                         </div>
                                         <div class="col-md-2"></div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            @if (Route::has('password.request'))
-                                            <a class="btn btn-link" href="">
-                                                {{ __('Đổi mật khẩu?') }}
-                                            </a>
-                                            @endif
-                                        </div>
-                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -74,9 +65,10 @@
             <div class="col-md-2"></div>
             <div class="col-md-4">
                 <a href="{{route('login')}}" class="thumbnail" style="margin-top:15px;text-align: center;padding-top: 10px;">
-                                        <img src="{{asset('fe/img/logo_dvc.png')}}" height="40" style="margin-bottom: 3px;">
-                                    <div class="caption">
-                        <h3 style="font-weight:bold">CÁN BỘ ĐĂNG NHẬP</h3><p>Đăng nhập dành cho cán bộ</p>				</div>
+                    <img src="{{asset('fe/img/logo_dvc.png')}}" height="40" style="margin-bottom: 3px;">
+                    <div class="caption">
+                        <h3 style="font-weight:bold">CÁN BỘ ĐĂNG NHẬP</h3><p>Đăng nhập dành cho cán bộ</p>
+                    </div>
                 </a>
             </div>
         </div>

@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
             $teacherUser = User::create([
                 'ma' => vnfaker()->numberBetween(1000000000, 9999999999),
                 'name' => vnfaker()->fullname(3),
-                'email' => vnfaker()->email(['gmail.com', 'teacher.humg.edu.vn', 'outlook.com', 'sotatek.vn', 'viettel.vn', 'aecomtech.com', 'teacher.hust.edu.vn', 'sis.hust.edu.vn']),
+                'email' => vnfaker()->email(['gmail.com', 'teacher.humg.edu.vn', 'outlook.com']), //'sotatek.vn', 'viettel.vn', 'aecomtech.com', 'teacher.hust.edu.vn', 'sis.hust.edu.vn'
                 'phone' => vnfaker()->cityphone(11),
                 'username' => vnfaker()->username(),
                 'diachi' => vnfaker()->city(),
@@ -63,7 +63,7 @@ class UserSeeder extends Seeder
             $studentUser = User::create([
                 'ma' => vnfaker()->numberBetween(1000000000, 9999999999),
                 'name' => vnfaker()->fullname(3),
-                'email' => vnfaker()->email(['gmail.com', 'student.humg.edu.vn', 'yahoo.com', 'outlook.com', 'sotatek.vn', 'viettel.vn', 'aecomtech.com', 'student.hust.edu.vn', 'sis.hust.edu.vn']),
+                'email' => vnfaker()->email(['gmail.com', 'student.humg.edu.vn']), //, 'yahoo.com', 'outlook.com', 'sotatek.vn', 'viettel.vn', 'aecomtech.com', 'student.hust.edu.vn', 'sis.hust.edu.vn'
                 'phone' => vnfaker()->cityphone(11),
                 'username' => vnfaker()->username(),
                 'diachi' => vnfaker()->city(),
@@ -83,8 +83,8 @@ class UserSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'password' => bcrypt('admin123'),
                 'phone' => '',
-                //                'khoa' => '',
-                //                'lop' => '',
+                'khoa' => '',
+                'lop' => '',
                 'diachi' => '',
             ],
             [
@@ -93,8 +93,8 @@ class UserSeeder extends Seeder
                 'email' => 'phuongtkt.humg@gmail.com',
                 'password' => bcrypt('123456'),
                 'phone' => '0354630303',
-                //                'khoa' => 'Công nghệ thông tin',
-                //                'lop' => 'Tin học kinh tế K61',
+                'khoa' => 'Công nghệ thông tin',
+                'lop' => 'Tin học kinh tế K61',
                 'diachi' => 'Hà Nội',
             ],
             [
@@ -103,8 +103,8 @@ class UserSeeder extends Seeder
                 'email' => '1621050556@student.humg.edu.vn',
                 'password' => bcrypt('123456'),
                 'phone' => '0326699445',
-                //                'khoa' => 'Công nghệ thông tin',
-                //                'lop' => 'Tin học kinh tế K61',
+                'khoa' => 'Công nghệ thông tin',
+                'lop' => 'Tin học kinh tế K61',
                 'diachi' => 'Hà Nội',
             ],
             [
@@ -113,8 +113,8 @@ class UserSeeder extends Seeder
                 'email' => '1721050372@student.humg.edu.vn',
                 'password' => bcrypt('123456'),
                 'phone' => '0962960613',
-                //                'khoa' => 'Công nghệ thông tin',
-                //                'lop' => 'Tin học kinh tế K62',
+                'khoa' => 'Công nghệ thông tin',
+                'lop' => 'Tin học kinh tế K62',
                 'diachi' => 'Hà Nội',
             ],
             [
@@ -123,8 +123,8 @@ class UserSeeder extends Seeder
                 'email' => '1621050886@student.humg.edu.vn',
                 'password' => bcrypt('123456'),
                 'phone' => '0379610510',
-                //                'khoa' => 'Công nghệ thông tin',
-                //                'lop' => 'Tin học kinh tế K61',
+                'khoa' => 'Công nghệ thông tin',
+                'lop' => 'Tin học kinh tế K61',
                 'diachi' => 'Hà Nội',
             ],
             [
@@ -133,8 +133,8 @@ class UserSeeder extends Seeder
                 'email' => '1621050619@student.humg.edu.vn',
                 'password' => bcrypt('123456'),
                 'phone' => '0358432015',
-                //                'khoa' => 'Công nghệ thông tin',
-                //                'lop' => 'Tin học kinh tế K61',
+                'khoa' => 'Công nghệ thông tin',
+                'lop' => 'Tin học kinh tế K61',
                 'diachi' => 'Hà Nội',
             ],
             [
@@ -143,8 +143,8 @@ class UserSeeder extends Seeder
                 'email' => '161050546@student.humg.edu.vn',
                 'password' => bcrypt('123456'),
                 'phone' => '0962728598',
-                //                'khoa' => 'Công nghệ thông tin',
-                //                'lop' => 'Tin học kinh tế K61',
+                'khoa' => 'Công nghệ thông tin',
+                'lop' => 'Tin học kinh tế K61',
                 'diachi' => 'Hà Nội',
             ],
             [
@@ -153,8 +153,8 @@ class UserSeeder extends Seeder
                 'email' => 'dtht@humg.edu.vn',
                 'password' => bcrypt('123456'),
                 'diachi' => 'Hà Nội',
-                //                'khoa' =>'',
-                //                'lop' => '',
+                khoa' =>'',
+                'lop' => '',
                 'phone' => '',
             ],
         ]);

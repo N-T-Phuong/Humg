@@ -10,7 +10,7 @@ class HoSo extends Model
     use HasFactory;
     protected $table = 'hoso';
     protected $primaryKey = 'id';
-    protected  $fillable = ['id', 'sv_id', 'phone', 'dia_chi', 'cmnd', 'ngay_cap', 'noi_cap', 'thutuc_id'];
+    protected  $fillable = ['id', 'sv_id', 'phone', 'dia_chi', 'ma', 'khoa', 'lop', 'thutuc_id'];
 
     public  function  thutuc()
     {

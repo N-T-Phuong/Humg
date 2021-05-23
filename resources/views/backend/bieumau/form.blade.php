@@ -34,7 +34,7 @@
                                                                         <span class="label-content">Mã sinh viên</span>
                                                                         <span class="color-err" title="Trường bắt buộc">*</span>
                                                                     </label>
-                                                                    <input id="maSV" name="" type="text" class="form-control" disabled value="{{Auth::user()->ma}}">
+                                                                    <input id="maSV" name="ma" type="text" class="form-control" disabled value="{{Auth::user()->ma}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -75,35 +75,6 @@
                                                                         <span class="color-err" title="Trường bắt buộc">*</span>
                                                                     </label>
                                                                     <input id="lop" name="lop" type="text" class="form-control"  value="">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div id="row-4" class="row ui-sortable ui-sortable-handle">
-                                                            <div id="column-7" class="col-md-4 col ui-sortable ui-sortable-handle">
-                                                                <div id="" class="form-group text">
-                                                                    <label id="" class="control-label" for="cmnd">
-                                                                        <span class="label-content">Số CMND/CCND</span>
-                                                                        <span class="color-err" title="Trường bắt buộc">*</span>
-                                                                    </label>
-                                                                    <input id="cmnd" name="cmnd" type="text" class="form-control" value="">
-                                                                </div>
-                                                            </div>
-                                                            <div id="column-8" class="col-md-4 col ui-sortable ui-sortable-handle">
-                                                                <div id="website" class="form-group text">
-                                                                    <label id="_lbl_website" class="control-label" for="ngay_cap">
-                                                                        <span class="label-content">Ngày cấp</span>
-                                                                        <span class="color-err" title="Trường bắt buộc">*</span>
-                                                                    </label>
-                                                                    <input id="ngay_cap" name="ngay_cap" type="date" class="form-control" value="">
-                                                                </div>
-                                                            </div>
-                                                            <div id="column-8" class="col-md-4 col ui-sortable ui-sortable-handle">
-                                                                <div id="website" class="form-group text">
-                                                                    <label id="_lbl_website" class="control-label" for="noi_cap">
-                                                                        <span class="label-content">Nơi cấp</span>
-                                                                        <span class="color-err" title="Trường bắt buộc">*</span>
-                                                                    </label>
-                                                                    <input id="noi_cap" name="noi_cap" type="text" class="form-control" value="">
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -89,7 +89,7 @@
             <div class="modal-body">Bạn có muốn thoát khỏi hệ thống.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Quay lại</button>
-                <a class="btn btn-primary" href="{{route('auth.logout')}}">Đăng xuất</a>
+                <a class="btn btn-primary" href="{{route('logout')}}">Đăng xuất</a>
             </div>
         </div>
     </div>

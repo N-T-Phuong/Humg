@@ -73,7 +73,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Login Screens:</h6>
                 <a class="collapse-item" href="{{route('login')}}">Login</a>
-                <a class="collapse-item" href="{{route('auth.logout')}}">Logout</a>
+                <a class="collapse-item" href="{{route('logout')}}">Logout</a>
                 <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
             </div>
         </div>

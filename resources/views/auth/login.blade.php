@@ -29,7 +29,7 @@
                 <div class="card o-hidden border-0 shadow-lg my-5 ">
                     <div class="card-body p-5">
                         <div class="text-center">
-                            <h1 class="h3 text-gray-900 mb-4 font-weight-bold"> ĐĂNG NHẬP</h1>
+                            <h1 class="h3 text-gray-900 mb-4">HUMG Xin Chào!</h1>
                         </div>
                         <form class="user" method="post" action="{{route('login')}}">
                             @csrf
@@ -58,13 +58,13 @@
                                     class="fas fa-lock mr-3"></i>Đăng nhập</button>
                             <hr>
                         </form>
-                        <div class="text-center">
-                            @if (Route::has('password.request'))
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                {{ __('Quên mật khẩu?') }}
-                            </a>
-                            @endif
-                        </div>
+                        {{--<div class="text-center">--}}
+                            {{--@if (Route::has('password.request'))--}}
+                            {{--<a class="btn btn-link" href="{{ route('password.request') }}">--}}
+                                {{--{{ __('Quên mật khẩu?') }}--}}
+                            {{--</a>--}}
+                            {{--@endif--}}
+                        {{--</div>--}}
                     </div>
                 </div>
             </div>
