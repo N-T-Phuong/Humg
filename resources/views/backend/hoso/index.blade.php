@@ -36,7 +36,7 @@
                             <td>{{$item->lop}}</td>
                             <td>{{$item->phone}}</td>
                             <td>{{$item->email}}</td>
-                            <td>{{$item->tt_id}}</td>
+                            <td>{{$item->thutuc->tenTT}}</td>
 
                             <td class="text-center">
                                 <a href="{{ route('hoso.edit', $item->id)}}"
