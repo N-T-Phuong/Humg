@@ -33,19 +33,19 @@
                                                                     class="form-control" disabled
                                                                     value="{{ Auth::user()->name }}">
                                                             </div>
-                                                        </div>
-                                                        {{--<input type="hidden" name="id_hoso" value="1">--}}
-                                                        <div id="column-2"
-                                                            class="col-md-6 col ui-sortable ui-sortable-handle">
-                                                            <div id="" class="form-group text">
-                                                                <label id="msv" class="control-label" for="maSV">
-                                                                    <span class="label-content">Mã sinh viên</span>
-                                                                    <span class="color-err"
-                                                                        title="Trường bắt buộc">*</span>
-                                                                </label>
-                                                                <input id="maSV" name="" type="text"
-                                                                    class="form-control" disabled
-                                                                    value="{{Auth::user()->ma}}">
+                                                            {{--<input type="hidden" name="id_hoso" value="1">--}}
+                                                            <div id="column-2"
+                                                                class="col-md-6 col ui-sortable ui-sortable-handle">
+                                                                <div id="" class="form-group text">
+                                                                    <label id="msv" class="control-label" for="maSV">
+                                                                        <span class="label-content">Mã sinh viên</span>
+                                                                        <span class="color-err"
+                                                                            title="Trường bắt buộc">*</span>
+                                                                    </label>
+                                                                    <input id="maSV" name="ma" type="text"
+                                                                        class="form-control" disabled
+                                                                        value="{{Auth::user()->ma}}">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -163,9 +163,27 @@
                                                                 <input id="diachi" name="diachi" type="text"
                                                                     placeholder="Ghi rõ địa chỉ ở hiện tại"
                                                                     class="form-control" value="">
+                                                                =======
+                                                                <div id="row-5"
+                                                                    class="row ui-sortable ui-sortable-handle">
+                                                                    <div id="column-9"
+                                                                        class="col-md-12 col ui-sortable ui-sortable-handle">
+                                                                        <div id="" class="form-group text">
+                                                                            <label id="" class="control-label"
+                                                                                for="khoa">
+                                                                                <span class="label-content">Địa
+                                                                                    chỉ</span>
+                                                                                <span class="color-err"
+                                                                                    title="Trường bắt buộc">*</span>
+                                                                            </label>
+                                                                            <input id="diachi" name="diachi" type="text"
+                                                                                placeholder="Ghi rõ địa chỉ ở hiện tại"
+                                                                                class="form-control" value="">
+                                                                        </div>
+                                                                        >>>>>>> e252d7e93c15f02a6b01220d02721278e3dde0b9
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
                                                 </fieldset>
                                             </div>
                                             <hr>

@@ -34,7 +34,6 @@ class HoSoController extends Controller
      */
     public function create($id)
     {
-        $sinhvien = SinhVien::all();
         $thutuc  = ThuTuc::where($id)->first();
         return view('backend.bieumau.gheplop', compact('thutuc', 'sinhvien'));
     }
@@ -50,9 +49,9 @@ class HoSoController extends Controller
             'sv_id' => Auth::id(),
             'phone' => $request->phone,
             'dia_chi' => $request->diachi,
-            'cmnd' => $request->cmnd,
-            'ngay_cap' => $request->ngay_cap,
-            'noi_cap' => $request->noi_cap,
+            'ma' => $request->ma,
+            'khoa' => $request->khoa,
+            'lop' => $request->lop,
             'thutuc_id' => $request->tt_id,
         ]);
         $fileName = "";
@@ -104,7 +103,7 @@ class HoSoController extends Controller
 
     public  function  download($file)
     {
-        return response()->download(config('file.storage') . $file);
+        return response()->download('public/file_bm' . $file);
     }
     /**
      * Show the form for editing the specified resource.
@@ -142,7 +141,7 @@ class HoSoController extends Controller
         $hoso->delete();
         return redirect(route('hoso.index'))->with('error', 'xóa thành công');
         //        if ( ) {
-        //            Storage::delete(config('file.storage') . $file);
+        //            Storage::delete('public/file_bm' . $file);
         //        }
     }
 }

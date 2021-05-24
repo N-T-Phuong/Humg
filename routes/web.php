@@ -31,4 +31,4 @@ Route::group([
     Route::resource('qt', 'Backend\QuyTrinhController')->only('index', 'create', 'store', 'edit', 'update', 'destroy');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

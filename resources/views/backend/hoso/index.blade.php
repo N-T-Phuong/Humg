@@ -17,11 +17,11 @@
                         <tr>
                             <td>ID</td>
                             <td>Sinh Viên</td>
-                            <td>Số điện thoại</td>
-                            <td> Địa chỉ</td>
-                            <td> CMND/CCND</td>
-                            <td> Ngày cấp</td>
-                            <td>Nơi cấp</td>
+                            <td>Mã sinh viên</td>
+                            <td> Khoa</td>
+                            <td> Lớp</td>
+                            <td> Số điện thoại</td>
+                            <td>Email</td>
                             <td>Thủ tục</td>
                             <td class="text-center">Hành động</td>
                         </tr>
@@ -31,11 +31,11 @@
                         <tr>
                             <td>{{$item->id}}</td>
                             <td>{{$item->sv_id}}</td>
+                            <td>{{$item->ma}}</td>
+                            <td>{{$item->khoa}}</td>
+                            <td>{{$item->lop}}</td>
                             <td>{{$item->phone}}</td>
-                            <td>{{$item->diachi}}</td>
-                            <td>{{$item->cmnd}}</td>
-                            <td>{{$item->ngay_cap}}</td>
-                            <td>{{$item->noi_cap}}</td>
+                            <td>{{$item->email}}</td>
                             <td>{{$item->tt_id}}</td>
 
                             <td class="text-center">
@@ -68,9 +68,6 @@
                     <thead>
                         <tr>
                             <td>ID</td>
-                            <td>Khoa</td>
-                            <td>Bộ môn</td>
-                            <td> Lớp</td>
                             <td> Lý do</td>
                             <td> Từ ngày</td>
                             <td>Đến ngày</td>

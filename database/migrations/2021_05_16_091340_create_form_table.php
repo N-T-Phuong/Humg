@@ -16,9 +16,9 @@ class CreateFormTable extends Migration
         Schema::create('form', function (Blueprint $table) {
             $table->increments('id');
             $table->tinyInteger('id_hoso')->nullable();
-            $table->string('khoa')->nullable();
-            $table->string('bo_mon')->nullable();
-            $table->string('lop')->nullable();
+//            $table->string('khoa')->nullable();
+//            $table->string('bo_mon')->nullable();
+//            $table->string('lop')->nullable();
             $table->text('ly_do')->nullable();
             $table->date('tu_ngay')->nullable();
             $table->date('den_ngay')->nullable();
