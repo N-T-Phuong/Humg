@@ -59,6 +59,8 @@ class UserSeeder extends Seeder
             $teacherUser->assignRole($teacherRole);
         }
 
+
+
         for ($i = 1; $i++; $i < 1000) {
             $studentUser = User::create([
                 'ma' => vnfaker()->numberBetween(1000000000, 9999999999),

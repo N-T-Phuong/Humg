@@ -15,7 +15,7 @@ class HomeController extends Controller
      }
      public function home()
      {
-          return view('fontend.dang_nhap');
+          return view('fontend.home');
      }
      public function index()
      {
