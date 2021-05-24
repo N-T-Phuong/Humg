@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\ThuTuc;
 use Illuminate\Http\Request;
+use App\Models\Config;
 
 class BieuMauController extends Controller
 {
@@ -12,8 +13,8 @@ class BieuMauController extends Controller
     {
         $view = '';
         $thutuc = ThuTuc::where('maTT', $id)->firstOrFail();
-        switch ($id)
-        {
+        // $configs = Config::where('TT_id', $id)->get();
+        switch ($id) {
             case 'TT_1':
                 $view = 'backend.bieumau.gheplop';
                 break;
@@ -57,6 +58,6 @@ class BieuMauController extends Controller
                 $view = 'backend.bieumau.gheplop';
                 break;
         }
-        return view($view, compact('thutuc'));
+        return view($view)->with(['thutuc' => $thutuc]);
     }
 }

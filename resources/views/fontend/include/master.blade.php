@@ -40,10 +40,28 @@
                                             <div class="account__action">
                                                 <a href=""
                                                     class="text-capitalize font-italic text-red font-size-14 font-weight-bold color-header"
-                                                    data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="true">User: {{ Auth::user()->name }}</a>
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    User: {{ Auth::user()->name }}
+                                                    @hasanyrole('admin')
+                                                    (Admin)
+                                                    @endhasanyrole
+                                                    @hasanyrole('canbo')
+                                                    (Cán bộ)
+                                                    @endhasanyrole
+                                                    @role('sinhien')
+                                                    (Sinh viên)
+                                                    @endhasanyrole
+                                                </a>
                                                 <ul class="dropdown-menu" id="menu22" aria-labelledby="drop55"
                                                     style="left:unset">
+                                                    @role('admin|canbo')
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{route('dashboard')}}">
+                                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                            Dashboard
+                                                        </a>
+                                                    </li>
+                                                    @endrole
                                                     <li>
                                                         <a class="dropdown-item" href="#">
                                                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -98,9 +116,11 @@
                                             <li>
                                                 <a href="{{route('gioi_thieu')}}">Giới thiệu</a>
                                             </li>
+                                            @guest
                                             <li>
                                                 <a href="{{route('dang_nhap')}}">Đăng nhập</a>
                                             </li>
+                                            @endguest
                                         </ul>
                                     </div>
                                 </div>

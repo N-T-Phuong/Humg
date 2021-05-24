@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -21,6 +25,7 @@ class LoginController extends Controller
     |
     */
     use AuthenticatesUsers;
+
     public function login(Request $request)
     {
         $credentials = $request->only(['email', 'password']);

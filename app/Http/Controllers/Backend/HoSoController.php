@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\HosoRequest;
 use App\Models\Form;
 use App\Models\HocPhan;
 use App\Models\HoSo;
@@ -43,7 +44,7 @@ class HoSoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HosoRequest $request)
     {
         $hoso = HoSo::create([
             'sv_id' => Auth::id(),
