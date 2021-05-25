@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHocphanTable extends Migration
+class CreateFormsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateHocphanTable extends Migration
      */
     public function up()
     {
-        Schema::create('hocphan', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->tinyInteger('form_id')->nullable();
-            $table->string('mahp')->nullable();
-            $table->string('tenhp')->nullable();
-            $table->string('nhomhp')->nullable();
+        Schema::create('forms', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('thutuc_id')->nullable();
+            $table->string('label')->nullable();
+            $table->string('type')->nullable();
+            $table->string('field')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateHocphanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hocphan');
+        Schema::dropIfExists('forms');
     }
 }

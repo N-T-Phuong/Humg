@@ -52,33 +52,57 @@
                 <input type="text" class="form-control" name="tg_giai_quyet" value="{{ $thutuc->tg_giai_quyet }}" />
             </div>
 
-            List Các trường trong thủ tục này
-
-            Preview
 
             <button type="submit" class="btn btn-block btn-danger">Cập nhập thủ tục</button>
         </form>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Thủ tục</td>
+                        <td>Tiêu đề</td>
+                        <td>Tên thực thể</td>
+                        <td>Kiểu</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($thutuc->forms as $item)
+                        <tr>
+                            <td>{{$item->id}}</td>
+                            <td>{{$item->thutuc_id}}</td>
+                            <td>{{$item->label}}</td>
+                            <td>{{$item->field}}</td>
+                            <td>{{$item->type}} </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
+                    <h4 class="modal-title" id="exampleModalLabel">
                         Tạo trường mới trong thủ tục này
-                    </h5>
+                    </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST">
+                    <form method="POST" action="{{ route('create_input_form', $thutuc->id) }}">
                         @csrf
                         <div class="form-group">
                             <label for="label-name" class="col-form-label">
                                 Tên trường:
                             </label>
-                            <input type="text" class="form-control" id="label-name" name="label">
+                            <textarea class="form-control" id="label-name" name="label"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="label-name" class="col-form-label">
@@ -90,17 +114,17 @@
                             <label for="label-name" class="col-form-label">
                                 Kiểu:
                             </label>
-                            <select class="form-control form-control-sm">
-                                <option>Textarea </option>
-                                <option>Input </option>
-                                <option>File </option>
+                            <select name="type" class="form-control form-control-sm">
+                                <option> textarea </option>
+                                <option> input </option>
+                                <option> file </option>
                             </select>
                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay lại</button>
+                            <button type="submit" class="btn btn-primary">Thêm trường</button>
+                        </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
                 </div>
             </div>
         </div>
@@ -109,9 +133,4 @@
 
 @endsection
 
-<style>
-    .flex-sb {
-        display: flex;
-        justify-content: space-between;
-    }
-</style>
+

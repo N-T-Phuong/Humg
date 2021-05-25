@@ -19,4 +19,9 @@ class ThuTuc extends Model
     {
         return $this->hasMany(HoSo::class, 'thutuc_id');
     }
+
+    public function forms()
+    {
+        return $this->hasMany('App\Models\Form', 'thutuc_id'); // => $thutuc->id
+    }
 }

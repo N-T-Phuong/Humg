@@ -24,16 +24,17 @@ class HosoRequest extends FormRequest
     public function rules()
     {
         return [
-            'tt_id' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|min:10',
+            'dia_chi' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'tt_id.required' => 'Thiếu thủ tục id',
-            'phone.required' => 'Hãy điền số điện thoại của bạn'
+            'phone.required'     => 'Số điện thoại không được bỏ trống',
+            'phone.min'          => 'Tối thiểu 10 số',
+            'dia_chi.required'   => 'Địa chỉ không được bỏ trống',
         ];
     }
 }

@@ -39,34 +39,34 @@
                 </div>
                 <div class="col-md-9">
                     <div class="guide-page__body bg-color-light box-shadow-main">
-                        <h2 class="guide-page__title sidebar__title"><span>Công Dân sử dụng dịch vụ công trực tuyến</span></h2>
+                        <h2 class="guide-page__title sidebar__title"><span>Sinh viên sử dụng dịch vụ công trực tuyến</span></h2>
                         <div class="guide-page__step">
                             <div class="item">
                                 <span class="item__step">Bước 1</span>
-                                <div class="item__desc color-55">Từ Trang Chủ, Công dân chọn <a href="/nop-truc-tuyen" class="primary-color">Đăng ký trực tuyến</a> để bắt đầu.</div>
+                                <div class="item__desc color-55">Từ Trang Chủ, Sinh viên chọn <a href="{{ route('nop_ho_so')}}" class="primary-color">Nộp hồ sơ trực tuyến</a> để bắt đầu.</div>
                                 <div class="item__img">
-                                    <img src="/Images/guide/B%c6%b0%e1%bb%9bc 1.png" alt="Bước 1">
+                                    <img src="" alt="Bước 1">
                                 </div>
                             </div>
                             <div class="item">
                                 <span class="item__step">Bước 2</span>
-                                <div class="item__desc color-55">Công dân <a href="#" class="primary-color">chọn loại dịch vụ</a> cần sử dụng rồi ấn nút <a href="#" class="primary-color">Thực hiện</a></div>
+                                <div class="item__desc color-55">Sinh viên <a href="#" class="primary-color">chọn loại dịch vụ</a> cần sử dụng rồi ấn nút <a href="#" class="primary-color">Thực hiện</a></div>
                                 <div class="item__img">
-                                    <img src="/Images/guide/B%c6%b0%e1%bb%9bc 2.png" alt="Bước 2">
+                                    <img src="" alt="Bước 2">
                                 </div>
                             </div>
                             <div class="item">
                                 <span class="item__step">Bước 3</span>
                                 <div class="item__desc color-55">Điền thông tin theo mẫu tờ khai trực tuyến. Những trường thông tin có dấu * là bắt buộc nhập.</div>
                                 <div class="item__img">
-                                    <img src="/Images/guide/B%c6%b0%e1%bb%9bc 3.png" alt="Bước 3">
+                                    <img src="" alt="Bước 3">
                                 </div>
                             </div>
                             <div class="item">
                                 <span class="item__step">Bước 4</span>
-                                <div class="item__desc color-55">Sau khi điền đầy đủ thông tin, Công dân nhấn vào nút <a href="#" class="primary-color">Tiếp tục</a> để xem lại thông tin đã điền.</div>
+                                <div class="item__desc color-55">Sau khi điền đầy đủ thông tin, Sinh viên nhấn vào nút <a href="#" class="primary-color">Tiếp tục</a> để xem lại thông tin đã điền.</div>
                                 <div class="item__img">
-                                    <img src="/Images/guide/B%c6%b0%e1%bb%9bc 4.png" alt="Bước 4">
+                                    <img src="" alt="Bước 4">
                                 </div>
                             </div>
                             <div class="item">

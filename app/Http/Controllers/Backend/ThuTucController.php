@@ -42,7 +42,7 @@ class ThuTucController extends Controller
      */
     public function store(Request $request)
     {
-        $thutuc = ThuTuc::create($request->all());
+        ThuTuc::create($request->all());
         return redirect(route('tt.index'))->with('error', 'Thêm mới thành công');
     }
 
@@ -66,9 +66,7 @@ class ThuTucController extends Controller
     public function edit($id)
     {
         $thutuc = ThuTuc::findOrFail($id);
-        //        if (!$thutuc) {
-        //            return (404);
-        //        }
+        $thutuc->forms;
         $danhmuc = DanhMuc::all();
         return view('backend.thutuc.edit', compact('thutuc', 'danhmuc'));
     }
@@ -83,11 +81,11 @@ class ThuTucController extends Controller
     public function update(Request $request, $id)
     {
         $update = $request->validate([
-            'maTT' => 'required|min:2',
-            'tenTT' => 'required|max:255',
-            'danhmuc_id'  => 'required|max:255',
-            'mota' => 'required',
-            'tg_giai_quyet'    => 'required',
+            'maTT'              => 'required|min:2',
+            'tenTT'             => 'required|max:255',
+            'danhmuc_id'        => 'required|max:255',
+            'mota'              => 'required',
+            'tg_giai_quyet'     => 'required',
         ]);
         ThuTuc::whereId($id)->update($update);
         return redirect(route('tt.index'))->with('error', 'Sửa thành công');
@@ -124,6 +122,6 @@ class ThuTucController extends Controller
                 ->orWhere('danhmuc.tenDM', 'like', '%' . $searchKey . '%');
         }
         $thutuc = $thutuc->orderBy($sort, $sortType)->paginate($limit);
-        return view('fontend.nop_ho_so.show_thutuc', compact('thutuc'));
+        return view('fontend.nop_ho_so', compact('thutuc'));
     }
 }

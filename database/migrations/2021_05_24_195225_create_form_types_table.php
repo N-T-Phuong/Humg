@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConfigsTable extends Migration
+class CreateFormTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateConfigsTable extends Migration
      */
     public function up()
     {
-        Schema::create('configs', function (Blueprint $table) {
-            $table->id();
-            $table->string('TT_id');
-            $table->string('label');
-            $table->string('type');
+        Schema::create('form_types', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('hoso_id');
             $table->string('field');
+            $table->string('value');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateConfigsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('configs');
+        Schema::dropIfExists('form_types');
     }
 }

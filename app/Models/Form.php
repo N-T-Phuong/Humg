@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Form extends Model
 {
     use HasFactory;
-    protected $table = 'form';
-    protected $fillable = ['id', 'id_hoso', 'khoa', 'bo_mon', 'lop', 'mahp', 'tenhp', 'nhomhp', 'lydo', 'tu_ngay', 'den_ngay', 'hoc-ky', 'lophp', 'file_dinh_kem'];
-    public function hoso()
-    {
-        return $this->belongsTo(HoSo::class, 'id_hoso', 'id');
-    }
-    public function hocphan()
-    {
-        return $this->hasMany(HocPhan::class, 'form_id');
-    }
+    protected $table = 'forms';
+    protected $fillable = ['id', 'thutuc_id', 'label', 'type','field'];
+    // public function hoso()
+    // {
+    //     return $this->belongsTo(HoSo::class, 'id_hoso', 'id');
+    // }
+    // public function hocphan()
+    // {
+    //     return $this->hasMany(HocPhan::class, 'form_id');
+    // }
 }

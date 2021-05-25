@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HosoRequest;
 use App\Models\Form;
-use App\Models\HocPhan;
+use App\Models\FormType;
 use App\Models\HoSo;
-use App\Models\SinhVien;
 use App\Models\ThuTuc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,9 +21,9 @@ class HoSoController extends Controller
      */
     public function index()
     {
-        $hoso = HoSo::with('thutuc')->get();
-        $form = Form::with('hoso')->get();
-        return view('backend.hoso.index', compact('hoso', 'form'));
+        //$hoso = HoSo::with('thutuc')->get(); //??
+        $hoso = HoSo::with('formTypes')->get();
+        return view('backend.hoso.index', compact('hoso'));
     }
 
     /**
@@ -35,7 +34,7 @@ class HoSoController extends Controller
     public function create($id)
     {
         $thutuc  = ThuTuc::where($id)->first();
-        return view('backend.bieumau.gheplop', compact('thutuc', 'sinhvien'));
+        return view('backend.bieumau.gheplop', compact('thutuc'));
     }
     /**
      * Store a newly created resource in storage.
@@ -43,10 +42,10 @@ class HoSoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(HosoRequest $request)
+    public function store(Request $request)
     {
         $hoso = HoSo::create([
-            'sv_id' => Auth::id(),
+            'user_id' => Auth::id(),
             'phone' => $request->phone,
             'dia_chi' => $request->diachi,
             'ma' => $request->ma,
@@ -54,6 +53,16 @@ class HoSoController extends Controller
             'lop' => $request->lop,
             'thutuc_id' => $request->tt_id,
         ]);
+        $thutuc = Thutuc::findOrFail($hoso['thutuc_id']);
+        $thutuc->forms;
+        foreach($thutuc->forms as $form) {
+            $formValue = FormType::create([
+                'hoso_id' => $hoso->id,
+                'field' => $form->field,
+                'value' => $hoso[$form->field] // $hoso[123] $hoso['mssv']
+            ]);
+        }
+        //TODO
         $fileName = "";
         if ($request->hasFile('file_dinh_kem')) {
             $files = $request->file('file_dinh_kem');
@@ -61,7 +70,7 @@ class HoSoController extends Controller
             $files->storeAs('public/file_bm', $fileName);
         }
 
-        $form = Form::create([
+        $form = FormType::create([
             'id_hoso' => $hoso->id,
             'khoa' => $request->khoa,
             'bo_mon' => $request->bo_mon,
@@ -77,17 +86,17 @@ class HoSoController extends Controller
             'file_dinh_kem' => $fileName,
         ]);
 
-        if ($request->tenhp) {
-            for ($i = 0; $i < count($request->tenhp); $i++) {
-                HocPhan::create([
-                    'form_id' => $form->id,
-                    'mahp' => $request->mahp[$i],
-                    'tenhp' => $request->tenhp[$i],
-                    'nhomhp' => $request->nhomhp[$i],
-                ]);
-            }
-        }
-        return redirect(route('nop_ho_so'))->with('error', 'Thêm mới thành công');
+        // if ($request->tenhp) {
+        //     for ($i = 0; $i < count($request->tenhp); $i++) {
+        //         HocPhan::create([
+        //             'form_id' => $form->id,
+        //             'mahp' => $request->mahp[$i],
+        //             'tenhp' => $request->tenhp[$i],
+        //             'nhomhp' => $request->nhomhp[$i],
+        //         ]);
+        //     }
+        // }
+        return redirect(route('nop_ho_so'))->with('error', 'Nộp hồ sơ thành công');
     }
 
     /**
@@ -114,7 +123,6 @@ class HoSoController extends Controller
     public function edit($id)
     {
         $hoso = HoSo::findOrFail($id);
-        $form = Form::findOrFail($id);
         return view('backend.hoso.edit', compact('hoso', 'form'));
     }
 

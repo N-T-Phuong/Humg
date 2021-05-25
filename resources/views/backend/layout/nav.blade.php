@@ -38,7 +38,6 @@
             <div class=" bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('danhmuc.index')}}">Phòng Ban</a>
                 <a class="collapse-item" href={{route('tt.index')}}>Thủ Tục</a>
-                <a class="collapse-item" href="">Quy Trình</a>
                 {{--<a class="collapse-item" href="#">Bước</a>--}}
             </div>
         </div>
@@ -50,31 +49,18 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Quản lý hồ sơ</span></a>
     </li>
-    {{--<li class="nav-item">--}}
-    {{--<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">--}}
-    {{--<i class="fas fa-fw fa-folder"></i>--}}
-    {{--<span>Quản lý Sinh Viên</span>--}}
-    {{--</a>--}}
-    {{--<div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"--}}
-    {{--data-parent="#accordionSidebar">--}}
-    {{--<div class="bg-white py-2 collapse-inner rounded">--}}
-    {{--<a class="collapse-item" href="{{route('sinhvien.index')}}">Sinh Viên</a>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</li>--}}
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
             aria-controls="collapsePages">
             <i class="fas fa-fw fa-wrench"></i>
-            <span>Cài đặt</span>
+            <span>Quản lý tài khoản</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
                 <a class="collapse-item" href="{{route('login')}}">Login</a>
                 <a class="collapse-item" href="{{route('logout')}}">Logout</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                <a class="collapse-item" href="{{ route('password.request') }}">Forgot Password</a>
             </div>
         </div>
     </li>

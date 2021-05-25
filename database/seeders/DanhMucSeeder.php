@@ -25,6 +25,11 @@ class DanhMucSeeder extends Seeder
                 'tenDM' => 'Phòng công tác sinh viên',
                 'mota' => 'Quy chế, quyết định xử phạt và khen thưởng. ',
             ],
+            [
+                'maDM' => 'BP1C',
+                'tenDM' => 'Bộ phận một cửa',
+                'mota' => '',
+            ],
         ]);
     }
 }

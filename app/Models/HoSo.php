@@ -24,4 +24,9 @@ class HoSo extends Model
     {
         return $this->hasOne(Form::class, 'id_hoso');
     }
+
+    public function formTypes()
+    {
+        return $this->hasMany('App\Models\FormType', 'hoso_id');
+    }
 }

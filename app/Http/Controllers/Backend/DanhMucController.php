@@ -43,7 +43,7 @@ class DanhMucController extends Controller
             'mota'  => 'required|max:255',
         ]);
 
-        $danhmuc = DanhMuc::create($request->all());
+        $danhmuc = DanhMuc::create($store);
         return redirect(route('danhmuc.index'))->with('thongbao', 'Thêm mới thành công');
     }
 

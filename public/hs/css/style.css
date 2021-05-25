@@ -17,3 +17,14 @@
 .color-red{
     color: red;
 }
+.flex-sb {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#basic-addon1 {
+    position: absolute;
+    left: -20px;
+    top: 8px
+}

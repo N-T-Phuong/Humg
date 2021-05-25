@@ -15,14 +15,15 @@ class CreateTrangthaixulyhosoTable extends Migration
     {
         Schema::create('trangthaixulyhoso', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->Integer('canbo_id')->nullable();
-            $table->Integer('hoso_id')->nullable();
+            $table->Integer('user_id')->nullable();
+            $table->string('hoso_code')->nullable();
             $table->dateTime('ngay_chuyen_toi')->nullable();
-            $table->dateTime('ngay_nhan')->nullable();
+            $table->dateTime('ngay_tiep_nhan')->nullable();
             $table->dateTime('ngay_tra')->nullable();
-            $table->string('thoi_gian_thuc_hien')->nullable();
-            $table->string('ket_qua_xu_ly')->nullable();
+            // $table->string('thoi_gian_thuc_hien')->nullable();
+            $table->string('noi_dung_xu_ly')->nullable();
             $table->string('trang_thai')->nullable();
+            $table->string('phong_ban_tiep_nhan')->nullable();
             $table->timestamps();
         });
     }

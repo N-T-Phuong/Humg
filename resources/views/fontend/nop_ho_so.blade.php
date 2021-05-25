@@ -37,42 +37,39 @@
                             aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
-
                 <div class="">
-
-                    <div class="card-body">
+                    <div class="card-body " style="padding: 5px 12px;">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
-                                    <tr>
+                                    <tr >
                                         <th class="text-center" style="width: 5%;">STT</th>
-                                        <th class="text-center" style="width: 30%;">Tên thủ tục</th>
-                                        <th class="text-center" style="width: 10%;">Thời gian xử lý</th>
+                                        <th class="text-center" style="width: 43%;">Tên thủ tục</th>
+                                        <th class="text-center" style="width: 13%;">Thời gian xử lý</th>
                                         <th class="text-center" style="width: 20%;">Bộ phận thực hiện</th>
-                                        <th class="text-center" style="width: 10%;">Chi tiết</th>
+                                        <th class="text-center" style="width: 7%;">Chi tiết</th>
                                         <th class="col-send-dossier text-center">Nộp hồ sơ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($thutuc as $key => $value)
-                                    <tr class=" text-center table-child ">
-                                        <td style="width: 5%;">
-                                            {{$value->id}}
+                                    <tr class=" table-child ">
+                                        <td class="text-center" style="width: 5%;">
+                                            {{ $key+1 }}
                                         </td>
-                                        <td style="width: 30%;">
+                                        <td style="width: 43%;">
                                             <a>{{$value->tenTT}}</a>
                                         </td>
-                                        <td style="width: 10%;">
+                                        <td class="text-center"style="width: 13%;">
                                             <a>{{$value->tg_giai_quyet}}</a>
                                         </td>
-                                        <td style="width: 20%;">
+                                        <td class="text-center" style="width: 20%;">
                                             <a>{{$value->tenDM}}</a>
                                         </td>
-                                        <td style="width: 10%;">
-                                            <a href="{{route('tt.show',$value->id)}}"> <i
-                                                    class="fas fa-info-circle"></i></a>
+                                        <td class="text-center" style="width: 7%;">
+                                            <a href="{{route('tt.show',$value->id)}}"> <i class="fas fa-info-circle"></i></a>
                                         </td>
-                                        <td class="col-send-dossier">
+                                        <td class="col-send-dossier text-center">
                                             <a href="{{ route('bieumau_form', $value->maTT) }}"
                                                 class="btn btn-green ">Thực hiện</a>
                                         </td>
@@ -97,16 +94,3 @@
 </script>
 @endsection
 
-<style>
-    .flex-sb {
-        display: flex;
-        justify-content: space-between;
-        padding: 10px;
-    }
-
-    #basic-addon1 {
-        position: absolute;
-        left: -20px;
-        top: 8px
-    }
-</style>
