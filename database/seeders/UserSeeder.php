@@ -44,8 +44,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('admin123'),
         ]);
         $adminUser->assignRole($adminRole);
-
-        for ($i = 1; $i++; $i < 100) {
+        for ($i = 1; $i < 100; $i++) {
             $teacherUser = User::create([
                 'ma' => vnfaker()->numberBetween(1000000000, 9999999999),
                 'name' => vnfaker()->fullname(3),
@@ -59,8 +58,7 @@ class UserSeeder extends Seeder
             $teacherUser->assignRole($teacherRole);
         }
 
-
-        for ($i = 1; $i++; $i < 1000) {
+        for ($i = 1; $i < 1000; $i++) {
             $studentUser = User::create([
                 'ma' => vnfaker()->numberBetween(1000000000, 9999999999),
                 'name' => vnfaker()->fullname(3),
@@ -75,8 +73,7 @@ class UserSeeder extends Seeder
             ]);
             $studentUser->assignRole($studentRole);
         }
-
-/*
+        /*
         DB::table('users')->insert([
             [
                 'ma' => '1621050362',
