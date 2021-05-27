@@ -36,7 +36,7 @@
                                                                     <span class="color-err"  title="Trường bắt buộc">*</span>
                                                                 </label>
                                                                 <input id="maSV" name="maSV" type="text"  class="form-control" disabled
-                                                                    value="{{Auth::user()->ma}}">
+                                                                    value="{{ Auth::user()->ma}}">
                                                             </div>
                                                         </div>
                                                         </div>
@@ -49,17 +49,12 @@
                                                                     <span class="color-err" title="Trường bắt buộc">*</span>
                                                                 </label>
                                                                 <input id="phone" name="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
-                                                                    value="{{Auth::user()->phone}}">
+                                                                    value="{{ Auth::user()->phone}}">
                                                             </div>
-                                                            @error('phone')
+                                                            {{-- @error('phone')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{$errors->phone}}</strong>
                                                                 </span>
-                                                            @enderror
-                                                            {{-- @error('phone')
-                                                                <div class="alert alert-danger" role="alert">
-                                                                    {{$errors->phone}}
-                                                                </div>
                                                             @enderror --}}
                                                         </div>
                                                         <div id="column-4"  class="col-md-6 col ui-sortable ui-sortable-handle">
@@ -69,7 +64,7 @@
                                                                     <span class="label-content">Email</span>
                                                                     <span class="color-err" title="Trường bắt buộc">*</span>
                                                                 </label>
-                                                                <input id="email" name="email" type="email" disabled class="form-control"  value="{{Auth::user()->email}}">
+                                                                <input id="email" name="email" type="email" disabled class="form-control"  value="{{ Auth::user()->email}}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -80,7 +75,7 @@
                                                                     <span class="label-content">Khoa</span>
                                                                     <span class="color-err" title="Trường bắt buộc">*</span>
                                                                 </label>
-                                                                <input id="khoa" name="khoa" type="text" class="form-control" value="{{Auth::user()->khoa}}">
+                                                                <input id="khoa" name="khoa" type="text" class="form-control" value="{{ Auth::user()->khoa}}">
                                                             </div>
                                                         </div>
                                                         <div id="column-6"  class="col-md-6 col ui-sortable ui-sortable-handle">
@@ -90,7 +85,7 @@
                                                                     <span class="label-content">Lớp</span>
                                                                     <span class="color-err" title="Trường bắt buộc">*</span>
                                                                 </label>
-                                                                <input id="lop" name="lop" type="text"  class="form-control" value="{{Auth::user()->lop}}">
+                                                                <input id="lop" name="lop" type="text"  class="form-control" value="{{ Auth::user()->lop}}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -111,7 +106,7 @@
                                             @yield('file')
                                             <br>
                                             <div class="form-action text-center ">
-                                                <button type="submit" class="btn btn-main font-size-14 savestep">
+                                                <button  type="submit" class="btn btn-main font-size-14 savestep ">
                                                     <span id="btn-nop">Nộp hồ sơ</span>
                                                 </button>
                                             </div>

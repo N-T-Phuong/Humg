@@ -11,4 +11,8 @@ class FormType extends Model
     protected $table='form_types';
     protected $primaryKey = 'id';
     protected $fillable = ['id', 'hoso_id', 'field', 'value'];
+    public  function  hoso()
+    {
+        return $this->belongsTo(HoSo::class, 'hoso_id');
+    }
 }

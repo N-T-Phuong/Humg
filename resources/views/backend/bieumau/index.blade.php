@@ -12,8 +12,9 @@
                 </span>
                 <span class="color-err" title="Trường bắt buộc">*</span>
             </label>
-            <textarea placeholder="Ghi rõ lý do đề nghị ghép lớp" type="text" class="form-control infoform" id="ly_do"
-                name="{{$form->field}}"></textarea>
+            <input type="hidden" name="field[]" value="{{ $form->field }}">
+            <textarea  type="text" class="form-control infoform" id="ly_do"
+                name="value[]"></textarea>
             </div>
         </div>
     </div>
@@ -28,7 +29,9 @@
                 {{$form->label}}
                 </span>
             </label>
-            <input type="file" name="{{$form->field}}" class="custom-file-input">
+            <input type="hidden" name="field[]" value="{{ $form->field }}">
+            <input type="file" name="file" class="custom-file-input">
+            <input type="hidden" name="value[]" value="0" class="custom-file-input">
             </div>
         </div>
     </div>
@@ -44,7 +47,8 @@
                 </span>
                 <span class="color-err" title="Trường bắt buộc">*</span>
             </label>
-            <input id="input-bieumau-{{$form->id}}" name="{{$form->field}}" type="text" class="form-control" value="">
+            <input type="hidden" name="field[]" value="{{ $form->field }}">
+            <input id="input-bieumau-{{$form->id}}" name="value[]" type="text" class="form-control" value="">
             </div>
         </div>
     </div>

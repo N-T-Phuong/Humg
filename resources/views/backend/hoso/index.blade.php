@@ -15,7 +15,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <td>ID</td>
+                            <td>Mã hồ sơ</td>
                             <td>Sinh Viên</td>
                             <td>Mã sinh viên</td>
                             <td>Khoa</td>
@@ -23,25 +23,32 @@
                             <td>Số điện thoại</td>
                             <td>Email</td>
                             <td>Thủ tục</td>
+                            <td>Ngày nộp</td>
+                            <td>Chi tiết hồ sơ</td>
+                            <td>Trạng thái</td>
                             <td class="text-center">Hành động</td>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($hoso as $item)
-                        cái $item sẽ chứa $item->formTypes = [
-                            {'field' = 'mssv', 'value = '1234''}
-                        ]
-//ToDO
-ok nhes
                         <tr>
-                            <td>{{$item->id}}</td>
-                            <td>{{$item->sv_id}}</td>
-                            <td>{{$item->ma}}</td>
-                            <td>{{$item->khoa}}</td>
-                            <td>{{$item->lop}}</td>
-                            <td>{{$item->phone}}</td>
-                            <td>{{$item->email}}</td>
-                            <td>{{$item->thutuc->tenTT}}</td>
+                            <td>{{ $item->hoso_code }}</td>
+                            <td>{{ $item->user_id }}</td>
+                            <td>{{ $item->maSV }}</td>
+                            <td>{{ $item->khoa }}</td>
+                            <td>{{ $item->lop }}</td>
+                            <td>{{ $item->phone }}</td>
+                            <td>{{ $item->email }}</td>
+                            <td>{{ $item->thutuc->tenTT }}</td>
+                            <td>{{ $item->created_at }}</td>
+                            <td>
+                                @foreach ( $item->formTypes as $types )
+                                     {{$types->field}} - {{$types->value}}
+                                     <br>
+                                @endforeach
+
+                            </td>
+                            <td>{{$item->trang_thai}}</td>
 
                             <td class="text-center">
                                 <a href="{{ route('hoso.edit', $item->id)}}"

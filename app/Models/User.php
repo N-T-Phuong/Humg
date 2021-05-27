@@ -48,15 +48,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function hs_user()
+    {
+        return $this->hasMany('App\Models\HoSo', 'user_id');
+    }
+
     //    public  function  profile()
     //    {
     //        return $this->hasOne(Profile::class,'user_id','id' );
     //    }
 
-    public function getStrRole()
-    {
-        //đảo mảng array_flip đẻ lấy mảng key=>value(string)
-        $permissionMapping = array_flip(config('permission')); //tìm file per
-        return $permissionMapping[$this->role];
-    }
+    // public function getStrRole()
+    // {
+    //     //đảo mảng array_flip đẻ lấy mảng key=>value(string)
+    //     $permissionMapping = array_flip(config('permission')); //tìm file per
+    //     return $permissionMapping[$this->role];
+    // }
 }

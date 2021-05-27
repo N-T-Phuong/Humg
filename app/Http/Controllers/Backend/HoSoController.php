@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\HosoRequest;
-use App\Models\Form;
+use App\Models\User;
 use App\Models\FormType;
 use App\Models\HoSo;
 use App\Models\ThuTuc;
@@ -44,60 +44,39 @@ class HoSoController extends Controller
      */
     public function store(Request $request)
     {
+        $code = substr(md5(microtime()), rand(0,26),5);
+        // dd($request->all());
+
         $hoso = HoSo::create([
-            'user_id' => Auth::id(),
-            'phone' => $request->phone,
-            'dia_chi' => $request->diachi,
-            'ma' => $request->ma,
-            'khoa' => $request->khoa,
-            'lop' => $request->lop,
-            'thutuc_id' => $request->tt_id,
+            'hoso_code'   => $code,
+            'user_id'     => Auth::user()->name,
+            'phone'       => $request->phone,
+            'email'       => $request->email,
+            'dia_chi'     => $request->diachi,
+            'maSV'        => $request->ma,
+            'khoa'        => $request->khoa,
+            'lop'         => $request->lop,
+            'thutuc_id'   => $request->tt_id,
         ]);
         $thutuc = Thutuc::findOrFail($hoso['thutuc_id']);
-        $thutuc->forms;
-        foreach($thutuc->forms as $form) {
-            $formValue = FormType::create([
-                'hoso_id' => $hoso->id,
-                'field' => $form->field,
-                'value' => $hoso[$form->field] // $hoso[123] $hoso['mssv']
-            ]);
+        if ($request->field) {
+            for ($i = 0; $i < count($request->field); $i++) {
+                $value = $request->value[$i];
+                if ($request->hasFile('file') && $request->file && $request->field[$i] == 'file') {
+                    $files = $request->file('file');
+                    $value = time() . '.' . $files->getClientOriginalExtension();
+                    $files->storeAs('public/file_bm', $value);
+                }
+                FormType::create([
+                    'hoso_id' => $hoso->id,
+                    'field'   => $request->field[$i],
+                    'value'   => $value,
+                ]);
+            }
         }
-        //TODO
-        $fileName = "";
-        if ($request->hasFile('file_dinh_kem')) {
-            $files = $request->file('file_dinh_kem');
-            $fileName = time() . '.' . $files->getClientOriginalExtension();
-            $files->storeAs('public/file_bm', $fileName);
-        }
-
-        $form = FormType::create([
-            'id_hoso' => $hoso->id,
-            'khoa' => $request->khoa,
-            'bo_mon' => $request->bo_mon,
-            'lop' => $request->lop,
-            'ly_do' => $request->ly_do,
-            'tu_ngay' => $request->tu_ngay,
-            'den_ngay' => $request->den_ngay,
-            'hoc_ky' => $request->hoc_ky,
-            'lophp' => $request->lophp,
-            'dia_diem' => $request->dia_diem,
-            'dia_diem_moi' => $request->dia_diem_moi,
-            'do_an' => $request->do_an,
-            'file_dinh_kem' => $fileName,
-        ]);
-
-        // if ($request->tenhp) {
-        //     for ($i = 0; $i < count($request->tenhp); $i++) {
-        //         HocPhan::create([
-        //             'form_id' => $form->id,
-        //             'mahp' => $request->mahp[$i],
-        //             'tenhp' => $request->tenhp[$i],
-        //             'nhomhp' => $request->nhomhp[$i],
-        //         ]);
-        //     }
-        // }
-        return redirect(route('nop_ho_so'))->with('error', 'Nộp hồ sơ thành công');
+        return redirect()->back()->with('success', 'Nộp hồ sơ thành công');
     }
+
 
     /**
      * Display the specified resource.

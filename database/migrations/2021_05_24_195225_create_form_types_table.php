@@ -15,9 +15,9 @@ class CreateFormTypesTable extends Migration
     {
         Schema::create('form_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('hoso_id');
-            $table->string('field');
-            $table->string('value');
+            $table->tinyInteger('hoso_id')->nullable();
+            $table->string('field')->nullable();
+            $table->string('value')->nullable();
             $table->timestamps();
         });
     }
