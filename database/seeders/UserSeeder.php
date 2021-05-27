@@ -44,7 +44,8 @@ class UserSeeder extends Seeder
             'password' => bcrypt('admin123'),
         ]);
         $adminUser->assignRole($adminRole);
-        for ($i = 1; $i < 100; $i++) {
+
+        for ($i = 1; $i < 20; $i++) {
             $teacherUser = User::create([
                 'ma' => vnfaker()->numberBetween(1000000000, 9999999999),
                 'name' => vnfaker()->fullname(3),
@@ -67,7 +68,7 @@ class UserSeeder extends Seeder
                 'username' => vnfaker()->username(),
                 'diachi' => vnfaker()->city(),
                 'password' => bcrypt('123456'),
-                'khoa' => vnfaker()->company(),
+                'khoa' => 'Công nghệ thông tin',   //vnfaker()->company(),
                 'lop' => 'K' . vnfaker()->numberBetween(50, 60),
                 'gioitinh' => vnfaker()->gender()
             ]);
