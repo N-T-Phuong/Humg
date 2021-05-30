@@ -9,11 +9,6 @@
 @endsection
 @section('content')
     <div class="push-top">
-        @if(session()->get('success'))
-            <div class="alert alert-success">
-                {{ session()->get('success') }}
-            </div><br/>
-        @endif
         <div class="col-md-4 ">
 
 
@@ -33,7 +28,6 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <td>ID</td>
                             <td>Mã Thủ Tục</td>
                             <td>Tên Thủ Tục</td>
                             <td> Phòng ban</td>
@@ -45,7 +39,6 @@
                         <tbody>
                         @foreach($thutuc as $item)
                             <tr>
-                                <td>{{$item->id}}</td>
                                 <td>{{$item->maTT}}</td>
                                 <td>{{$item->tenTT}}</td>
                                 <td>{{$item->danhmuc->tenDM}}</td>

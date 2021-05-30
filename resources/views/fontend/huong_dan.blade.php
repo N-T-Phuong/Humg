@@ -1,4 +1,3 @@
-
 @extends('fontend.include.master')
 @section('content')
     <section class="breadcrumbs margin-0">
@@ -7,7 +6,6 @@
                 <li>
                     <a href="/">Trang chủ</a>
                 </li>
-                <i class="fas fa-angle-right"></i>
                 <li class="active">Hướng dẫn</li>
             </ol>
         </div>

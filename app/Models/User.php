@@ -28,6 +28,7 @@ class User extends Authenticatable
         'lop',
         'diachi',
         'gioitinh',
+        'phongban_id'
     ];
 
     /**
@@ -48,9 +49,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function hs_user()
+    public function hoso()
     {
         return $this->hasMany('App\Models\HoSo', 'user_id');
+    }
+    public function phongban()
+    {
+        return $this->belongsTo('App\Models\DanhMuc', 'phongban_id');
     }
 
     //    public  function  profile()

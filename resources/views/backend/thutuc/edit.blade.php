@@ -62,20 +62,29 @@
                     <thead>
                     <tr>
                         <td>ID</td>
-                        <td>Thủ tục</td>
                         <td>Tiêu đề</td>
                         <td>Tên thực thể</td>
                         <td>Kiểu</td>
+                        <td>Thao tác</td>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($thutuc->forms as $item)
                         <tr>
                             <td>{{$item->id}}</td>
-                            <td>{{$item->thutuc_id}}</td>
                             <td>{{$item->label}}</td>
                             <td>{{$item->field}}</td>
                             <td>{{$item->type}} </td>
+                            <td class="text-center">
+                                {{-- <a href="{{ route('bm.edit', $item->id)}}" class="btn btn-primary btn-sm btn-circle" ><i class="far fa-edit"></i></a> --}}
+                                <form action="{{ route('destroy_form', $item->id)}}" method="post"
+                                      style="display: inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger btn-sm btn-circle" type="submit"><i class="fas fa-trash"></i></button>
+                                </form>
+
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -118,6 +127,7 @@
                                 <option> textarea </option>
                                 <option> input </option>
                                 <option> file </option>
+                                <option> datetime</option>
                             </select>
                         </div>
                         <div class="modal-footer">

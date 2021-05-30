@@ -17,14 +17,8 @@
                         <tr>
                             <td>Mã hồ sơ</td>
                             <td>Sinh Viên</td>
-                            <td>Mã sinh viên</td>
-                            <td>Khoa</td>
-                            <td>Lớp</td>
-                            <td>Số điện thoại</td>
-                            <td>Email</td>
                             <td>Thủ tục</td>
                             <td>Ngày nộp</td>
-                            <td>Chi tiết hồ sơ</td>
                             <td>Trạng thái</td>
                             <td class="text-center">Hành động</td>
                         </tr>
@@ -33,34 +27,28 @@
                         @foreach($hoso as $item)
                         <tr>
                             <td>{{ $item->hoso_code }}</td>
-                            <td>{{ $item->user_id }}</td>
-                            <td>{{ $item->maSV }}</td>
-                            <td>{{ $item->khoa }}</td>
-                            <td>{{ $item->lop }}</td>
-                            <td>{{ $item->phone }}</td>
-                            <td>{{ $item->email }}</td>
+                            <td>{{ $item->user->name }}</td>
                             <td>{{ $item->thutuc->tenTT }}</td>
                             <td>{{ $item->created_at }}</td>
                             <td>
-                                @foreach ( $item->formTypes as $types )
-                                     {{$types->field}} - {{$types->value}}
-                                     <br>
-                                @endforeach
-
+                                @if ($item->trang_thai == 'Tiếp nhận')
+                                <a class="btn btn-info" href="{{ route('action.status', $item->id) }}">Tiếp nhận</a>
+                                @elseif ($item->trang_thai == 'Đang xử lý')
+                                <a class="btn btn-danger " href="{{ route('action.status', $item->id) }}">Đang xử lý</a>
+                                @elseif ($item->trang_thai == 'Hoàn thành')
+                                <a class="btn btn-success" href="">Hoàn thành</a>
+                                @else
+                                    <a class="btn btn-secondary" href="{{ route('action.status', $item->id) }}">{{$item->trang_thai}}</a>
+                                @endif
                             </td>
-                            <td>{{$item->trang_thai}}</td>
-
                             <td class="text-center">
-                                <a href="{{ route('hoso.edit', $item->id)}}"
-                                    class="btn btn-primary btn-sm btn-circle"><i class="far fa-edit"></i></a>
-                                <form action="{{ route('hoso.destroy', $item->id)}}" method="post"
-                                    style="display: inline-block">
+                                <a class="btn btn-sm btn-info  btn-circle"  href="{{route('hoso.show',$item->id)}}"> <i class="fas fa-file-alt"></i></a>
+                                <a href="{{ route('hoso.edit', $item->id)}}" class="btn btn-primary btn-sm btn-circle"><i class="far fa-edit"></i></a>
+                                <form action="{{ route('hoso.destroy', $item->id)}}" method="post" style="display: inline-block">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger btn-sm btn-circle" type="submit"><i
-                                            class="fas fa-trash"></i></button>
+                                    <button class="btn btn-danger btn-sm btn-circle" type="submit"><i  class="fas fa-trash"></i></button>
                                 </form>
-
                             </td>
                         </tr>
                         @endforeach
@@ -70,5 +58,5 @@
         </div>
     </div>
 </div>
-
 @endsection
+

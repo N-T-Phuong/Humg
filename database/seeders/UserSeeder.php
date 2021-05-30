@@ -54,6 +54,7 @@ class UserSeeder extends Seeder
                 'username' => vnfaker()->username(),
                 'diachi' => vnfaker()->city(),
                 'password' => bcrypt('123456'),
+                'phongban_id' => 3,
                 'gioitinh' => vnfaker()->gender()
             ]);
             $teacherUser->assignRole($teacherRole);

@@ -18,14 +18,10 @@ class CreateHosoTable extends Migration
             $table->tinyInteger('user_id')->nullable();
             $table->string('hoso_code')->nullable();
             $table->string('phone')->nullable();
-            $table->string('email')->nullable();
+//            $table->string('ngay_hen_tra')->nullable();
             $table->string('dia_chi')->nullable();
-            $table->string('maSV')->nullable();
-            $table->string('khoa')->nullable();
-            $table->string('lop')->nullable();
             $table->tinyInteger('thutuc_id')->nullable();
-            $table->string('trang_thai')->default('chờ tiếp nhận');
-//            $table->string('file_dinh_kem')->nullable();
+            $table->string('trang_thai')->default('Chờ tiếp nhận');
             $table->timestamps();
         });
     }

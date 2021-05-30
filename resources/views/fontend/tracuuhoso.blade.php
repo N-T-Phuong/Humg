@@ -14,7 +14,6 @@
             <li>
                 <a href="/">Trang chủ</a>
             </li>
-            <i class="fas fa-angle-right"></i>
             <li class="active">Tra cứu hồ sơ</li>
         </ol>
     </div>

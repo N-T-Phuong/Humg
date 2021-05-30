@@ -3,7 +3,7 @@
 @section('content')
 <div class="card push-top">
     <div class="card-header">
-        Edit & Update
+        Chỉnh sửa và cập nhật phòng ban
     </div>
 
     <div class="card-body">

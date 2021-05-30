@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\FormType;
 use App\Models\HoSo;
 use App\Models\ThuTuc;
+use App\Models\XuLyHoSo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -49,15 +50,16 @@ class HoSoController extends Controller
 
         $hoso = HoSo::create([
             'hoso_code'   => $code,
-            'user_id'     => Auth::user()->name,
+            'user_id'     => Auth::id(),
             'phone'       => $request->phone,
             'email'       => $request->email,
             'dia_chi'     => $request->diachi,
-            'maSV'        => $request->ma,
+            'maSV'        => $request->maSV,
             'khoa'        => $request->khoa,
             'lop'         => $request->lop,
             'thutuc_id'   => $request->tt_id,
         ]);
+        // dd($hoso);
         $thutuc = Thutuc::findOrFail($hoso['thutuc_id']);
         if ($request->field) {
             for ($i = 0; $i < count($request->field); $i++) {
@@ -74,10 +76,12 @@ class HoSoController extends Controller
                 ]);
             }
         }
-        return redirect()->back()->with('success', 'Nộp hồ sơ thành công');
+        return redirect()->back()->with('error', 'Nộp hồ sơ thành công');
     }
-
-
+    public  function  download($file)
+    {
+        return response()->download('public/file_bm' . $file);
+    }
     /**
      * Display the specified resource.
      *
@@ -86,13 +90,13 @@ class HoSoController extends Controller
      */
     public function show($id)
     {
-        //
+//        $hoso = HoSo::join('formTypes', 'formTypes.id', 'hoso.hoso_id')
+//            ->select('hoso.*', 'formTypes.*');
+        $hoso = HoSo::find($id);
+        return view('backend.hoso.show', compact('hoso'));
     }
 
-    public  function  download($file)
-    {
-        return response()->download('public/file_bm' . $file);
-    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -101,8 +105,8 @@ class HoSoController extends Controller
      */
     public function edit($id)
     {
-        $hoso = HoSo::findOrFail($id);
-        return view('backend.hoso.edit', compact('hoso', 'form'));
+        // $hoso = HoSo::findOrFail($id);
+        // return view('backend.hoso.edit', compact('hoso'));
     }
 
     /**
@@ -130,5 +134,39 @@ class HoSoController extends Controller
         //        if ( ) {
         //            Storage::delete('public/file_bm' . $file);
         //        }
+    }
+
+   public function up_Status( $id, Request $request)
+    {
+        $hoso = HoSo::find($id);
+        // dd($hoso);
+        // $xulyhoso = XuLyHoSo::where('hoso_id', $id)->get();
+
+        // if($hoso)
+        // {
+        //     foreach ( $hoso as $hs ){
+        //         $xlhs = XuLyHoSo::create([
+        //             'hoso_id'           => $hoso->hoso_code,
+        //             'user_id'           => Auth::id(),
+        //             'ngay_chuyen_toi'   => $hs->ngay_chuyen_toi ,
+        //             'ngay_tiep_nhan'    => $hs->ngay_tiep_nhan ,
+        //             'ngay_hen_tra'      => $hs->ngay_hen_tra ,
+        //             'phong_ban_xu_ly'   => $hs->phong_ban_xu_ly ,
+        //             'noi_dung_xu_ly'    => $hs->noi_dung_xu_ly ,
+        //             'trang_thai'        => $hs->trang_thai ,
+        //         ]);
+        //     }
+        // }
+        if($hoso->trang_thai=='Chờ tiếp nhận')
+        {
+            $hoso->trang_thai = HoSo::STATUS_DONE;
+        } elseif($hoso->trang_thai=='Tiếp nhận'){
+            $hoso->trang_thai = HoSo::STATUS_DONE1;
+        }else{
+            $hoso->trang_thai = HoSo::STATUS_DONE2;
+        }
+        $hoso->save();
+        return redirect()->back()->with('success','Xử lý hồ sơ thành công');
+
     }
 }

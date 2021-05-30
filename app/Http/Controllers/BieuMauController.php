@@ -40,4 +40,13 @@ class BieuMauController extends Controller
         ]);
         return redirect()->back()->with('success', 'Thêm mới thành công');
     }
+    public function destroy_bm($id)
+    {
+        $form = Form::findOrFail($id);
+        $form->delete();
+        return redirect()->back()->with('error', 'xóa thành công');
+        //        if ( ) {
+        //            Storage::delete('public/file_bm' . $file);
+        //        }
+    }
 }

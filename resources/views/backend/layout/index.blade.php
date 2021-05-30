@@ -51,7 +51,6 @@
     </a>
     <!-- Logout Modal-->
     @include('backend.layout.footer')
-
+    @stack('js')
 </body>
-
 </html>

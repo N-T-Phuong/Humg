@@ -4,8 +4,9 @@
 <section class="breadcrumbs margin-0">
     <div class="container">
         <ol class="breadcrumb">
-            <li><a href="/">Trang chủ</a></li>
-            <i class="fas fa-angle-right"></i>
+            <li>
+                <a href="/">Trang chủ</a>
+            </li>
             <li class="active">Nộp hồ sơ trực tuyến</li>
         </ol>
     </div>

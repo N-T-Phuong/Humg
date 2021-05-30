@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('khoa')->nullable();
             $table->string('lop')->nullable();
+            $table->string('phongban_id')->nullable();
             $table->string('diachi')->nullable();
             $table->string('gioitinh', 5)->default('Nam');
             $table->rememberToken();

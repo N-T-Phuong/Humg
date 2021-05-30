@@ -1,4 +1,4 @@
-@extends('backend.layout.index')
+@extends('fontend.include.master')
 @section('content')
     <div class="tracuu">
         <div class="col-md-4 ">
