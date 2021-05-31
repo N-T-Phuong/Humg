@@ -52,11 +52,7 @@ class HoSoController extends Controller
             'hoso_code'   => $code,
             'user_id'     => Auth::id(),
             'phone'       => $request->phone,
-            'email'       => $request->email,
             'dia_chi'     => $request->diachi,
-            'maSV'        => $request->maSV,
-            'khoa'        => $request->khoa,
-            'lop'         => $request->lop,
             'thutuc_id'   => $request->tt_id,
         ]);
         // dd($hoso);
@@ -105,8 +101,9 @@ class HoSoController extends Controller
      */
     public function edit($id)
     {
-        // $hoso = HoSo::findOrFail($id);
-        // return view('backend.hoso.edit', compact('hoso'));
+         $hoso = HoSo::findOrFail($id);
+         $hoso->xulyhoso;
+         return view('backend.hoso.edit', compact('hoso'));
     }
 
     /**
@@ -118,6 +115,46 @@ class HoSoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $hoso = HoSo::findById($id);
+        $request->validate(
+            [
+                'name' => 'required',
+                'phone'  => 'min:4| max:15',
+                'file' => 'file|max:2048',
+            ],[
+                'name.required' => 'Họ tên không được để trống',
+                'phone.min' => 'Số điện thoại không đúng',
+                'phone.max' => 'Số điện thoại không đúng',
+                'file.max' => 'Dung lượng file quá lớn',
+            ]
+        );
+        $request->offsetunset('_token');
+//        if($request->hasFile('upload_avatar')){
+//            $destinationPath = $_SERVER['DOCUMENT_ROOT'] . '/upload/user';
+//
+//            $image_path = $destinationPath . "/" . $user->avatar;
+//            if (\File::exists($image_path)) {
+//                \File::delete($image_path);
+//            }
+//
+//            $image      = $request->file('upload_avatar');
+//            $imgName   = time() . '.' . $image->getClientOriginalExtension();
+//            $image->move($destinationPath, $imgName);
+//            $user->avatar = $imgName;
+//        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        $user->phone = $request->phone;
+        $user->active = $request->active;
+        $check = $user->save();
+        if ($check){
+            return redirect()->route('users.index')->with('success','Sửa thành công');
+        }
+        else{
+            return redirect()->back()->with('error','Sửa thất bại, vui lòng thử lại');
+        }
     }
 
     /**

@@ -20,13 +20,13 @@
             <div class="">
                 <div class="flex-sb">
                     <div>
-                        <label>Số lượng mỗi trang: </label>
-                        <select class="custom-select">
-                            <option selected value="10">10</option>
-                            <option value="15">15</option>
-                            <option value="20">20</option>
-                            <option value="50">50</option>
-                        </select>
+                        {{--<label>Số lượng mỗi trang: </label>--}}
+                        {{--<select class="custom-select">--}}
+                            {{--<option selected value="10">10</option>--}}
+                            {{--<option value="15">15</option>--}}
+                            {{--<option value="20">20</option>--}}
+                            {{--<option value="50">50</option>--}}
+                        {{--</select>--}}
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
@@ -34,7 +34,7 @@
                                 <i class="fas fa-search"></i>
                             </span>
                         </div>
-                        <input id="search-hoso" type="text" class="form-control" placeholder="Tìm kiếm"
+                        <input id="search-hoso" type="text" class="form-control" style="border-radius: 8px;" placeholder="Tìm kiếm"
                             aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>

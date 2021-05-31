@@ -18,7 +18,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{asset('hs/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('fe/css/sb-admin-2.min.css')}}" rel="stylesheet">
     <link href="{{asset('hs/css/style.css')}}" rel="stylesheet">
 </head>
 
@@ -77,7 +77,7 @@
     <script src="{{asset('hs/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="{{asset('hs/js/sb-admin-2.min.js')}}"></script>
+    <script src="{{asset('fe/js/sb-admin-2.min.js')}}"></script>
 </body>
 
 </html>

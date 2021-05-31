@@ -1,73 +1,75 @@
-<!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-    <!-- Sidebar - Brand -->
-
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="https://humg.edu.vn">
-        {{--<div class="sidebar-brand-icon rotate-n-15">--}}
-        {{--<i class="fas fa-laugh-wink"></i>--}}
-        {{--</div>--}}
-        <img src="{{asset('hs/img/logo.png')}}" alt="" width="50px" height="50px">
-        <div class="sidebar-brand-text mx-3"> HUMG </div>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a class=" brand-link d-flex ml-2" href="https://humg.edu.vn">
+        <img src="{{asset('hs/img/logo.png')}}" alt="humg" width="45px" height="45px" class=" img-circle elevation-3" style="opacity: .8">
+        <div class="brand-text mx-3 pt-2 font-weight-light font-weight-bold"> HUMG </div>
     </a>
-
-    <!-- Divider -->
     <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="{{route('dashboard')}}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
-
-    {{--<li class="nav-item">--}}
-    {{--<a class="nav-link" href="{{route('nop_ho_so')}}">--}}
-    {{--<i class="fas fa-fw fa-table"></i>--}}
-    {{--<span>Nộp hồ sơ trực tuyến</span></a>--}}
-    {{--</li>--}}
-    <hr class="sidebar-divider ">
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-            aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Quản Lý Danh Mục</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class=" bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('danhmuc.index')}}">Phòng Ban</a>
-                <a class="collapse-item" href={{route('tt.index')}}>Thủ Tục</a>
-                {{--<a class="collapse-item" href="#">Bước</a>--}}
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link" href="{{route('hoso.index')}}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Quản lý hồ sơ</span></a>
-    </li>
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-            aria-controls="collapsePages">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Quản lý tài khoản</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('login')}}">Login</a>
-                <a class="collapse-item" href="{{route('logout')}}">Logout</a>
-                <a class="collapse-item" href="{{ route('password.request') }}">Forgot Password</a>
-            </div>
-        </div>
-    </li>
-
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    <!-- Sidebar Menu -->
+    <div class="sidebar">
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+                <li class="nav-item">
+                    <a href="{{route('dashboard')}}" class="nav-link ">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Bảng tin</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            Quản lý danh mục
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('tt.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thủ tục</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('danhmuc.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Phòng ban</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('hoso.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>Quản lý hồ sơ</p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Quản lý tài khoản
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Profile</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Project Add</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
     </div>
-</ul>
-
-<!-- End of Sidebar -->
+</aside>

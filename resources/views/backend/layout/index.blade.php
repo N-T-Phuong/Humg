@@ -13,39 +13,38 @@
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('hs/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="{{asset('hs/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="{{ asset('hs/vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="{{ asset('hs/vendor/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('hs/vendor/jqvmap/jquery.vmap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('hs/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('hs/vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('hs/vendor/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('hs/vendor/summernote/summernote-bs4.css') }}">
     <link href="{{asset('hs/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link href="{{asset('hs/css/style.css')}}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{asset('hs/css/select2.min.css')}}">
 </head>
 
-<body id="page-top">
+<body id="" class="hold-transition sidebar-mini layout-fixed">
     <!-- Page Wrapper -->
-    <div id="wrapper">
-
+    <div class="wrapper">
+        @include('backend.layout.header')
         @include('backend.layout.nav')
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-                @include('backend.layout.header')
-                <!-- Main Content -->
-                @yield('content')
-                <!-- End of Main Content -->
-            </div>
-
+        <div class="content-wrapper" >
+            <section class="content">
+                <div class="container-fluid pt-1 pb-4">
+                    @yield('content')
+                </div>
+            </section>
         </div>
-        <!-- End of Content Wrapper -->
-
     </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
