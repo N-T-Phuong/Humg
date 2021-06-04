@@ -10,7 +10,7 @@ class HoSo extends Model
     use HasFactory;
     protected $table = 'hoso';
     protected $primaryKey = 'id';
-    protected  $fillable = ['id','hoso_code', 'user_id', 'phone', 'dia_chi', 'maSV', 'email', 'khoa', 'lop', 'thutuc_id'];
+    protected  $fillable = ['id','hoso_code', 'user_id', 'phone', 'dia_chi', 'ngay_nhan', 'ngay_hen_tra', 'thutuc_id'];
 
     public  function  thutuc()
     {
@@ -20,7 +20,7 @@ class HoSo extends Model
     {
         return $this->belongsTo(User::class, 'user_id','id');
     }
-    public  function  xulyhoso()
+    public  function  xlhs()
     {
         return $this->hasMany(XuLyHoSo::class, 'hoso_id');
     }

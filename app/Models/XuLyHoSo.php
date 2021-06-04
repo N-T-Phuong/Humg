@@ -8,14 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class XuLyHoSo extends Model
 {
     use HasFactory;
-    protected $table = 'trangthaixulyhoso';
+    protected $table = 'xulyhoso';
     protected $primaryKey = 'id';
     protected  $fillable = [
-        'id', 'hoso_id', 'user_id', 'ngay_chuyen_toi', 'ngay_tiep_nhan', 'ngay_hen_tra', 'phong_ban_xu_ly',
+        'id', 'hoso_id', 'user_id',  'ngay_tiep_nhan', 'thoi_gian_thưc', 'phong_ban_xu_ly',
         'noi_dung_xu_ly', 'trang_thai'
     ];
-    public function Hoso()
+    public function hoso()
     {
-        return $this->belongsTo(HoSo::class, 'hoso_id');
+        return $this->belongsTo(HoSo::class, 'hoso_id', 'id');
+    }
+    public function danhmuc()
+    {
+        return $this->belongsTo(DanhMuc::class, 'phong_ban_xu_ly');
     }
 }

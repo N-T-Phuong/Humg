@@ -28,21 +28,23 @@
                             {{--<option value="50">50</option>--}}
                         {{--</select>--}}
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">
-                                <i class="fas fa-search"></i>
-                            </span>
+                    <form action="" method="GET" class="form-inline" role="form">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </div>
+                            <input id="search-hoso" name="search_key" type="text" class="form-control" style="border-radius: 8px;" placeholder="Tìm kiếm"
+                                aria-label="Username" aria-describedby="basic-addon1">
                         </div>
-                        <input id="search-hoso" type="text" class="form-control" style="border-radius: 8px;" placeholder="Tìm kiếm"
-                            aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
+                    </form>
                 </div>
                 <div class="">
                     <div class="card-body " style="padding: 5px 12px;">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
+                                <thead style="background-color: lightgray;">
                                     <tr >
                                         <th class="text-center" style="width: 5%;">STT</th>
                                         <th class="text-center" style="width: 43%;">Tên thủ tục</th>
@@ -58,7 +60,7 @@
                                         <td class="text-center" style="width: 5%;">
                                             {{ $key+1 }}
                                         </td>
-                                        <td style="width: 43%;">
+                                        <td style="width: 43%; text-align: justify;">
                                             <a>{{$value->tenTT}}</a>
                                         </td>
                                         <td class="text-center"style="width: 13%;">

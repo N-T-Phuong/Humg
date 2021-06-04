@@ -50,6 +50,23 @@
                                 </tr>
                             @endforeach
                             <tr>
+                                <th>Ngày nhận</th>
+                                <td>{{ $hoso->ngay_nhan }}</td>
+                            </tr>
+                            {{--<tr>--}}
+                                {{--<th>Ngày nhận</th>--}}
+                                {{--<td>{{ $hoso->ngay_nhan }}</td>--}}
+                            {{--</tr>--}}
+                            <tr>
+                                <th>Ngày hẹn trả</th>
+                                <td>
+                                    <?php
+                                        $date = date('Y-m-d H:i:s', strtotime('+'.'3 days', strtotime($hoso->ngay_nhan)));
+                                        echo $date;
+                                    ?>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th>Trạng thái</th>
                                 <td>{{ $hoso->trang_thai }}</td>
                             </tr>

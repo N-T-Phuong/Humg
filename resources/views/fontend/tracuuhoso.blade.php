@@ -24,30 +24,31 @@
             <div class=" col-md-2"></div>
             <div class="col-md-8 offset-2">
                 <div class="guide-page__body bg-color-light box-shadow-main">
-                    <h2 class="guide-page__title sidebar__title text-center"><span>Sinh viên tra cứu hồ sơ trực
-                            tuyến</span></h2>
+                    <h2 class="guide-page__title sidebar__title text-center"><span>Sinh viên tra cứu hồ sơ trực tuyến</span></h2>
                     <div class="guide-page__step">
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <table style="width: 100%;">
                                     <tbody>
                                         <tr>
-                                            <td style="width: 20%;"></td>
-                                            <td style="width: 20%;">
-                                                <div class="form-group">
-                                                    <input type="text" name="Keyword" id="Keyword"
-                                                        placeholder="Nhập mã hồ sơ" autocomplete="off"
-                                                        class="form-control secondary-color font-size-14" value="">
-                                                </div>
-                                            </td>
-                                            <td style="width: 5%;"></td>
-                                            <td style="width: 30%;">
-                                                <div class="form-group ">
-                                                    <button class="btn btn-main font-size-16 font-weight-bold">
-                                                        Tra cứu
-                                                    </button>
-                                                </div>
-                                            </td>
+                                            <form action="" method="GET">
+                                                <td style="width: 20%;"></td>
+                                                <td style="width: 20%;">
+                                                    <div class="form-group">
+                                                        <input type="text" name="Keyword" id="Keyword"
+                                                            placeholder="Nhập mã hồ sơ" autocomplete="off"
+                                                            class="form-control secondary-color font-size-14" value="">
+                                                    </div>
+                                                </td>
+                                                <td style="width: 5%;"></td>
+                                                <td style="width: 30%;">
+                                                    <div class="form-group ">
+                                                        <button type="submit" class="btn btn-main font-size-16 font-weight-bold">
+                                                            <i class="fas fa-search"></i>Tra cứu
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </form>
                                         </tr>
                                     </tbody>
                                 </table>

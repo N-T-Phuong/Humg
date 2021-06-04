@@ -6,14 +6,13 @@
             Sửa tài khoản người dùng
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{route('admin')}}"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="{{route('users.index')}}">administration</a></li>
             <li class="active">edit</li>
         </ol>
     </section>
     <!-- Main content -->
     <section class="content">
-        <form action="{{ route('users.update',['id' => $user->id]) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             {{ method_field('PUT')}}
             <div class="box box-danger">
@@ -88,19 +87,19 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label>Avatar</label>
-                                <div class="show-avatar">
-                                    <img src="{{(preg_match('/http/', $user->avatar)) ? $user->avatar : asset('storage/uploads/user/' . $user->avatar) }}" alt="" id="img">
-                                    <input type="file" name="upload_avatar" id="upload_img" style="display: none">
-                                    <a id="browse_file" class="btn btn-success"><i class="fa fa-file-image-o"></i> Chọn avatar</a>
-                                </div>
-                            </div>
-                            @if($errors->has('upload_avatar'))
-                                <div class="help-block text-red">
-                                    * {!! $errors->first('upload_avatar') !!}
-                                </div>
-                            @endif
+                            {{--<div class="form-group">--}}
+                                {{--<label>Avatar</label>--}}
+                                {{--<div class="show-avatar">--}}
+                                    {{--<img src="{{(preg_match('/http/', $user->avatar)) ? $user->avatar : asset('storage/uploads/user/' . $user->avatar) }}" alt="" id="img">--}}
+                                    {{--<input type="file" name="upload_avatar" id="upload_img" style="display: none">--}}
+                                    {{--<a id="browse_file" class="btn btn-success"><i class="fa fa-file-image-o"></i> Chọn avatar</a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--@if($errors->has('upload_avatar'))--}}
+                                {{--<div class="help-block text-red">--}}
+                                    {{--* {!! $errors->first('upload_avatar') !!}--}}
+                                {{--</div>--}}
+                            {{--@endif--}}
                         </div>
                     </div>
                 </div>
@@ -119,11 +118,9 @@
     <!-- /.content -->
 @endsection
 @section('script')
-    <!-- InputMask -->
-    <script src="{{asset('backend/plugins/input-mask/jquery.inputmask.js')}}"></script>
+    <script src="{{ asset('js/jquery.inputmask.js') }}"></script>
     <!-- Select2 -->
-    <script src="{{asset('backend/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
-    <!-- page script -->
+    <script src="{{ asset('hs/vendor/select2/js/select2.full.min.js ') }}"></script>
     <script>
         $(function () {
             //Initialize Select2 Elements

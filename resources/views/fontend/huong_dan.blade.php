@@ -41,55 +41,55 @@
                         <div class="guide-page__step">
                             <div class="item">
                                 <span class="item__step">Bước 1</span>
-                                <div class="item__desc color-55">Từ Trang Chủ, Sinh viên chọn <a href="{{ route('nop_ho_so')}}" class="primary-color">Nộp hồ sơ trực tuyến</a> để bắt đầu.</div>
+                                <div class="item__desc color-55">Sinh viên  <a href="{{ route('dang_nhap')}}" class="primary-color">Đăng nhập</a> để thực hiện nộp hồ sơ.</div>
                                 <div class="item__img">
-                                    <img src="" alt="Bước 1">
+                                    <img src="{{ asset('fe/img/buoc1.PNG') }}" alt="Bước 1">
                                 </div>
                             </div>
                             <div class="item">
                                 <span class="item__step">Bước 2</span>
-                                <div class="item__desc color-55">Sinh viên <a href="#" class="primary-color">chọn loại dịch vụ</a> cần sử dụng rồi ấn nút <a href="#" class="primary-color">Thực hiện</a></div>
+                                <div class="item__desc color-55">Từ Trang Chủ, Sinh viên chọn <a href="{{ route('nop_ho_so')}}" class="primary-color">Nộp hồ sơ trực tuyến</a> để bắt đầu.</div>
                                 <div class="item__img">
-                                    <img src="" alt="Bước 2">
+                                    <img src="{{ asset('fe/img/buoc2.PNG') }}" alt="Bước 2">
                                 </div>
                             </div>
                             <div class="item">
                                 <span class="item__step">Bước 3</span>
-                                <div class="item__desc color-55">Điền thông tin theo mẫu tờ khai trực tuyến. Những trường thông tin có dấu * là bắt buộc nhập.</div>
+                                <div class="item__desc color-55">Sinh viên <a href="#" class="primary-color">chọn loại dịch vụ</a> cần sử dụng rồi ấn nút <a href="#" class="primary-color">Thực hiện</a></div>
                                 <div class="item__img">
-                                    <img src="" alt="Bước 3">
+                                    <img src="{{ asset('fe/img/buoc3.PNG') }}" alt="Bước 3">
                                 </div>
                             </div>
                             <div class="item">
                                 <span class="item__step">Bước 4</span>
-                                <div class="item__desc color-55">Sau khi điền đầy đủ thông tin, Sinh viên nhấn vào nút <a href="#" class="primary-color">Tiếp tục</a> để xem lại thông tin đã điền.</div>
+                                <div class="item__desc color-55">Điền thông tin theo mẫu tờ khai trực tuyến. Những trường thông tin có dấu * là bắt buộc nhập.</div>
                                 <div class="item__img">
-                                    <img src="" alt="Bước 4">
+                                    <img src="{{ asset('fe/img/buoc4.PNG') }}" alt="Bước 4">
                                 </div>
                             </div>
                             <div class="item">
                                 <span class="item__step">Bước 5</span>
-                                <div class="item__desc color-55">Sau khi đã kiểm tra thông tin và chính xác, Công dân nhập <a href="#" class="primary-color">Mã Xác Nhận</a> và nhấn vào nút <a href="#" class="primary-color">Tiếp tục</a>.</div>
+                                <div class="item__desc color-55">Sau khi điền đầy đủ thông tin, Sinh viên nhấn vào nút <a href="#" class="primary-color">Nộp hồ sơ</a> để lưu lại thông tin đã điền.</div>
                                 <div class="item__img">
-                                    <img src="/Images/guide/B%c6%b0%e1%bb%9bc 5.png" alt="Bước 5">
+                                    <img src="{{ asset('fe/img/buoc5.PNG') }}" alt="Bước 5">
                                 </div>
                             </div>
                             <div class="item">
                                 <span class="item__step">Bước 6</span>
                                 <div class="item__desc color-55">
-                                    <p class="margin-0">Thông tin đăng ký thành công sẽ đi đến trang hướng dẫn các bước tiếp theo để hoàn tất hồ sơ.</p>
-                                    <p class="margin-0">Công dân có thể lưu lại Mã hồ sơ để Tra cứu tình trạng hồ sơ. Xem thêm Cách
-                                        <a href="/huong-dan/tra-cuu-ho-so" class="primary-color">Tra Cứu Thông Tin Hồ Sơ.</a> </p>
+                                    <p class="margin-0">Thông tin đăng ký thành công sẽ đi đến trang hướng dẫn .</p>
+                                    <p class="margin-0">Sinh viên lưu lại Mã hồ sơ để Tra cứu tình trạng hồ sơ. Xem thêm Cách
+                                        <a href="{{ route('tra_cuu') }}" class="primary-color">Tra Cứu Thông Tin Hồ Sơ.</a> </p>
                                 </div>
                                 <div class="item__img">
-                                    <img src="/Images/guide/B%c6%b0%e1%bb%9bc 6.png" alt="Bước 6">
+                                    <img src="{{ asset('fe/img/buoc6.jpg') }}" alt="Bước 6">
                                 </div>
                             </div>
                             <div class="item">
                                 <span class="item__step">Bước 7</span>
                                 <div class="item__desc color-55">
-                                    <p class="margin-0">Thông tin đăng ký sẽ được gửi đến hộp thư điện tử mà Công dân đã điền trong biểu mẫu.</p>
-                                    <p class="margin-0">Trường hợp hồ sơ chưa đầy đủ hoặc có yêu cầu khác, Công dân sẽ được hướng dẫn chi tiết để bổ sung hoàn chỉnh hồ sơ.</p>
+                                    <p class="margin-0">Thông tin đăng ký sẽ được gửi đến hộp thư điện tử Sinh viên đã điền trong biểu mẫu.</p>
+                                    <p class="margin-0">Trường hợp hồ sơ chưa đầy đủ hoặc có yêu cầu khác, Sinh viên sẽ được hướng dẫn chi tiết để bổ sung hoàn chỉnh hồ sơ.</p>
                                 </div>
                             </div>
                         </div>

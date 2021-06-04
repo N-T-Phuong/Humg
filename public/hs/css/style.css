@@ -28,3 +28,49 @@
     left: -20px;
     top: 8px
 }
+.tk-thang-item .col-sm-4 dev{
+    padding: 5px;
+}
+.tk-thang-item .col-sm-4:nth-child(1) .tk-thang-item-col{
+    background-color: #03A9F4;
+}
+.tk-thang-item .col-sm-4:nth-child(2) .tk-thang-item-col{
+    background-color: #E84E40;
+}
+.tk-thang-item .col-sm-4:nth-child(3) .tk-thang-item-col{
+    background-color: #3F51B5;
+}
+.tk-thang-item .col-xs-4 .tk-thang-item-col{
+    font-size: 10px;
+}
+.tk-thang-item-col {
+    padding: 15px 10px 15px 10px;
+    text-align: left;
+    color: white;
+}
+.vt-thang {
+    display: inline-block;
+    background-color: white;
+    color: #333333;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+}
+.pt-thang {
+    font-size: x-large;
+    font-weight: bolder;
+}
+.khoang-trang {
+    display: inline-block;
+    width: 5px;
+}
+@media screen and (max-width: 767px){
+    #tk-thang-nan {
+        margin-top: 10px;
+    }
+}

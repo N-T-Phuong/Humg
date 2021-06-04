@@ -116,8 +116,7 @@ class ThuTucController extends Controller
         $thutuc = ThuTuc::join('danhmuc', 'danhmuc.id', 'thutuc.danhmuc_id')
             ->select('thutuc.*', 'danhmuc.tenDM');
         if ($searchKey) {
-            $thutuc = $thutuc->where('tenTT', 'like', '%' . $searchKey . '%')
-                ->orWhere('mota', 'like', '%' . $searchKey . '%')
+            $thutuc = $thutuc->where('tenTT', 'like', '%' . $searchKey . '%') //->orWhere('mota', 'like', '%' . $searchKey . '%')
                 ->orWhere('maTT', 'like', '%' . $searchKey . '%')
                 ->orWhere('danhmuc.tenDM', 'like', '%' . $searchKey . '%');
         }

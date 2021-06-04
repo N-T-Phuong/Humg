@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\HosoRequest;
-use App\Models\User;
+use App\Models\DanhMuc;
 use App\Models\FormType;
 use App\Models\HoSo;
 use App\Models\ThuTuc;
@@ -12,6 +11,7 @@ use App\Models\XuLyHoSo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class HoSoController extends Controller
 {
@@ -47,15 +47,16 @@ class HoSoController extends Controller
     {
         $code = substr(md5(microtime()), rand(0,26),5);
         // dd($request->all());
-
         $hoso = HoSo::create([
             'hoso_code'   => $code,
             'user_id'     => Auth::id(),
             'phone'       => $request->phone,
             'dia_chi'     => $request->diachi,
             'thutuc_id'   => $request->tt_id,
+            'ngay_nhan'   => $request->ngay_nhan,
+            'ngay_hen_tra'   => $request->ngay_hen,
         ]);
-        // dd($hoso);
+//         dd($hoso);
         $thutuc = Thutuc::findOrFail($hoso['thutuc_id']);
         if ($request->field) {
             for ($i = 0; $i < count($request->field); $i++) {
@@ -72,10 +73,11 @@ class HoSoController extends Controller
                 ]);
             }
         }
-        return redirect()->back()->with('error', 'Nộp hồ sơ thành công');
+        return redirect( route('thong_bao') )->with('error', " " . $hoso->hoso_code );
     }
     public  function  download($file)
     {
+//        $hoso = HoSo::findOrFail($id);
         return response()->download('public/file_bm' . $file);
     }
     /**
@@ -102,7 +104,7 @@ class HoSoController extends Controller
     public function edit($id)
     {
          $hoso = HoSo::findOrFail($id);
-         $hoso->xulyhoso;
+         $hoso->xlhs;
          return view('backend.hoso.edit', compact('hoso'));
     }
 
@@ -115,46 +117,8 @@ class HoSoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $hoso = HoSo::findById($id);
-        $request->validate(
-            [
-                'name' => 'required',
-                'phone'  => 'min:4| max:15',
-                'file' => 'file|max:2048',
-            ],[
-                'name.required' => 'Họ tên không được để trống',
-                'phone.min' => 'Số điện thoại không đúng',
-                'phone.max' => 'Số điện thoại không đúng',
-                'file.max' => 'Dung lượng file quá lớn',
-            ]
-        );
-        $request->offsetunset('_token');
-//        if($request->hasFile('upload_avatar')){
-//            $destinationPath = $_SERVER['DOCUMENT_ROOT'] . '/upload/user';
-//
-//            $image_path = $destinationPath . "/" . $user->avatar;
-//            if (\File::exists($image_path)) {
-//                \File::delete($image_path);
-//            }
-//
-//            $image      = $request->file('upload_avatar');
-//            $imgName   = time() . '.' . $image->getClientOriginalExtension();
-//            $image->move($destinationPath, $imgName);
-//            $user->avatar = $imgName;
-//        }
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->address = $request->address;
-        $user->phone = $request->phone;
-        $user->active = $request->active;
-        $check = $user->save();
-        if ($check){
-            return redirect()->route('users.index')->with('success','Sửa thành công');
-        }
-        else{
-            return redirect()->back()->with('error','Sửa thất bại, vui lòng thử lại');
-        }
+        HoSo::findById($id);
+        return redirect()->route('hoso.index')->with('error','Sửa thành công');
     }
 
     /**
@@ -167,43 +131,42 @@ class HoSoController extends Controller
     {
         $hoso = HoSo::findOrFail($id);
         $hoso->delete();
-        return redirect(route('hoso.index'))->with('error', 'xóa thành công');
-        //        if ( ) {
-        //            Storage::delete('public/file_bm' . $file);
-        //        }
+        return redirect(route('hoso.index'))->with('error', 'xóa thành công hồ sơ' . "  " . $hoso->hoso_code);
     }
 
    public function up_Status( $id, Request $request)
     {
         $hoso = HoSo::find($id);
-        // dd($hoso);
-        // $xulyhoso = XuLyHoSo::where('hoso_id', $id)->get();
-
-        // if($hoso)
-        // {
-        //     foreach ( $hoso as $hs ){
-        //         $xlhs = XuLyHoSo::create([
-        //             'hoso_id'           => $hoso->hoso_code,
-        //             'user_id'           => Auth::id(),
-        //             'ngay_chuyen_toi'   => $hs->ngay_chuyen_toi ,
-        //             'ngay_tiep_nhan'    => $hs->ngay_tiep_nhan ,
-        //             'ngay_hen_tra'      => $hs->ngay_hen_tra ,
-        //             'phong_ban_xu_ly'   => $hs->phong_ban_xu_ly ,
-        //             'noi_dung_xu_ly'    => $hs->noi_dung_xu_ly ,
-        //             'trang_thai'        => $hs->trang_thai ,
-        //         ]);
-        //     }
-        // }
         if($hoso->trang_thai=='Chờ tiếp nhận')
         {
+            $hoso->ngay_nhan = Carbon::now(); //date('Y-m-d H:i:s'); //
+//            $hoso->ngay_hen_tra = $thutuc->id
             $hoso->trang_thai = HoSo::STATUS_DONE;
-        } elseif($hoso->trang_thai=='Tiếp nhận'){
-            $hoso->trang_thai = HoSo::STATUS_DONE1;
-        }else{
-            $hoso->trang_thai = HoSo::STATUS_DONE2;
+//        } elseif($hoso->trang_thai=='Tiếp nhận'){
+//            $hoso->trang_thai = HoSo::STATUS_DONE1;
+//        }else{
+//            $hoso->trang_thai = HoSo::STATUS_DONE2;
         }
         $hoso->save();
-        return redirect()->back()->with('success','Xử lý hồ sơ thành công');
+        return redirect()->back()->with('success','Cập nhật hồ sơ thành công');
 
+    }
+    public function xu_ly_ho_so(Request $request, HoSo $hs)
+    {
+        dd($request->all());
+        $request->validate([
+            'noi_dung_xu_ly'        => 'required|max:255',
+            'phong_ban_xu_ly'        => 'required|max:255',
+             ]);
+        XuLyHoSo::create([
+             'hoso_id'           => $hs->id,
+             'user_id'           => Auth::id(),
+//             'ngay_tiep_nhan'    => Carbon::now(),
+             'thoi_gian_thuc'    => $request->thoi_gian_thuc,
+             'noi_dung_xu_ly'    => $request->noi_dung_xu_ly ,
+             'phong_ban_xu_ly'   => $request->phong_ban_xu_ly ,
+             'trang_thai'        => $request->trang_thai ,
+        ]);
+        return redirect()->back()->with('success', 'Thêm mới thành công');
     }
 }

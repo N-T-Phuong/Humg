@@ -1,13 +1,19 @@
 @extends('backend.layout.index')
 
 @section('content')
+    <section class="content-header">
+        <h1 class="text-center">
+            Chỉnh sửa và cập nhật thủ tục
+        </h1>
+    </section>
 <div class="card push-top">
     <div class="card-header flex-sb">
-        Chỉnh sửa và cập nhật thủ tục
-
-        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#exampleModal">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+        <button class="btn btn-primary float-right mr-3" type="button" data-toggle="modal" data-target="#exampleModal">
             Thêm trường cho thủ tục
         </button>
+        </div>
     </div>
 
     <div class="card-body">

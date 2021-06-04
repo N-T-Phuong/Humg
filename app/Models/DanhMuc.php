@@ -17,4 +17,8 @@ class DanhMuc extends Model
     {
         return $this->hasMany(User::class, 'phongban_id');
     }
+    public  function xlhs()
+    {
+        return $this->hasMany(XuLyHoSo::class, 'phong_ban_xu_ly', 'id');
+    }
 }

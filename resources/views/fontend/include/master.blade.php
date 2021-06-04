@@ -103,19 +103,19 @@
                                     <div class="collapse navbar-collapse navbar-main ">
                                         <ul class="nav navbar-nav ">
                                             <li>
-                                                <a href="{{route('nop_ho_so')}}">Nộp hồ sơ trực tuyến</a>
+                                                <a href="{{route('gioi_thieu')}}">Giới thiệu</a>
                                             </li>
                                             <li>
-                                                <a href="">Thủ tục hành chính</a>
+                                                <a href="{{ route('dich_vu') }}">Thủ tục hành chính</a>
                                             </li>
                                             <li>
                                                 <a href="{{route('tra_cuu')}}">Tra cứu hồ sơ</a>
                                             </li>
                                             <li>
-                                                <a href="{{route('huong_dan')}}">Hướng dẫn</a>
+                                                <a href="{{route('nop_ho_so')}}">Nộp hồ sơ trực tuyến</a>
                                             </li>
                                             <li>
-                                                <a href="{{route('gioi_thieu')}}">Giới thiệu</a>
+                                                <a href="{{route('huong_dan')}}">Hướng dẫn</a>
                                             </li>
                                             @guest
                                             <li>

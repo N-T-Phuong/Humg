@@ -13,9 +13,9 @@
     <section id="introduce_search">
         <div class="container">
             <div class="title--2 text-center">
-                <h2 class="title__text text-uppercase font-size-15 font-weight-bold secondary-color">Tra cứu thông tin hồ sơ</h2>
+                <h1 class="title__text text-uppercase font-size-20 font-weight-bold secondary-color">Tra cứu thông tin hồ sơ</h1>
                 <p class="title__des font-size-15 color-55">
-                    Hệ thống dịch vụ công trực tuyến sẽ giúp sinh viên tra cứu hồ sơ một cách dễ dàng
+                    Hệ thống dịch vụ trực tuyến sẽ giúp sinh viên tra cứu hồ sơ một cách dễ dàng
                 </p>
             </div>
             <div class="introduce__search-info">
@@ -29,7 +29,7 @@
                                 Tiện lợi cao
                             </h3>
                             <div class="item__des font-size-15 color-55">
-                                Công dân, doanh nghiệp sau khi đăng nhập bằng tài khoản đã được đăng ký và xác thực bởi cơ quan nhà nước có thể thực hiện các dịch vụ hành chính công một cách đơn giản, thuận tiện
+                                Sinh viên sau khi đăng nhập bằng tài khoản đã được cấp và xác thực bởi trường Đại học Mỏ - Địa chất có thể thực hiện các dịch vụ hành chính bộ phận một cửa một cách đơn giản, thuận tiện
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                                 Sử dụng đơn giản
                             </h3>
                             <div class="item__des font-size-15 color-55">
-                                Các giao dịch với cơ quan nhà nước, xử lý hồ sơ thực hiện dịch vụ hành chính công trực tiếp tại bộ phận một cửa hoặc trực tuyến tại Hệ thống dịch vụ công trực tuyến Thành phố Hà Nội.
+                                Các giao dịch với phòng Đào tạo, Tổng hợp hành chính..., xử lý hồ sơ thực hiện dịch vụ hành chính trực tiếp tại bộ phận một cửa hoặc trực tuyến tại Hệ thống dịch vụ trực tuyến Trường Đại học Mỏ - Địa chất.
                             </div>
                         </div>
                     </div>

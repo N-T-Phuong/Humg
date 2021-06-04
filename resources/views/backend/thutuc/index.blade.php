@@ -27,12 +27,17 @@
     </script>
 @endsection
 @section('content')
+    <section class="content-header">
+        <h1 class="">
+            Danh sách thủ tục
+        </h1>
+    </section>
     <div class="push-top">
         <div class="col-md-4 ">
         </div>
         <div class="card">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary float-left">Danh sách thủ tục</h6>
+                <h6 class="m-0 font-weight-bold text-primary float-left"></h6>
                 <div class="float-right mr-3"> <a href="{{route('tt.create')}}" class="btn btn-primary btn-sm">Thêm mới</a></div>
             </div>
             @if(session('error'))

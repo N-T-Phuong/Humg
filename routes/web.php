@@ -12,6 +12,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/', [HomeController::class, 'home'])->name('dang_nhap');
 Route::get('/huong-dan', [HomeController::class, 'huongdan'])->name('huong_dan');
 Route::get('/gioi-thieu', [HomeController::class, 'gioithieu'])->name('gioi_thieu');
+Route::get('/thu-tuc', [HomeController::class, 'xem_thu_tuc'])->name('dich_vu');
 Route::get('/thutuc/{id}', 'Backend\ThuTucController@show')->name('tt.show');
 Route::get('/tra-cuu-ho-so-truc-tuyen', 'HomeController@tracuuhoso')->name('tra_cuu');
 Route::get('/nop-ho-so', 'Backend\ThuTucController@nop_ho_so')->name('nop_ho_so')->middleware('auth.check')->middleware('role:sinhvien|canbo|admin');
@@ -34,6 +35,9 @@ Route::group([
     Route::get('action/{id}', 'Backend\HoSoController@up_Status')->name('action.status');
     Route::post('/tt-form/{thutuc}', 'BieuMauController@createForm')->name('create_input_form')->middleware('role:admin|canbo');
     Route::delete('/form/{id}', 'BieuMauController@destroy_bm')->name('destroy_form')->middleware('role:admin|canbo');
+    Route::get('/download', 'Backend\HoSoController@download')->name('dow_file')->middleware('role:admin|canbo');
+    Route::post('/xu-ly-ho-so/{hoso}', 'Backend\HoSoController@xu_ly_ho_so')->name('xlhs')->middleware('role:admin|canbo');
+//    Route::delete('/form/{id}', 'BieuMauController@destroy_bm')->name('destroy_form')->middleware('role:admin|canbo');
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

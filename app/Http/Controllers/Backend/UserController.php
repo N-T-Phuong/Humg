@@ -30,18 +30,18 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = User::findById($id);
+        $user = User::findOrFail($id);
         return view('backend.user.edit',compact('user'));
     }
     public function update(Request $request, $id)
     {
-        $user = User::findById($id);
+        $user = User::findOrFail($id);
         $request->validate(
             [
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email,'.$user->id.',id',
                 'phone'  => 'min:4| max:15',
-                'upload_avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'file' => 'file|max:2048',
             ],[
                 'name.required' => 'Họ tên không được để trống',
                 'email.required' => 'Email không được để trống',
@@ -49,8 +49,7 @@ class UserController extends Controller
                 'email.unique' => 'Email đã tồn tại',
                 'phone.min' => 'Số điện thoại không đúng',
                 'phone.max' => 'Số điện thoại không đúng',
-                'upload_avatar.image' => 'File phải là ảnh',
-                'upload_avatar.max' => 'Dung lượng file quá lớn',
+                'file.max' => 'Dung lượng file quá lớn',
             ]
         );
         $request->offsetunset('_token');
@@ -83,7 +82,7 @@ class UserController extends Controller
     }
     public function destroy($id)
     {
-        $user = User::findById($id);
+        $user = User::findOrFail($id);
         $user->delete();
         return redirect(route('tt.index'))->with('error', 'xóa thành công');
 //        if ($user->delete()) {

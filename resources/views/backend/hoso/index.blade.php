@@ -32,7 +32,7 @@
         </div>
         <div class="card">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary float-left">Danh sách hồ sơ</h6>
+                <h4 class="m-0 font-weight-bold text-primary float-left">Danh sách hồ sơ</h4>
             </div>
             @if(session('error'))
                 <div class="alert alert-success">
@@ -48,6 +48,7 @@
                             <table id="dataTable" width="100%" cellspacing="0" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                                 <thead>
                                 <tr class="font-weight-bold">
+                                    <td>STT</td>
                                     <td>Mã hồ sơ</td>
                                     <td>Sinh Viên</td>
                                     <td>Thủ tục</td>
@@ -57,8 +58,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($hoso as $item)
+                                @foreach($hoso as $key => $item)
                                     <tr>
+                                        <td>{{ $key+1 }}</td>
                                         <td>{{ $item->hoso_code }}</td>
                                         <td>{{ $item->user->name }}</td>
                                         <td>{{ $item->thutuc->tenTT }}</td>
@@ -66,10 +68,10 @@
                                         <td>
                                             @if ($item->trang_thai == 'Tiếp nhận')
                                                 <a class="btn btn-info" href="{{ route('action.status', $item->id) }}">Tiếp nhận</a>
-                                            @elseif ($item->trang_thai == 'Đang xử lý')
-                                                <a class="btn btn-danger " href="{{ route('action.status', $item->id) }}">Đang xử lý</a>
-                                            @elseif ($item->trang_thai == 'Hoàn thành')
-                                                <a class="btn btn-success" href="">Hoàn thành</a>
+                                            {{--@elseif ($item->trang_thai == 'Đang xử lý')--}}
+                                                {{--<a class="btn btn-danger " href="{{ route('action.status', $item->id) }}">Đang xử lý</a>--}}
+                                            {{--@elseif ($item->trang_thai == 'Hoàn thành')--}}
+                                                {{--<a class="btn btn-success" href="">Hoàn thành</a>--}}
                                             @else
                                                 <a class="btn btn-secondary" href="{{ route('action.status', $item->id) }}">{{$item->trang_thai}}</a>
                                             @endif

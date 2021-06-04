@@ -3,17 +3,6 @@
 <section id="guide" class="guide-page">
     <div class="container">
         <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6 ">
-                @if(session('error'))
-                    <div class="alert alert-success">
-                        {{session('error')}}
-                    </div>
-                @endif
-            </div>
-        </div>
-
-        <div class="row">
             <div class=" col-md-2"></div>
             <div class="col-md-8 offset-2">
                 <div class="guide-page__body bg-color-light box-shadow-main">
@@ -47,7 +36,6 @@
                                                                 </label>
                                                                 <input id="" name="maSV" type="text"  class="form-control" disabled value="{{ Auth::user()->ma }}" required>
                                                             </div>
-                                                        </div>
                                                         </div>
                                                     </div>
                                                     <div id="row-2" class="row ui-sortable ui-sortable-handle">
@@ -106,8 +94,11 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <input name="ngay_nhan" type="hidden" class="form-control" value="">
+                                                    <input name="ngay_hen" type="hidden" class="form-control" value="">
                                                 </fieldset>
                                             </div>
+
                                             <hr>
                                             @yield('file')
                                             <br>
