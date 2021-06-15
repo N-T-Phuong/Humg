@@ -17,12 +17,10 @@ class CreateXulyhosoTable extends Migration
             $table->bigIncrements('id');
             $table->Integer('user_id')->nullable();
             $table->integer('hoso_id')->nullable();
-            $table->dateTime('ngay_tiep_nhan')->nullable();
-//            $table->dateTime('ngay_tra')->nullable();
-            $table->string('thoi_gian_thuc')->nullable();
+            $table->string('tg_thuc')->nullable();
             $table->string('noi_dung_xu_ly')->nullable();
+            $table->string('phong_ban_xu_ly')->nullable();
             $table->string('trang_thai')->nullable();
-            $table->string('phong_ban_tiep_nhan')->nullable();
             $table->timestamps();
         });
     }

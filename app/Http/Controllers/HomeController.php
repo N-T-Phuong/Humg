@@ -5,24 +5,25 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\HoSo;
 use App\Models\ThuTuc;
+use App\Models\User;
 use App\Models\XuLyHoSo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Arr;
 
 class HomeController extends Controller
 {
-
      public function dashboard ()
      {
-        return view('backend.dash.index');
+         $hs_count = HoSo::count();
+         $user_count = User::count();
+         $tt_count = ThuTuc::count();
+         $hs = HoSo::where('trang_thai','Chờ tiếp nhận')->orderBy('id', 'desc')->paginate(10);
+        return view('backend.dash.index', compact('hs_count', 'user_count', 'tt_count', 'hs'));
      }
      public function home ()
      {
         return view('fontend.home');
-     }
-     public function index ()
-     {
-        return view('fontend.include.master');
      }
      public function huongdan ()
      {
@@ -32,17 +33,15 @@ class HomeController extends Controller
      {
         return view('fontend.gioithieu');
      }
-     public function tracuuhoso (Request $request)
+     public function tracuuhoso (Request $rq)
      {
-//         $keyword = $request->input('keyword');
-////         $query = XuLyHoSo::join('hoso', 'hoso.id', 'xulyhoso.hoso_id')->select('xulyhoso.*', 'hoso.hoso_code');
-//         $query = XuLyHoSo::with('HoSo')->get();
-//         if ($keyword) {
-//             $query->where('hoso_code', 'like', "%{$keyword}%");
-//         }
-//         $query->orderBy('id', 'desc');
-//         $thutuc = $query->paginate(15);
-        return view('fontend.tracuuhoso');
+         $search = $rq->input('search');
+         $query = HoSo::query();
+         if ($search) {
+             $query->where('hoso_code', 'like', "%{$search}%");
+         }
+         $hoso = $query->orderBy('id', 'desc')->paginate(10);
+        return view('fontend.tracuuhoso', compact('hoso'));
      }
      public function xem_thu_tuc (Request $request)
      {

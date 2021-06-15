@@ -8,7 +8,9 @@
     </section>
 <div class="card push-top">
     <div class="card-header flex-sb">
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <a href="{{ route('tt.index') }}" class="btn btn-warning">Quay lại</a>
+        </div>
         <div class="col-md-6">
         <button class="btn btn-primary float-right mr-3" type="button" data-toggle="modal" data-target="#exampleModal">
             Thêm trường cho thủ tục
@@ -59,7 +61,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-block btn-danger">Cập nhập thủ tục</button>
+            <button type="submit" class="btn btn-block btn-danger mx-auto" style="width: 50%;">Cập nhập thủ tục</button>
         </form>
 
         <div class="card-body">
@@ -83,8 +85,7 @@
                             <td>{{$item->type}} </td>
                             <td class="text-center">
                                 {{-- <a href="{{ route('bm.edit', $item->id)}}" class="btn btn-primary btn-sm btn-circle" ><i class="far fa-edit"></i></a> --}}
-                                <form action="{{ route('destroy_form', $item->id)}}" method="post"
-                                      style="display: inline-block">
+                                <form action="{{ route('destroy_form', $item->id)}}" method="post" style="display: inline-block">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger btn-sm btn-circle" type="submit"><i class="fas fa-trash"></i></button>

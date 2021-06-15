@@ -22,7 +22,6 @@ class HoSoController extends Controller
      */
     public function index()
     {
-        //$hoso = HoSo::with('thutuc')->get(); //??
         $hoso = HoSo::with('formTypes')->get();
         return view('backend.hoso.index', compact('hoso'));
     }
@@ -45,7 +44,7 @@ class HoSoController extends Controller
      */
     public function store(Request $request)
     {
-        $code = substr(md5(microtime()), rand(0,26),5);
+        $code = date('dmY',time()) .'-'. substr(md5(microtime()), rand(0,26),5);
         // dd($request->all());
         $hoso = HoSo::create([
             'hoso_code'   => $code,
@@ -63,7 +62,7 @@ class HoSoController extends Controller
                 $value = $request->value[$i];
                 if ($request->hasFile('file') && $request->file && $request->field[$i] == 'file') {
                     $files = $request->file('file');
-                    $value = time() . '.' . $files->getClientOriginalExtension();
+                    $value = $thutuc->tenTT . '.' . $files->getClientOriginalExtension();
                     $files->storeAs('public/file_bm', $value);
                 }
                 FormType::create([
@@ -75,11 +74,6 @@ class HoSoController extends Controller
         }
         return redirect( route('thong_bao') )->with('error', " " . $hoso->hoso_code );
     }
-    public  function  download($file)
-    {
-//        $hoso = HoSo::findOrFail($id);
-        return response()->download('public/file_bm' . $file);
-    }
     /**
      * Display the specified resource.
      *
@@ -88,12 +82,9 @@ class HoSoController extends Controller
      */
     public function show($id)
     {
-//        $hoso = HoSo::join('formTypes', 'formTypes.id', 'hoso.hoso_id')
-//            ->select('hoso.*', 'formTypes.*');
         $hoso = HoSo::find($id);
         return view('backend.hoso.show', compact('hoso'));
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -140,33 +131,31 @@ class HoSoController extends Controller
         if($hoso->trang_thai=='Chờ tiếp nhận')
         {
             $hoso->ngay_nhan = Carbon::now(); //date('Y-m-d H:i:s'); //
-//            $hoso->ngay_hen_tra = $thutuc->id
+//            $hoso->ngay_hen_tra = date('Y-m-d H:i:s', strtotime('+'. '5 days' , strtotime($hoso->ngay_nhan)));
             $hoso->trang_thai = HoSo::STATUS_DONE;
-//        } elseif($hoso->trang_thai=='Tiếp nhận'){
-//            $hoso->trang_thai = HoSo::STATUS_DONE1;
-//        }else{
-//            $hoso->trang_thai = HoSo::STATUS_DONE2;
+        } elseif($hoso->trang_thai=='Tiếp nhận'){
+            $hoso->trang_thai = HoSo::STATUS_DONE1;
+        }else{
+            $hoso->trang_thai = HoSo::STATUS_DONE2;
         }
         $hoso->save();
         return redirect()->back()->with('success','Cập nhật hồ sơ thành công');
-
     }
-    public function xu_ly_ho_so(Request $request, HoSo $hs)
+    public function xu_ly_ho_so(Request $request, HoSo $hoso)
     {
-        dd($request->all());
+//        dd($request->all());
         $request->validate([
             'noi_dung_xu_ly'        => 'required|max:255',
             'phong_ban_xu_ly'        => 'required|max:255',
              ]);
         XuLyHoSo::create([
-             'hoso_id'           => $hs->id,
-             'user_id'           => Auth::id(),
-//             'ngay_tiep_nhan'    => Carbon::now(),
-             'thoi_gian_thuc'    => $request->thoi_gian_thuc,
-             'noi_dung_xu_ly'    => $request->noi_dung_xu_ly ,
-             'phong_ban_xu_ly'   => $request->phong_ban_xu_ly ,
-             'trang_thai'        => $request->trang_thai ,
-        ]);
-        return redirect()->back()->with('success', 'Thêm mới thành công');
+        'hoso_id'           => $hoso->id,
+        'user_id'           => Auth::id(),
+        'tg_thuc'           => $request->tg_thuc,
+        'noi_dung_xu_ly'    => $request->noi_dung_xu_ly ,
+        'phong_ban_xu_ly'   => $request->phong_ban_xu_ly ,
+        'trang_thai'        => $request->trang_thai ,
+    ]);
+        return redirect()->back();
     }
 }

@@ -27,17 +27,23 @@ Route::group([
     'prefix' => 'hethong'
 ], function () {
     Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard')->middleware('role:admin|canbo');
-    Route::resource('users', 'Backend\UserController')->middleware('role:admin|canbo');;
-    Route::resource('danhmuc', 'Backend\DanhMucController')->only('index', 'create', 'store', 'edit', 'update', 'destroy')->middleware('role:admin|canbo');
+    Route::resource('users', 'Backend\UserController')->middleware('role:admin');
+
+    Route::resource('danhmuc', 'Backend\DanhMucController')->only('index', 'create', 'store', 'edit', 'update', 'destroy')->middleware('role:admin');
     Route::resource('tt', 'Backend\ThuTucController')->only('index', 'create', 'store', 'edit', 'update', 'destroy')->middleware('role:admin|canbo');
     Route::resource('hoso', 'Backend\HoSoController')->only('index', 'edit', 'update', 'destroy','show')
                                                         ->middleware('role:admin|canbo');
     Route::get('action/{id}', 'Backend\HoSoController@up_Status')->name('action.status');
     Route::post('/tt-form/{thutuc}', 'BieuMauController@createForm')->name('create_input_form')->middleware('role:admin|canbo');
     Route::delete('/form/{id}', 'BieuMauController@destroy_bm')->name('destroy_form')->middleware('role:admin|canbo');
+
     Route::get('/download', 'Backend\HoSoController@download')->name('dow_file')->middleware('role:admin|canbo');
+
     Route::post('/xu-ly-ho-so/{hoso}', 'Backend\HoSoController@xu_ly_ho_so')->name('xlhs')->middleware('role:admin|canbo');
-//    Route::delete('/form/{id}', 'BieuMauController@destroy_bm')->name('destroy_form')->middleware('role:admin|canbo');
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile/{id}', 'ProfileController@index')->name('profile');
+Route::put('/profile/{id}', 'ProfileController@updateProfile')->name('profile.update');
+Route::get('/doi-mat-khau/{id}', 'ProfileController@change_Pass')->name('change_pass');
+Route::put('/doi-mat-khau/{id}', 'ProfileController@update_change_Pass')->name('update_change_pass');

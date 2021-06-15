@@ -41,31 +41,37 @@
                             </tr>
                             <tr>
                                 <th>Thủ tục</th>
-                                <td>{{ $hoso->thutuc->tenTT }}</td>
+                                <td>{{ $hoso->thutuc->tenTT }}  </td>
                             </tr>
                             @foreach ( $hoso->formTypes as $types )
                                 <tr>
-                                    <th>{{$types->field}}</th>
-                                    <td>{{$types->value}}</td>
+                                    <th>
+                                        {{$types->field}}
+                                    </th>
+                                    <td>
+                                        @if( $types->field != 'file' )
+                                            {{$types->value}}
+                                        @endif
+                                        @if( $types->field == 'file' )
+                                            <a target="_blank" href="{{ url('/storage/file_bm/' . $types->value) }}">{{$types->value}}</a>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
-                            <tr>
-                                <th>Ngày nhận</th>
-                                <td>{{ $hoso->ngay_nhan }}</td>
-                            </tr>
-                            {{--<tr>--}}
-                                {{--<th>Ngày nhận</th>--}}
-                                {{--<td>{{ $hoso->ngay_nhan }}</td>--}}
-                            {{--</tr>--}}
-                            <tr>
-                                <th>Ngày hẹn trả</th>
-                                <td>
-                                    <?php
-                                        $date = date('Y-m-d H:i:s', strtotime('+'.'3 days', strtotime($hoso->ngay_nhan)));
-                                        echo $date;
-                                    ?>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <th>Ngày nhận</th>
+                                    <td>{{ $hoso->ngay_nhan }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Ngày hẹn trả</th>
+                                    <td>
+                                        {{--{{ $hoso->ngay_hen_tra }}--}}
+                                        <?php
+                                            $data = date('Y-m-d H:i:s', strtotime('+'. ($hoso->thutuc->tg_giai_quyet. 'days'), strtotime($hoso->ngay_nhan)));
+                                            echo $data;
+                                        ?>
+                                    </td>
+                                </tr>
                             <tr>
                                 <th>Trạng thái</th>
                                 <td>{{ $hoso->trang_thai }}</td>
@@ -74,16 +80,9 @@
                                 <th>Ngày nộp</th>
                                 <td>{{ $hoso->created_at }}</td>
                             </tr>
-                            {{--<tr>--}}
-                                {{--<th>Ngày tiếp nhận</th>--}}
-                                {{--<td>{{ $hoso->updated_at }}</td>--}}
-                            {{--</tr>--}}
                         </table>
                     </div>
                 </div>
-                {{--<div class="card-footer">--}}
-                    {{--<a type="submit" href="{{ route('hoso.index') }}" class="btn btn-color-primary-border">Quay lại</a>--}}
-                {{--</div>--}}
             </div>
         </form>
     </div>

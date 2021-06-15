@@ -9,6 +9,7 @@ class DanhMuc extends Model
 {
     use HasFactory;
     protected $table = 'danhmuc';
+    protected $fillable = ['id', 'maDM', 'tenDM', 'mota'];
     public  function thutuc()
     {
         return $this->hasMany(ThuTuc::class, 'danhmuc_id');
@@ -17,8 +18,8 @@ class DanhMuc extends Model
     {
         return $this->hasMany(User::class, 'phongban_id');
     }
-    public  function xlhs()
-    {
-        return $this->hasMany(XuLyHoSo::class, 'phong_ban_xu_ly', 'id');
-    }
+//    public  function xlhs()
+//    {
+//        return $this->hasMany(XuLyHoSo::class, 'phong_ban_xu_ly', 'id');
+//    }
 }

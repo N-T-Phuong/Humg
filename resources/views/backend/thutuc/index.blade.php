@@ -67,7 +67,7 @@
                                         <td>{{$item->maTT}}</td>
                                         <td>{{$item->tenTT}}</td>
                                         <td>{{$item->danhmuc->tenDM}}</td>
-                                        <td>{{$item->tg_giai_quyet}}</td>
+                                        <td>{{$item->tg_giai_quyet}} ngày</td>
                                         <td class="text-center">
                                             <a href="{{ route('tt.edit', $item->id)}}" class="btn btn-primary btn-sm img-circle" ><i class="far fa-edit"></i></a>
                                             <form action="{{ route('tt.destroy', $item->id)}}" method="post"

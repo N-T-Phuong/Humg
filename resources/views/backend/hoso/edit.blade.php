@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="tenDM">Email</label>
-                <input type="email" class="form-control" name="email" value="{{ $hoso->email }}" disabled />
+                <input type="email" class="form-control" name="email" value="{{ $hoso->user->email }}" disabled />
             </div>
             <div class="form-group">
                 <label for="mota">Số điện thoại</label>
@@ -63,15 +63,20 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($hoso->xlhs as $item)
+                        @foreach( $hoso->xlhs as $key => $item )
                             <tr>
-                                <td>{{$item->id}}</td>
-                                <td>{{$item->user->name}}</td>
-                                <td>{{$item->noi_dung_xu_ly}}</td>
-                                <td>{{$item->phong_ban_xu_ly}}</td>
-                                <td>{{ $item->ngay_nhan }}</td>
-                                <td>{{ $item->ngay_tra }}</td>
-                                <td>{{$item->trang_thai}} </td>
+                                <td>{{ $key+1 }}</td>
+                                <td>{{ $item->user->name}}</td>
+                                <td>{{ $item->noi_dung_xu_ly }}</td>
+                                <td>{{ $item->user->phongban->tenDM }}</td>
+                                <td>{{ $item->created_at }}</td>
+                                <td>
+                                    <?php
+                                        $data =date('Y-m-d H:i:s', strtotime('+'. ($item->tg_thuc . 'days') , strtotime($item->created_at)));
+                                        echo $data;
+                                    ?>
+                                </td>
+                                <td>{{ $item->trang_thai }} </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -106,7 +111,7 @@
                                     <label id="msv" class="control-label" for="">
                                         <span class="label-content">Mã cán bộ</span>
                                     </label>
-                                    <input id="" name="ma" type="text"  class="form-control" disabled value="{{ Auth::user()->ma }}" required>
+                                    <input id="" name="ma" type="text"  class="form-control" disabled value="{{ Auth::user()->ma }}" >
                                 </div>
                                 <div id="diDong" class="form-group text">
                                     <label id="_lbl_diDong" class="control-label" for="">
@@ -134,41 +139,28 @@
                                         <span class="label-content">Phòng ban xử lý</span>
                                         <span class="text-red" title="Trường bắt buộc">*</span>
                                     </label>
-                                    <input id="" name="phong_ban_xu_ly" type="text" class="form-control"  value="{{ Auth::user()->danhmuc_id }}" >
+                                    <input id="" name="phong_ban_xu_ly" type="text" class="form-control"  value="{{ Auth::user()->phongban_id }}" >
                                 </div>
-                                <div id="" class="form-group text">
-                                    <label id="_lbl_email" class="control-label" for="">
-                                        <span class="label-content">Ngày nhận</span>
-                                        <span class="text-red" title="Trường bắt buộc">*</span>
-                                    </label>
-                                    <input id="" name="ngay_tiep_nhan" type="date" class="form-control"  value="" >
-                                </div>
+                                {{--<div id="" class="form-group text">--}}
+                                    {{--<label id="_lbl_email" class="control-label" for="">--}}
+                                        {{--<span class="label-content">Ngày nhận</span>--}}
+                                        {{--<span class="text-red" title="Trường bắt buộc">*</span>--}}
+                                    {{--</label>--}}
+                                    {{--<input id="" name="ngay_tiep_nhan" type="date" class="form-control"  value="" >--}}
+                                {{--</div>--}}
                                 <div id="" class="form-group text">
                                     <label id="_lbl_email" class="control-label" for="">
                                         <span class="label-content">Thời gian thực hiện</span>
                                         <span class="text-red" title="Trường bắt buộc">*</span>
                                     </label>
-                                    <input id="" name="thoi_gian_thuc" type="text" class="form-control"  value="" >
+                                    <input id="" name="tg_thuc" type="text" class="form-control"  value="" >
                                 </div>
                                 <div class="form-group">
                                     <label for="label-name" class="col-form-label"> Trạng thái: </label>
-                                    <select name="trang_thai" class="form-control form-control-sm">
-                                        <option> Tiếp nhận </option>
-                                        <option> Đang xử lý </option>
-                                        <option> Hoàn thành </option>
-                                    </select>
+                                    <input id="" name="trang_thai" type="text" class="form-control"  value="" >
                                 </div>
                             </fieldset>
                         </div>
-                        {{--<div class="form-group">--}}
-                            {{--<label for="">Phòng ban thực hiện</label>--}}
-                            {{--<select name="phong_ban_thuc_hien" id="input" class="form-control" required="required">--}}
-                                {{--<option value="">--Chọn--</option>--}}
-                                     {{--@foreach( $danhmuc as $dm)--}}
-                                         {{--<option value="{{$dm->id}}">{{$dm->tenDM}}</option>--}}
-                                    {{--@endforeach--}}
-                            {{--</select>--}}
-                        {{--</div>--}}
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay lại</button>
                             <button type="submit" class="btn btn-primary">Lưu</button>

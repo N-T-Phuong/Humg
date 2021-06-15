@@ -13,7 +13,6 @@
     <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href="{{asset('fe/BotDetectCaptcha.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('fe/css/css.css')}}" rel="stylesheet" />
-    <link href="{{asset('hs/css/style.css')}}" rel="stylesheet" />
     <link href="{{asset('hs/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
 </head>
@@ -64,7 +63,7 @@
                                                     </li>
                                                     @endrole
                                                     <li>
-                                                        <a class="dropdown-item" href="#">
+                                                        <a class="dropdown-item" href="{{ route('profile', Auth::id()) }}">
                                                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                                             Profile
                                                         </a>

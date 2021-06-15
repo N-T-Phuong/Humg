@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateRequest;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -16,86 +19,55 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('backend.user.add');
+        $roles = Role::all();
+        return view('backend.user.add')->with([
+            'roles' => $roles
+        ]);
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        if (User::create($request->all())) {
-            return redirect()->back()->with('success','Thêm mới tài khoản người dùng thành công');
-        }else{
-            return redirect()->back()->with('error','Thêm mới tài khoản thất bại, vui lòng thử lại');
-        }
-    }
+        $user = new User();
+        $data = [
+            'name'      => $request->input('name'),
+            'email'     => $request->input('email'),
+            'password'  => bcrypt($request->input('password')),
+            'phone'     => $request->input('phone'),
+            'khoa'      => $request->input('khoa'),
+            'lop'       => $request->input('lop'),
+            'diachi'    => $request->input('diachi'),
+            'ma'        => $request->input('ma'),
+        ];
+        $user::create($data);
+        $role = Role::findOrFail($request->type);
+        $user->assignRole($role);
+        return redirect()->route('users.create')->with('success', trans('Tạo mới thành công'));
 
+    }
+    public function show($id)
+    {
+    }
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('backend.user.edit',compact('user'));
+        return view('fontend.home.up_profile',compact('user'));
     }
-    public function update(Request $request, $id)
+    public function update (UpdateRequest $request, $id)
     {
         $user = User::findOrFail($id);
-        $request->validate(
-            [
-                'name' => 'required',
-                'email' => 'required|email|unique:users,email,'.$user->id.',id',
-                'phone'  => 'min:4| max:15',
-                'file' => 'file|max:2048',
-            ],[
-                'name.required' => 'Họ tên không được để trống',
-                'email.required' => 'Email không được để trống',
-                'email.email' => 'Email không đúng',
-                'email.unique' => 'Email đã tồn tại',
-                'phone.min' => 'Số điện thoại không đúng',
-                'phone.max' => 'Số điện thoại không đúng',
-                'file.max' => 'Dung lượng file quá lớn',
-            ]
-        );
-        $request->offsetunset('_token');
-//        if($request->hasFile('upload_avatar')){
-//            $destinationPath = $_SERVER['DOCUMENT_ROOT'] . '/upload/user';
-//
-//            $image_path = $destinationPath . "/" . $user->avatar;
-//            if (\File::exists($image_path)) {
-//                \File::delete($image_path);
-//            }
-//
-//            $image      = $request->file('upload_avatar');
-//            $imgName   = time() . '.' . $image->getClientOriginalExtension();
-//            $image->move($destinationPath, $imgName);
-//            $user->avatar = $imgName;
-//        }
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->address = $request->address;
-        $user->phone = $request->phone;
-        $user->active = $request->active;
-        $check = $user->save();
-        if ($check){
-            return redirect()->route('users.index')->with('success','Sửa thành công');
-        }
-        else{
-            return redirect()->back()->with('error','Sửa thất bại, vui lòng thử lại');
-        }
+        $data = [
+            'name'      => $request->input('name'),
+            'phone'     => $request->input('phone'),
+            'password'  => bcrypt($request->input('password')),
+            'diachi'    => $request->input('diachi'),
+        ];
+        $user->update($data);
+        return redirect()->route('users.edit', $id)->with('succses', trans('Sửa thành công'));
     }
     public function destroy($id)
     {
         $user = User::findOrFail($id);
         $user->delete();
         return redirect(route('tt.index'))->with('error', 'xóa thành công');
-//        if ($user->delete()) {
-//            $destinationPath = $_SERVER['DOCUMENT_ROOT'] . '/upload/user';
-//
-//            $image_path = $destinationPath . "/" . $user->avatar;
-//            if (\File::exists($image_path)) {
-//                \File::delete($image_path);
-//            }
-//            return redirect()->back()->with('success','Xóa thành công');
-//        }
-//        else {
-//            return redirect()->back()->with('error','Xóa không thành công');
-//        }
     }
 }

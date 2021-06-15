@@ -22,7 +22,7 @@ class HoSo extends Model
     }
     public  function  xlhs()
     {
-        return $this->hasMany(XuLyHoSo::class, 'hoso_id');
+        return $this->hasMany('App\Models\XuLyHoSo', 'hoso_id');
     }
     public function formTypes()
     {

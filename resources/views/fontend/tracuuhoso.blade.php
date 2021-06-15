@@ -1,11 +1,6 @@
 @extends('fontend.include.master')
 @section('js_footer')
-<!-- Page level plugins -->
-<script src="{{asset('hs/vendor/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('hs/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
-
-<!-- Page level custom scripts -->
-<script src="{{asset('hs/js/demo/datatables-demo.js')}}"></script>
+<script src="{{asset('fe/vendor/bundles/document_Citizen.bundle.js')}}"></script>
 @endsection
 @section('content')
 <section class="breadcrumbs margin-0">
@@ -31,13 +26,12 @@
                                 <table style="width: 100%;">
                                     <tbody>
                                         <tr>
-                                            <form action="" method="GET">
+                                            <form action="" method="GET" role="form">
                                                 <td style="width: 20%;"></td>
                                                 <td style="width: 20%;">
                                                     <div class="form-group">
-                                                        <input type="text" name="Keyword" id="Keyword"
-                                                            placeholder="Nhập mã hồ sơ" autocomplete="off"
-                                                            class="form-control secondary-color font-size-14" value="">
+                                                        <input type="text" name="search" id="keyword" placeholder="Nhập mã hồ sơ" value="{{ request()->input('search') }}"
+                                                            class="form-control secondary-color font-size-14" >
                                                     </div>
                                                 </td>
                                                 <td style="width: 5%;"></td>
@@ -53,71 +47,116 @@
                                     </tbody>
                                 </table>
                             </div>
-                            @if(session('thongbao'))
-                            <div class="alert alert-success">
-                                {{session('thongbao')}}
-                            </div>
-                            @endif
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <tbody>
-                                            <tr>
-                                                <th style="padding-left: 5px; padding-top: 3px">Mã sinh viên</th>
-                                                <td id="msv" style="padding-left: 5px; padding-top: 3px"></td>
-                                            </tr>
-                                            <tr>
-                                                <th style="padding-left: 5px; padding-top: 3px">Họ tên</th>
-                                                <td id="ten" style="padding-left: 5px; padding-top: 3px"></td>
-                                            </tr>
-                                            <tr>
-                                                <th style="padding-left: 5px; padding-top: 3px">Điện thoại</th>
-                                                <td id="phone" style="padding-left: 5px; padding-top: 3px"></td>
-                                            </tr>
-                                            <tr>
-                                                <th style="padding-left: 5px; padding-top: 3px">Email</th>
-                                                <td id="email" style="padding-left: 5px; padding-top: 3px"></td>
-                                            </tr>
-                                            <tr>
-                                                <th style="padding-left: 5px; padding-top: 3px">Mã thủ tục</th>
-                                                <td id="maTT" style="padding-left: 5px; padding-top: 3px"></td>
-                                            </tr>
-                                            <tr>
-                                                <th style="padding-left: 5px; padding-top: 3px">Ngày nhận</th>
-                                                <td id="ngaynhan" style="padding-left: 5px; padding-top: 3px"></td>
-                                            </tr>
-                                            <tr>
-                                                <th style="padding-left: 5px; padding-top: 3px">Người nhận</th>
-                                                <td id="canbo" style="padding-left: 5px; padding-top: 3px"></td>
-                                            </tr>
-                                            <tr>
-                                                <th style="padding-left: 5px; padding-top: 3px">Bộ phận tiếp nhận</th>
-                                                <td id="phongban" style="padding-left: 5px; padding-top: 3px"></td>
-                                            </tr>
-                                            <tr>
-                                                <th style="padding-left: 5px; padding-top: 3px">Ngày chuyển tới</th>
-                                                <th id="ngay_chuyen_toi" style="padding-left: 5px; padding-top: 3px">
-                                                </th>
-                                            </tr>
-                                            <tr>
-                                                <th style="padding-left: 5px; padding-top: 3px">Số ngày xử lý</th>
-                                                <td id="tg_th" style="padding-left: 5px; padding-top: 3px"></td>
-                                            </tr>
-                                            <tr>
-                                                <th style="width: 150px; padding-left: 5px; padding-top: 3px">Kết quả xử
-                                                    lý</th>
-                                                <td id="kq_xl" style="padding-left: 5px; padding-top: 3px"></td>
-                                            </tr>
-                                            <tr>
-                                                <th style="padding-left: 5px; padding-top: 3px">Ngày trả</th>
-                                                <td id="ngaytra" style="padding-left: 5px; padding-top: 3px"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="">
+    <div class="container">
+        <div class="look-up-records__table">
+            <div class="table-search" id="user-ticket-history">
+                <table class="table table-bordered margin-0">
+                    <thead>
+                    <tr>
+                        <th class="text-center">STT</th>
+                        <th class="text-center">Thủ tục</th>
+                        <th class="text-center">Mã hồ sơ</th>
+                        <th class="text-center">Họ và tên</th>
+                        <th class="text-center">Ngày nộp</th>
+                        <th class="text-center">Ngày tiếp nhận</th>
+                        <th class="text-center">Ngày hẹn trả</th>
+                        <th class="text-center">Tình trạng</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach( $hoso as $key => $hs)
+                    <tr>
+                        <td>{{ $key+1 }}</td>
+                        <td>{{ $hs->thutuc->tenTT }}</td>
+                        <td>
+                            <a class="collapsed" data-toggle="collapse" data-parent="#user-ticket-history" href="#info_1" aria-expanded="false">
+                                {{ $hs->hoso_code }}
+                            </a>
+                        </td>
+                        <td>{{ $hs->user->name }}</td>
+                        <td>{{ $hs->created_at }}</td>
+                        <td>{{ $hs->ngay_nhan}}</td>
+                        <td>{{ $hs->ngay_hen_tra }}</td>
+                        <td>{{ $hs->trang_thai }}</td>
+                    </tr>
+
+                    <tr id="info_1" class="collapse" aria-expanded="false">
+                        <td></td>
+                        <td colspan="7">
+                            <form class="form-horizontal" action="#" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="ticket" value="">
+                                <div class="info-detail">
+                                    <h4 class="info-detail__head">Thông tin hồ sơ</h4>
+                                    <dl class="dl-horizontal">
+                                        <dt>Mã hồ sơ:</dt>
+                                        <dd>{{ $hs->hoso_code }}</dd>
+                                        <dt>Sinh viên:</dt>
+                                        <dd>{{ $hs->user->name }}</dd>
+                                        <dt>Mã sinh viên:</dt>
+                                        <dd>{{ $hs->user->ma }}</dd>
+                                        <dt>Thời gian tiếp nhận:</dt>
+                                        <dd>{{ $hs->ngay_nhan }}</dd>
+                                        <dt>Trạng thái:</dt>
+                                        <dd>{{ $hs->trang_thai }}</dd>
+                                        <dt></dt>
+                                    </dl>
+                                    <div>
+                                        <h4 class="info-detail__head">Thông tin xử lý</h4>
+                                        <table class="info-detail__table table table-bordered table-hover">
+                                            <colgroup>
+                                                <col class="width-auto">
+                                                <col class="width-15-percent">
+                                                <col class="width-20-percent">
+                                                <col class="width-14-percent">
+                                                <col class="width-10-percent">
+                                                <col class="width-20-percent">
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center">Nội dung xử lý</th>
+                                                    <th class="text-center">Phòng ban xử lý</th>
+                                                    <th class="text-center">Người xử lý</th>
+                                                    <th class="text-center">Thời gian</th>
+                                                    <th class="text-center">Hạn xử lý</th>
+                                                    <th class="text-center">Trạng thái</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach( $hs->xlhs as $item)
+                                                    <tr>
+                                                        <td>{{ $item->noi_dung_xu_ly }}</td>
+                                                        <td>{{ $item->user->phongban->tenDM }}</td>
+                                                        <td class="text-center">{{ $item->user->name }}</td>
+                                                        <td class="text-center">{{ $item->created_at }}</td>
+                                                        <td class="text-center">
+                                                            <?php
+                                                            $data =date('Y-m-d H:i:s', strtotime('+'. ($item->tg_thuc . 'days') , strtotime($item->created_at)));
+                                                            echo $data;
+                                                            ?>
+                                                        </td>
+                                                        <td class="text-center">{{ $item->trang_thai }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    {{$hoso->links('pagination::bootstrap-4')}}
                 </div>
             </div>
         </div>

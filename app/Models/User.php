@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
 
     protected $fillable = [
+        'username',
         'name',
         'email',
         'password',
@@ -56,6 +57,10 @@ class User extends Authenticatable
     public function phongban()
     {
         return $this->belongsTo('App\Models\DanhMuc', 'phongban_id');
+    }
+    public function xlhs()
+    {
+        return $this->hasMany('App\Models\XuLyHoSo', 'user_id');
     }
 
     //    public  function  profile()

@@ -17,11 +17,11 @@ class CreateHosoTable extends Migration
             $table->bigIncrements('id');
             $table->tinyInteger('user_id')->nullable();
             $table->string('hoso_code')->nullable();
+            $table->tinyInteger('thutuc_id')->nullable();
             $table->string('phone')->nullable();
             $table->string('ngay_nhan')->nullable();
             $table->string('ngay_hen_tra')->nullable();
             $table->string('dia_chi')->nullable();
-            $table->tinyInteger('thutuc_id')->nullable();
             $table->string('trang_thai')->default('Chờ tiếp nhận');
             $table->timestamps();
         });

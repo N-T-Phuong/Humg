@@ -45,8 +45,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <input type="password" name="password"
-                                    class="form-control form-control-user @error('password') is-invalid @enderror"
+                                <input type="password" name="password"class="form-control form-control-user @error('password') is-invalid @enderror"
                                     name="password" required id="exampleInputPassword" placeholder="Password">
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">

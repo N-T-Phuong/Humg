@@ -11,15 +11,14 @@ class XuLyHoSo extends Model
     protected $table = 'xulyhoso';
     protected $primaryKey = 'id';
     protected  $fillable = [
-        'id', 'hoso_id', 'user_id',  'ngay_tiep_nhan', 'thoi_gian_thưc', 'phong_ban_xu_ly',
-        'noi_dung_xu_ly', 'trang_thai'
+        'id', 'hoso_id', 'user_id', 'tg_thuc', 'phong_ban_xu_ly', 'noi_dung_xu_ly', 'trang_thai'
     ];
     public function hoso()
     {
-        return $this->belongsTo(HoSo::class, 'hoso_id', 'id');
+        return $this->belongsTo(HoSo::class, 'hoso_id');
     }
-    public function danhmuc()
+    public function user()
     {
-        return $this->belongsTo(DanhMuc::class, 'phong_ban_xu_ly');
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 }

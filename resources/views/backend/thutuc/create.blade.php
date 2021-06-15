@@ -37,7 +37,7 @@
             </div>
             <div class="form-group">
                 <label for="mota">Mô tả</label>
-                <textarea class="form-control  " name="mota" placeholder="Mo ta" required="requireds"></textarea>
+                <textarea class="form-control  " name="mota" placeholder="Mo ta" ></textarea>
             </div>
             <div class="form-group">
                 <label for="tg_giai_quyet">Thời gian giải quyết</label>

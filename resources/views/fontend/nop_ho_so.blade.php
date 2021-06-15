@@ -64,17 +64,16 @@
                                             <a>{{$value->tenTT}}</a>
                                         </td>
                                         <td class="text-center"style="width: 13%;">
-                                            <a>{{$value->tg_giai_quyet}}</a>
+                                            <a>{{$value->tg_giai_quyet}} ngày</a>
                                         </td>
                                         <td class="text-center" style="width: 20%;">
                                             <a>{{$value->tenDM}}</a>
                                         </td>
                                         <td class="text-center" style="width: 7%;">
-                                            <a href="{{route('tt.show',$value->id)}}"> <i class="fas fa-info-circle"></i></a>
+                                            <a href="{{ route('tt.show', $value->id) }}"> <i class="fas fa-info-circle"></i></a>
                                         </td>
                                         <td class="col-send-dossier text-center">
-                                            <a href="{{ route('bieumau_form', $value->maTT) }}"
-                                                class="btn btn-green ">Thực hiện</a>
+                                            <a href="{{ route('bieumau_form', $value->maTT) }}"  class="btn btn-green ">Thực hiện</a>
                                         </td>
                                     </tr>
                                     @endforeach
