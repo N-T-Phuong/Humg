@@ -108,7 +108,7 @@ class HoSoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        HoSo::findById($id);
+        HoSo::findOrFail($id);
         return redirect()->route('hoso.index')->with('error','Sửa thành công');
     }
 

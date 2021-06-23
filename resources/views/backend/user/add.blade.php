@@ -4,10 +4,10 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Thêm mới tài khoản khách hàng
+                Thêm mới tài khoản
             </h1>
             <ol class="breadcrumb">
-                <li><a href=""><i class="fas fa-tachometer-alt"></i>  Home  </a><i class="fas fa-angle-right mr-1"></i></li>
+                {{--<li><a href=""><i class="fas fa-tachometer-alt"></i>  Home  </a><i class="fas fa-angle-right mr-1"></i></li>--}}
                 <li><a href="{{route('users.index')}}">  Users  </a><i class="fas fa-angle-right mr-1"></i></li>
                 <li class="active">Thêm mới</li>
             </ol>

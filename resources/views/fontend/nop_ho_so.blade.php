@@ -15,7 +15,6 @@
 <br>
 <section class="reg-online-res__submit-online">
     <div class="container">
-
         <div class="reg-online-res-wrap bg-color-light ">
             <div class="">
                 <div class="flex-sb">
@@ -29,14 +28,10 @@
                         {{--</select>--}}
                     </div>
                     <form action="" method="GET" class="form-inline" role="form">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">
-                                    <i class="fas fa-search"></i>
-                                </span>
-                            </div>
+                        <div class="form-group display-flex" style="margin: 18px 1em;" >
                             <input id="search-hoso" name="search_key" type="text" class="form-control" style="border-radius: 8px;" placeholder="Tìm kiếm"
                                 aria-label="Username" aria-describedby="basic-addon1">
+                            <i class="fas fa-search "></i>
                         </div>
                     </form>
                 </div>

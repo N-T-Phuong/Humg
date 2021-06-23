@@ -41,12 +41,7 @@
                 <label for="">Địa chỉ</label>
                 <input type="text" class="form-control" name="dia_chi" value="{{ $hoso->dia_chi }}" />
             </div>
-            <div class="form-group">
-                <label for="mota">Trạng thái</label>
-                <input type="text" class="form-control" name="trang_thai" value="{{ $hoso->trang_thai }}" />
-            </div>
-
-            <button type="submit" class="btn btn-block btn-danger">Cập nhập hồ sơ</button>
+            <button type="submit" class="btn btn-block btn-danger">Cập nhật hồ sơ</button>
         </form>
             <div class="card-body">
                 <div class="table-responsive">
@@ -85,7 +80,7 @@
             </div>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="width: 100%;">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLabel">
@@ -98,72 +93,58 @@
                 <div class="modal-body">
                     <form method="POST" action="{{ route('xlhs', $hoso->id) }}">
                         @csrf
-                        <div id="form-content">
-                            <fieldset id="fs-thong-tin-nguoi-nop" class="form-wrapper ui-sortable">
-                                <input name="hoso_id" type="hidden" class="form-control" value="{{ $hoso->id }}">
-                                <div id="" class="form-group text">
-                                    <label id="" class="control-label" for="">
-                                        <span class="label-content">Người xử lý</span>
-                                    </label>
-                                    <input id="" name="user_id" type="text" class="form-control" disabled value="{{ Auth::user()->name }}">
+                        <div class="card-body">
+                            <input name="hoso_id" type="hidden" class="form-control" value="{{ $hoso->id }}">
+                            <div class="row ">
+                                <div class="col-md-6 ">
+                                    <label for="" class=" col-form-label mr-2">Mã cán bộ</label>
+                                    <input type="text" name="ma" id="name" class="form-control" value="{{ Auth::user()->ma }}" placeholder="" disabled>
                                 </div>
-                                <div id="" class="form-group text">
-                                    <label id="msv" class="control-label" for="">
-                                        <span class="label-content">Mã cán bộ</span>
-                                    </label>
-                                    <input id="" name="ma" type="text"  class="form-control" disabled value="{{ Auth::user()->ma }}" >
+                                <div class="col-md-6">
+                                    <label class=" col-form-label ">Họ tên cán bộ xử lý</label>
+                                    <input type="text" name="name" id="name" class="form-control" value="{{ Auth::user()->name }}" placeholder="" disabled>
                                 </div>
-                                <div id="diDong" class="form-group text">
-                                    <label id="_lbl_diDong" class="control-label" for="">
-                                        <span class="label-content">Số điện thoại</span>
-                                        <span class="text-red" title="Trường bắt buộc">*</span>
-                                    </label>
-                                    <input id="" name="phone" type="text" class="form-control "  value="{{ Auth::user()->phone }}">
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-6 ">
+                                    <label for="" class=" col-form-label mr-2">Số điện thoại</label>
+                                    <span class="text-red" title="Trường bắt buộc">*</span>
+                                    <input type="text" name="phone" id="phone" class="form-control" value="{{ Auth::user()->phone }}" placeholder="" >
                                 </div>
-                                <div id="" class="form-group text">
-                                    <label id="_lbl_email" class="control-label" for="">
-                                        <span class="label-content">Email</span>
-                                        <span class="text-red" title="Trường bắt buộc">*</span>
-                                    </label>
-                                    <input id="email" name="email" type="email" class="form-control"  value="{{ Auth::user()->email}}" disabled>
+                                <div class="col-md-6">
+                                    <label class=" col-form-label ">Email</label>
+                                    <input type="text" name="email" id="name" class="form-control" value="{{ Auth::user()->email }}" placeholder="" disabled>
                                 </div>
-                                <div id="" class="form-group text">
-                                    <label id="_lbl_email" class="control-label" for="">
-                                        <span class="label-content">Nội dung xử lý</span>
-                                        <span class="text-red" title="Trường bắt buộc">*</span>
-                                    </label>
-                                    <input id="" name="noi_dung_xu_ly" type="text" class="form-control"  value="" required>
+                            </div>
+                            <div id="" class="form-group text">
+                                <label id="_lbl_email" class="control-label" for="">
+                                    <span class="label-content">Nội dung xử lý</span>
+                                    <span class="text-red" title="Trường bắt buộc">*</span>
+                                </label>
+                                <input id="" name="noi_dung_xu_ly" type="text" class="form-control"  value="" required>
+                            </div>
+                            <div id="" class="form-group text">
+                                <label id="_lbl_email" class="control-label" for="">
+                                    <span class="label-content">Phòng ban xử lý</span>
+                                    <span class="text-red" title="Trường bắt buộc">*</span>
+                                </label>
+                                <input id="" name="phong_ban_xu_ly" type="text" class="form-control"  value="{{ Auth::user()->phongban_id }}" >
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-5 ">
+                                    <label for="" class=" col-form-label mr-2">Thời gian thực hiện</label>
+                                    <span class="text-red" title="Trường bắt buộc">*</span>
+                                    <input type="text" name="phone" id="phone" class="form-control" value="" placeholder=" Số ngày" required >
                                 </div>
-                                <div id="" class="form-group text">
-                                    <label id="_lbl_email" class="control-label" for="">
-                                        <span class="label-content">Phòng ban xử lý</span>
-                                        <span class="text-red" title="Trường bắt buộc">*</span>
-                                    </label>
-                                    <input id="" name="phong_ban_xu_ly" type="text" class="form-control"  value="{{ Auth::user()->phongban_id }}" >
+                                <div class="col-md-5 offset-2">
+                                    <label class=" col-form-label ">Trạng thái</label>
+                                    <input type="text" name="trang_thai" id="name" class="form-control" value="" placeholder="" required >
                                 </div>
-                                {{--<div id="" class="form-group text">--}}
-                                    {{--<label id="_lbl_email" class="control-label" for="">--}}
-                                        {{--<span class="label-content">Ngày nhận</span>--}}
-                                        {{--<span class="text-red" title="Trường bắt buộc">*</span>--}}
-                                    {{--</label>--}}
-                                    {{--<input id="" name="ngay_tiep_nhan" type="date" class="form-control"  value="" >--}}
-                                {{--</div>--}}
-                                <div id="" class="form-group text">
-                                    <label id="_lbl_email" class="control-label" for="">
-                                        <span class="label-content">Thời gian thực hiện</span>
-                                        <span class="text-red" title="Trường bắt buộc">*</span>
-                                    </label>
-                                    <input id="" name="tg_thuc" type="text" class="form-control"  value="" >
-                                </div>
-                                <div class="form-group">
-                                    <label for="label-name" class="col-form-label"> Trạng thái: </label>
-                                    <input id="" name="trang_thai" type="text" class="form-control"  value="" >
-                                </div>
-                            </fieldset>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Quay lại</button>
-                            <button type="submit" class="btn btn-primary">Lưu</button>
+                            <button type="submit" class="btn btn-danger">Cập nhật</button>
                         </div>
                     </form>
                 </div>

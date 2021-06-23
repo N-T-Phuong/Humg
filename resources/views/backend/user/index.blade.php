@@ -51,7 +51,7 @@
                                 <tr class="font-weight-bold">
                                     <td>STT</td>
                                     <td>Tên </td>
-                                    <td>Mã sinh viên</td>
+                                    <td>Mã</td>
                                     <td>Email</td>
                                     <td class="text-center">Hành động</td>
                                 </tr>

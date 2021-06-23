@@ -19,7 +19,7 @@
         </section>
         <div class="row " style="padding: 0 25px; margin: 10px;">
             <div class="col-md-1"></div>
-            <div class="col-md-3  bg-color-light">
+            <div class="col-md-3 bg-color-light">
                 <!-- Profile Image -->
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile rounded" style="padding: 12px 0">
@@ -32,12 +32,12 @@
                         <h3 class="profile-username text-center">{{ $user->name }}</h3>
 
                         <div class="border-profile p-2 my-2">
-                            <i class="fas fa-venus-mars text-purple " style="margin: 7px 10px 8px 0;"></i>{{ $user->gioitinh }}
+                            <i class="fas fa-venus-mars text-purple " style="margin: 7px 10px 10px 0px;"></i>{{ $user->gioitinh }}
                         </div><div class="border-profile p-2 my-2">
                             <i class="fas fa-envelope-open-text text-lightblue " style="margin: 0 10px 8px 0;"></i>{{ $user->email }}
                         </div>
                         <div class="border-profile p-2 my-2">
-                            <i class="fas fa-phone-alt " style="margin: 0 10px 8px 0;"></i>{{ $user->phone }}
+                            <i class="fas fa-phone-alt " style="margin: 10px 10px 8px 0;"></i>{{ $user->phone }}
                         </div>
                         <div class="border-profile p-2 my-2">
                             <strong><i class="fas fa-book " style="margin: 0 7px 8px 0;"></i> Education</strong>

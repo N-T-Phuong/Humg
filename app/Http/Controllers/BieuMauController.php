@@ -45,8 +45,5 @@ class BieuMauController extends Controller
         $form = Form::findOrFail($id);
         $form->delete();
         return redirect()->back()->with('error', 'xóa thành công');
-        //        if ( ) {
-        //            Storage::delete('public/file_bm' . $file);
-        //        }
     }
 }

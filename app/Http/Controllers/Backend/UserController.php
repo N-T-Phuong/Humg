@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::orderBy('id', 'desc')->get();
+        $users = User::all();
         return view('backend.user.index',compact('users'));
     }
 
@@ -50,13 +50,15 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('fontend.home.up_profile',compact('user'));
+        return view('backend.user.edit',compact('user'));
     }
     public function update (UpdateRequest $request, $id)
     {
         $user = User::findOrFail($id);
         $data = [
             'name'      => $request->input('name'),
+            'email'      => $request->input('email_update'),
+            'ma'      => $request->input('ma'),
             'phone'     => $request->input('phone'),
             'password'  => bcrypt($request->input('password')),
             'diachi'    => $request->input('diachi'),

@@ -11,7 +11,6 @@
         rel="stylesheet">
     <link href="{{asset('hs/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link href="{{asset('fe/BotDetectCaptcha.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('fe/css/css.css')}}" rel="stylesheet" />
     <link href="{{asset('hs/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
@@ -153,11 +152,7 @@
             </div>
         </div>
     </div>
-    <div id="loading" class="loading"
-        style="background-color: #ddd; height: 100%; width: 100%; position: fixed; z-index: 9999; margin-top: 0px; top: 0px; opacity: 0.7; display: none">
-        <img style="position: absolute; left: 50%; top: 50%; width: 100px; height: 100px; margin-left: -50px; margin-top: -50px"
-            src="/Images/load2.gif" />
-    </div>
+
     <script src="{{asset('fe/vendor/bundles/app.js')}}"></script>
     <script src="{{asset('fe/vendor/bundles/wp_vendor.bundle.js')}}"></script>
 
@@ -165,10 +160,10 @@
     <script src="{{asset('hs/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{asset('hs/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    {{--<script src="{{asset('hs/vendor/jquery-easing/jquery.easing.min.js')}}"></script>--}}
 
-    <!-- Custom scripts for all pages-->
-    <script src="{{asset('hs/js/sb-admin-2.min.js')}}"></script>
+    {{--<!-- Custom scripts for all pages-->--}}
+    {{--<script src="{{asset('hs/js/sb-admin-2.min.js')}}"></script>--}}
     @yield('js_footer')
 </body>
 
