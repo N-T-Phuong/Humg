@@ -58,20 +58,21 @@
 </section>
 <section class="">
     <div class="container">
-        <div class="look-up-records__table" >
+        @if(request('search'))
+            <div class="look-up-records__table" >
             <div class="table-search" >
                 <table class="table table-bordered margin-0">
                     <thead>
-                        <tr>
-                            <th class="text-center">STT</th>
-                            <th class="text-center">Thủ tục</th>
-                            <th class="text-center">Mã hồ sơ</th>
-                            <th class="text-center">Họ và tên</th>
-                            <th class="text-center">Ngày nộp</th>
-                            <th class="text-center">Ngày tiếp nhận</th>
-                            <th class="text-center">Ngày hẹn trả</th>
-                            <th class="text-center">Tình trạng</th>
-                        </tr>
+                    <tr>
+                        <th class="text-center">STT</th>
+                        <th class="text-center">Thủ tục</th>
+                        <th class="text-center">Mã hồ sơ</th>
+                        <th class="text-center">Họ và tên</th>
+                        <th class="text-center">Ngày nộp</th>
+                        <th class="text-center">Ngày tiếp nhận</th>
+                        <th class="text-center">Ngày hẹn trả</th>
+                        <th class="text-center">Tình trạng</th>
+                    </tr>
                     </thead>
                     <tbody>
                     @foreach( $hoso as $key => $hs)
@@ -129,31 +130,31 @@
                                                     <col class="width-20-percent">
                                                 </colgroup>
                                                 <thead>
-                                                    <tr>
-                                                        <th class="text-center">Nội dung xử lý</th>
-                                                        <th class="text-center">Phòng ban xử lý</th>
-                                                        <th class="text-center">Người xử lý</th>
-                                                        <th class="text-center">Thời gian</th>
-                                                        <th class="text-center">Hạn xử lý</th>
-                                                        <th class="text-center">Trạng thái</th>
-                                                    </tr>
+                                                <tr>
+                                                    <th class="text-center">Nội dung xử lý</th>
+                                                    <th class="text-center">Phòng ban xử lý</th>
+                                                    <th class="text-center">Người xử lý</th>
+                                                    <th class="text-center">Thời gian</th>
+                                                    <th class="text-center">Hạn xử lý</th>
+                                                    <th class="text-center">Trạng thái</th>
+                                                </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach( $hs->xlhs as $item)
-                                                        <tr>
-                                                            <td>{{ $item->noi_dung_xu_ly }}</td>
-                                                            <td>{{ $item->user->phongban->tenDM }}</td>
-                                                            <td class="text-center">{{ $item->user->name }}</td>
-                                                            <td class="text-center">{{ $item->created_at }}</td>
-                                                            <td class="text-center">
-                                                                <?php
-                                                                $data =date('Y-m-d H:i:s', strtotime('+'. ($item->tg_thuc . 'days') , strtotime($item->created_at)));
-                                                                echo $data;
-                                                                ?>
-                                                            </td>
-                                                            <td class="text-center">{{ $item->trang_thai }}</td>
-                                                        </tr>
-                                                    @endforeach
+                                                @foreach( $hs->xlhs as $item)
+                                                    <tr>
+                                                        <td>{{ $item->noi_dung_xu_ly }}</td>
+                                                        <td>{{ $item->user->phongban->tenDM }}</td>
+                                                        <td class="text-center">{{ $item->user->name }}</td>
+                                                        <td class="text-center">{{ $item->created_at }}</td>
+                                                        <td class="text-center">
+                                                            <?php
+                                                            $data =date('Y-m-d H:i:s', strtotime('+'. ($item->tg_thuc . 'days') , strtotime($item->created_at)));
+                                                            echo $data;
+                                                            ?>
+                                                        </td>
+                                                        <td class="text-center">{{ $item->trang_thai }}</td>
+                                                    </tr>
+                                                @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
@@ -169,6 +170,7 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 </section>
 @endsection

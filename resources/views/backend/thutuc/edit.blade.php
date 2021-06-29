@@ -128,7 +128,7 @@
                         </div>
                         <div class="form-group">
                             <label for="label-name" class="col-form-label">
-                                Kiểu:
+                                Tên thẻ:
                             </label>
                             <select name="type" class="form-control form-control-sm">
                                 <option> textarea </option>

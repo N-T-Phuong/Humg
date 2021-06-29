@@ -41,6 +41,16 @@
                 <label for="">Địa chỉ</label>
                 <input type="text" class="form-control" name="dia_chi" value="{{ $hoso->dia_chi }}" />
             </div>
+            <div class="form-group">
+                <label for="">Trạng thái</label>
+                <select name="trang_thai" class="form-control form-control-sm">
+                    <option value="Chờ tiếp nhận"> Chờ tiếp nhận </option>
+                    <option value="Tiếp nhận"> Tiếp nhận</option>
+                    <option value="Đang xử lý"> Đang xử lý </option>
+                    <option value="Hoàn thành"> Hoàn thành</option>
+                    <option value="Hủy hồ sơ"> Hủy hồ sơ</option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-block btn-danger">Cập nhật hồ sơ</button>
         </form>
             <div class="card-body">
@@ -128,13 +138,13 @@
                                     <span class="label-content">Phòng ban xử lý</span>
                                     <span class="text-red" title="Trường bắt buộc">*</span>
                                 </label>
-                                <input id="" name="phong_ban_xu_ly" type="text" class="form-control"  value="{{ Auth::user()->phongban_id }}" >
+                                <input id="" name="phong_ban_xu_ly" type="text" class="form-control"  value="{{ Auth::user()->phongban->tenDM }}" >
                             </div>
                             <div class="row ">
                                 <div class="col-md-5 ">
                                     <label for="" class=" col-form-label mr-2">Thời gian thực hiện</label>
                                     <span class="text-red" title="Trường bắt buộc">*</span>
-                                    <input type="text" name="phone" id="phone" class="form-control" value="" placeholder=" Số ngày" required >
+                                    <input type="text" name="tg_thuc" id="phone" class="form-control" value="" placeholder="Số ngày thực hiện từng phòng ban" required >
                                 </div>
                                 <div class="col-md-5 offset-2">
                                     <label class=" col-form-label ">Trạng thái</label>

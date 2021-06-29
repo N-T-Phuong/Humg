@@ -22,7 +22,6 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -96,6 +95,34 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
+    <br>
+    <form id="formMain">
+        <div class="">
+            <div class="row">
+                <div class="col-sm-3 col-xs-12">
+                    <div class="form-group">
+                        <label>Từ ngày</label>
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input class="form-control" type="date" style="width:100%" name="txt_TU_NGAY" id="txt_TU_NGAY" value="">
+                    </div>
+                </div>
+                <div class="col-sm-3 col-xs-12">
+                    <div class="form-group">
+                        <label>Đến ngày:</label>
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        <input class="form-control" type="date" style="width:100%" name="txt_DEN_NGAY" id="txt_DEN_NGAY" value="">
+                    </div>
+                </div>
+                <div class="actions form-group">
+                    <label></label>
+                    <div class="input" style="margin-top: 8px">
+                        <button id="timKiem" class="btn btn-success"><i class="fa fa-search"></i> Lọc</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
     <br>
     <br>
     <!-- /.content -->

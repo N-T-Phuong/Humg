@@ -108,7 +108,10 @@ class HoSoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        HoSo::findOrFail($id);
+        $update = $request->validate([
+            'trang_thai'     => 'required',
+        ]);
+        HoSo::whereId($id)->update($update);
         return redirect()->route('hoso.index')->with('error','Sửa thành công');
     }
 

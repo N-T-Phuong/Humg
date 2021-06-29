@@ -66,15 +66,16 @@
                                         <td>{{ $item->thutuc->tenTT }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
-                                            @if ($item->trang_thai == 'Tiếp nhận')
-                                                <a class="btn btn-info" href="{{ route('action.status', $item->id) }}">Tiếp nhận</a>
-                                            @elseif ($item->trang_thai == 'Đang xử lý')
-                                                <a class="btn btn-danger " href="{{ route('action.status', $item->id) }}">Đang xử lý</a>
-                                            @elseif ($item->trang_thai == 'Hoàn thành')
-                                                <a class="btn btn-success" href="">Hoàn thành</a>
-                                            @else
-                                                <a class="btn btn-secondary" href="{{ route('action.status', $item->id) }}">{{$item->trang_thai}}</a>
-                                            @endif
+                                            {{ $item->trang_thai }}
+                                            {{--@if ($item->trang_thai == 'Tiếp nhận')--}}
+                                                {{--<a class="btn btn-info" href="{{ route('action.status', $item->id) }}">Tiếp nhận</a>--}}
+                                            {{--@elseif ($item->trang_thai == 'Đang xử lý')--}}
+                                                {{--<a class="btn btn-danger " href="{{ route('action.status', $item->id) }}">Đang xử lý</a>--}}
+                                            {{--@elseif ($item->trang_thai == 'Hoàn thành')--}}
+                                                {{--<a class="btn btn-success" href="">Hoàn thành</a>--}}
+                                            {{--@else--}}
+                                                {{--<a class="btn btn-secondary" href="{{ route('action.status', $item->id) }}">{{$item->trang_thai}}</a>--}}
+                                            {{--@endif--}}
                                         </td>
                                         <td class="text-center">
                                             <a class="btn btn-sm btn-info  img-circle"  href="{{route('hoso.show',$item->id)}}"> <i class="fas fa-file-alt"></i></a>
