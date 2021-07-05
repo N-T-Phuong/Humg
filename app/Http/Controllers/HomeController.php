@@ -7,19 +7,48 @@ use App\Models\HoSo;
 use App\Models\ThuTuc;
 use App\Models\User;
 use App\Models\XuLyHoSo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
 
 class HomeController extends Controller
 {
-     public function dashboard ()
+     public function dashboard (Request $request)
      {
          $hs_count = HoSo::count();
          $user_count = User::count();
          $tt_count = ThuTuc::count();
-         $hs = HoSo::where('trang_thai','Chờ tiếp nhận')->orderBy('id', 'desc')->paginate(10);
+         $hs = HoSo::where('trang_thai','Chờ tiếp nhận')
+                ->orderBy('id', 'desc')
+                ->paginate(10);
         return view('backend.dash.index', compact('hs_count', 'user_count', 'tt_count', 'hs'));
+     }
+     public function baocao (Request $request)
+     {
+         $params = $request->all();
+         $startDate = Arr::get($params, 'txt_TU_NGAY', null);
+         $endDate = Arr::get($params, 'txt_DEN_NGAY', null);
+         $tinhtrang = Arr::get($params, 'tinh_trang', '');
+         $hs = HoSo::query();
+         if($startDate) {
+            $hs = $hs->whereDate('created_at', '>=', Carbon::create($startDate));
+         }
+         if($endDate) {
+            $hs = $hs->whereDate('created_at', '<=', Carbon::create($endDate));
+         }
+         if($tinhtrang) {
+             $hs = $hs->where('trang_thai', $tinhtrang);
+         }
+         $options = [
+            '' => 'Tất cả',
+            'Đang xử lý' => 'Đang xử lý',
+            'Hoàn thành' => 'Đã hoàn thành',
+            'Chờ tiếp nhận' => 'Chờ tiếp nhận',
+            'Tiếp nhận' => 'Tiếp nhận'
+         ];
+         $hs = $hs->orderBy('id', 'desc')->paginate(10);
+        return view('backend.dash.baocao', compact( 'hs', 'params', 'options', 'tinhtrang'));
      }
      public function home ()
      {

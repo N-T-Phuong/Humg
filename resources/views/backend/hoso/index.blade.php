@@ -50,7 +50,7 @@
                                 <tr class="font-weight-bold">
                                     <td>STT</td>
                                     <td>Mã hồ sơ</td>
-                                    <td>Sinh Viên</td>
+                                    {{--<td>Sinh Viên</td>--}}
                                     <td>Thủ tục</td>
                                     <td>Ngày nộp</td>
                                     <td>Trạng thái</td>
@@ -62,11 +62,21 @@
                                     <tr>
                                         <td>{{ $key+1 }}</td>
                                         <td>{{ $item->hoso_code }}</td>
-                                        <td>{{ $item->user->name }}</td>
+                                        {{--<td>{{ $item->user->name }}</td>--}}
                                         <td>{{ $item->thutuc->tenTT }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
-                                            {{ $item->trang_thai }}
+                                            @if ($item->trang_thai == 'Tiếp nhận')
+                                                <a class="btn btn-info" href="">Tiếp nhận</a>
+                                            @elseif ($item->trang_thai == 'Đang xử lý')
+                                                <a class="btn btn-warning " href="">Đang xử lý</a>
+                                            @elseif ($item->trang_thai == 'Hoàn thành')
+                                                <a class="btn btn-success" href="">Hoàn thành</a>
+                                            @elseif ($item->trang_thai == 'Hủy bỏ')
+                                                <a class="btn btn-danger" href="">Hủy bỏ</a>
+                                            @else
+                                                <a class="btn btn-secondary" href="">{{$item->trang_thai}}</a>
+                                            @endif
                                             {{--@if ($item->trang_thai == 'Tiếp nhận')--}}
                                                 {{--<a class="btn btn-info" href="{{ route('action.status', $item->id) }}">Tiếp nhận</a>--}}
                                             {{--@elseif ($item->trang_thai == 'Đang xử lý')--}}

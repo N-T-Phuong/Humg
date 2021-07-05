@@ -27,8 +27,9 @@ Route::group([
     'prefix' => 'hethong'
 ], function () {
     Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard')->middleware('role:admin|canbo');
+    Route::get('/bao-cao', [HomeController::class, 'baocao'])->name('bao_cao')->middleware('role:admin|canbo');
     Route::resource('users', 'Backend\UserController')->middleware('role:admin');
-
+    Route::resource('hp', 'Backend\HocPhanController')->middleware('role:admin|canbo');
     Route::resource('danhmuc', 'Backend\DanhMucController')->only('index', 'create', 'store', 'edit', 'update', 'destroy')->middleware('role:admin');
     Route::resource('tt', 'Backend\ThuTucController')->only('index', 'create', 'store', 'edit', 'update', 'destroy')->middleware('role:admin|canbo');
     Route::resource('hoso', 'Backend\HoSoController')->only('index', 'edit', 'update', 'destroy','show')

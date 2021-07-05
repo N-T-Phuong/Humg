@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ThuTuc;
 use Illuminate\Http\Request;
 use App\Models\Form;
+use App\Models\Hocphan;
 use Illuminate\Support\Arr;
 
 class BieuMauController extends Controller
@@ -20,8 +21,11 @@ class BieuMauController extends Controller
         $view = '';
         $thutuc = ThuTuc::where('maTT', $id)->firstOrFail();
         $thutuc->forms;
+        $listHocPhan = Hocphan::all();
+        //dd($listHocPhan);
+        //dd($thutuc->forms);
         //$forms = Form::where('thutuc_id', $id)->get();
-        return view('backend.bieumau.index')->with(['thutuc' => $thutuc]);
+        return view('backend.bieumau.index')->with(['thutuc' => $thutuc, 'listHocPhan' => $listHocPhan]);
     }
     public function createForm(Request $request, Thutuc $thutuc)
     {

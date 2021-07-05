@@ -31,6 +31,11 @@
                         <div class="text-center">
                             <h1 class="h3 text-gray-900 mb-4">HUMG Xin Chào!</h1>
                         </div>
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                {{session('error')}}
+                            </div>
+                        @endif
                         <form class="user" method="post" action="{{route('login')}}">
                             @csrf
                             <div class="form-group">

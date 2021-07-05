@@ -1,4 +1,7 @@
 @extends('fontend.include.master')
+@section('css_header')
+<link href="{{asset('fe/css/select2.min.css')}}" rel="stylesheet" />
+@endsection
 @section('content')
 <section id="guide" class="guide-page">
     <div class="container">
@@ -119,4 +122,13 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('js_footer')
+<script src="{{asset('fe/js/select2.min.js')}}"></script>
+<script>
+$(function(){
+    $('.hoc_phan-select').select2()
+});
+</script>
 @endsection

@@ -44,12 +44,24 @@
                                 <p>Phòng ban</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('hp.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Môn học</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('hoso.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-file"></i>
                         <p>Hồ sơ</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('bao_cao') }}" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>Báo cáo</p>
                     </a>
                 </li>
             </ul>

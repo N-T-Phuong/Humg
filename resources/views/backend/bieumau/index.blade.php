@@ -1,4 +1,5 @@
 @extends('backend.bieumau.form')
+
 @section('file')
 <div style=" margin:0 5em; "  >
     @foreach($thutuc->forms as $form)
@@ -47,10 +48,10 @@
                 </div>
             </div>
         </div>
-            
-        @else {{--input--}}
+
+        @elseif($form->type == 'input' && $form->field == 'ma_hoc_phan')
     {{--clgt?? col-6--}}
-        <div id="row-6" class="row ui-sortable ui-sortable-handle">
+        <div class="row ui-sortable ui-sortable-handle">
             <div id="column-3" class="col-md-12 col ui-sortable ui-sortable-handle">
                 <div id="" class="form-group text">
                 <label id="" class="control-label" for="">
@@ -60,11 +61,32 @@
                     <span class="color-err" title="Trường bắt buộc">*</span>
                 </label>
                 <input type="hidden" name="field[]" value="{{ $form->field }}">
-                <input id="input-bieumau-{{$form->id}}" name="value[]" type="text" class="form-control" value="">
+                <select id="input-bieumau-{{$form->id}}" name="value[]" class="form-control hoc_phan-select">
+                    @foreach($listHocPhan as $hocphan)
+                    <option value="{{$hocphan->ma}}">
+                        {{$hocphan->ma}} - {{$hocphan->ten}}
+                    </option>
+                    @endforeach
+                </select>
                 </div>
             </div>
         </div>
-
+        @else {{--input--}}
+        {{--clgt?? col-6--}}
+            <div id="row-6" class="row ui-sortable ui-sortable-handle">
+                <div id="column-3" class="col-md-12 col ui-sortable ui-sortable-handle">
+                    <div id="" class="form-group text">
+                    <label id="" class="control-label" for="">
+                        <span class="label-content">
+                        {{$form->label}}
+                        </span>
+                        <span class="color-err" title="Trường bắt buộc">*</span>
+                    </label>
+                    <input type="hidden" name="field[]" value="{{ $form->field }}">
+                    <input id="input-bieumau-{{$form->id}}" name="value[]" type="text" class="form-control" value="">
+                    </div>
+                </div>
+            </div>
         @endif
     @endforeach
 </div>

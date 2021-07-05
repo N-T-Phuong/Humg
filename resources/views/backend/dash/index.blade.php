@@ -96,33 +96,46 @@
         </div><!-- /.container-fluid -->
     </section>
     <br>
-    <form id="formMain">
-        <div class="">
-            <div class="row">
-                <div class="col-sm-3 col-xs-12">
-                    <div class="form-group">
-                        <label>Từ ngày</label>
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input class="form-control" type="date" style="width:100%" name="txt_TU_NGAY" id="txt_TU_NGAY" value="">
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-12">
-                    <div class="form-group">
-                        <label>Đến ngày:</label>
-                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                        <input class="form-control" type="date" style="width:100%" name="txt_DEN_NGAY" id="txt_DEN_NGAY" value="">
-                    </div>
-                </div>
-                <div class="actions form-group">
-                    <label></label>
-                    <div class="input" style="margin-top: 8px">
-                        <button id="timKiem" class="btn btn-success"><i class="fa fa-search"></i> Lọc</button>
-                    </div>
-                </div>
-            </div>
+    {{--<form id="formMain">--}}
+        {{--<div class="">--}}
+            {{--<div class="row">--}}
+                {{--<div class="col-sm-3 col-xs-12">--}}
+                    {{--<div class="form-group">--}}
+                        {{--<label>Từ ngày</label>--}}
+                        {{--<span class="input-group-addon"><i class="fa fa-calendar"></i></span>--}}
+                        {{--<input class="form-control" type="date" style="width:100%" name="txt_TU_NGAY" id="txt_TU_NGAY" value="{{$params['txt_TU_NGAY'] ?? ''}}">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col-sm-3 col-xs-12">--}}
+                    {{--<div class="form-group">--}}
+                        {{--<label>Đến ngày:</label>--}}
+                        {{--<span class="input-group-addon"><i class="fa fa-calendar"></i></span>--}}
+                        {{--<input class="form-control" type="date" style="width:100%" name="txt_DEN_NGAY" id="txt_DEN_NGAY" value="{{$params['txt_DEN_NGAY'] ?? ''}}">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col-sm-3 col-xs-12">--}}
+                    {{--<div class="form-group">--}}
+                        {{--<label>Tình trạng:</label>--}}
+                        {{--<span class="input-group-addon"><i class="fa fa-calendar"></i></span>--}}
+                        {{--<select class="form-control" type="date" style="width:100%" name="tinh_trang" id="tinh_trang">--}}
+                            {{--@foreach ($options as $value => $option)--}}
+                                {{--<option value="{{$value}}" {{$tinhtrang == $value ? 'selected' : ''}}>--}}
+                                    {{--{{$option}}--}}
+                                {{--</option>--}}
+                            {{--@endforeach--}}
+                        {{--</select>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="actions form-group">--}}
+                    {{--<label></label>--}}
+                    {{--<div class="input" style="margin-top: 8px">--}}
+                        {{--<button id="timKiem" class="btn btn-success"><i class="fa fa-search"></i> Lọc</button>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
-        </div>
-    </form>
+        {{--</div>--}}
+    {{--</form>--}}
     <br>
     <br>
     <!-- /.content -->
@@ -134,13 +147,12 @@
                         <i class="fas fa-folder-plus"></i>
                     </div>
                 </div>
-                <h5 class="pl-2" style=" margin: -11px 0 0 2em; ">Hồ sơ mới</h5>
+                <h5 class="pl-2" style=" margin: -11px 0 0 2em; ">Hồ sơ </h5>
             </div>
             <div class="card-body">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th scope="col">Họ và tên</th>
                         <th scope="col">Mã hồ sơ</th>
                         <th scope="col">Thủ tục</th>
                         <th scope="col">Ngày nộp</th>
@@ -150,7 +162,6 @@
                     <tbody>
                     @foreach( $hs as $key => $value)
                         <tr>
-                            <td>{{ $value->user->name }}</td>
                             <td>{{ $value->hoso_code }}</td>
                             <td>{{ $value->thutuc->tenTT }}</td>
                             <td>{{ $value->created_at }}</td>

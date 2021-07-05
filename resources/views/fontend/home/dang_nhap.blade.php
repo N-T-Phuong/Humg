@@ -7,6 +7,11 @@
                 <h4 class="guide-page__title sidebar__title text-center" style="font-size: 20px;">
                     <span> SINH VIÊN ĐĂNG NHẬP</span>
                 </h4>
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{session('error')}}
+                    </div>
+                @endif
                 <div class="guide-page__step">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">

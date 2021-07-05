@@ -20,74 +20,80 @@
                 <li>{{ $error }}</li>
                 @endforeach
             </ul>
-        </div><br />
+        </div>
+            <br />
         @endif
-        <form method="POST" action="{{ route('hoso.update', $hoso->id) }}">
-            @csrf
-            @method('PUT')
-            <div class="form-group">
-                <label for="maDM">Sinh viên</label>
-                <input type="text" class="form-control" name="user_id" value="{{ $hoso->user->name }}" disabled />
+
+        <div class="row">
+            <div class="col-md-6 offset-2">
+                <form method="POST" action="{{ route('hoso.update', $hoso->id) }}">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <label for="maDM">Sinh viên</label>
+                        <input type="text" class="form-control" name="user_id" value="{{ $hoso->user->name }}" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="tenDM">Email</label>
+                        <input type="email" class="form-control" name="email" value="{{ $hoso->user->email }}" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label for="mota">Số điện thoại</label>
+                        <input type="text" class="form-control" name="phone" value="{{ $hoso->phone }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="">Địa chỉ</label>
+                        <input type="text" class="form-control" name="dia_chi" value="{{ $hoso->dia_chi }}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="">Trạng thái</label>
+                        <select name="trang_thai" class="form-control form-control-sm">
+                            <option value="Chờ tiếp nhận"> Chờ tiếp nhận </option>
+                            <option value="Tiếp nhận"> Tiếp nhận</option>
+                            <option value="Đang xử lý"> Đang xử lý </option>
+                            <option value="Hoàn thành"> Đã hoàn thành</option>
+                            <option value="Hủy bỏ"> Hủy hồ sơ</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-danger">Cập nhật hồ sơ</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="tenDM">Email</label>
-                <input type="email" class="form-control" name="email" value="{{ $hoso->user->email }}" disabled />
-            </div>
-            <div class="form-group">
-                <label for="mota">Số điện thoại</label>
-                <input type="text" class="form-control" name="phone" value="{{ $hoso->phone }}" />
-            </div>
-            <div class="form-group">
-                <label for="">Địa chỉ</label>
-                <input type="text" class="form-control" name="dia_chi" value="{{ $hoso->dia_chi }}" />
-            </div>
-            <div class="form-group">
-                <label for="">Trạng thái</label>
-                <select name="trang_thai" class="form-control form-control-sm">
-                    <option value="Chờ tiếp nhận"> Chờ tiếp nhận </option>
-                    <option value="Tiếp nhận"> Tiếp nhận</option>
-                    <option value="Đang xử lý"> Đang xử lý </option>
-                    <option value="Hoàn thành"> Hoàn thành</option>
-                    <option value="Hủy hồ sơ"> Hủy hồ sơ</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-block btn-danger">Cập nhật hồ sơ</button>
-        </form>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Cán bộ</td>
+                        <td>Nội dung xử lý</td>
+                        <td>Phòng ban thực hiện</td>
+                        <td>Ngày nhận</td>
+                        <td>Hạn xử lý</td>
+                        <td>Trạng thái</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach( $hoso->xlhs as $key => $item )
                         <tr>
-                            <td>ID</td>
-                            <td>Cán bộ</td>
-                            <td>Nội dung xử lý</td>
-                            <td>Phòng ban thực hiện</td>
-                            <td>Ngày nhận</td>
-                            <td>Hạn xử lý</td>
-                            <td>Trạng thái</td>
+                            <td>{{ $key+1 }}</td>
+                            <td>{{ $item->user->name}}</td>
+                            <td>{{ $item->noi_dung_xu_ly }}</td>
+                            <td>{{ $item->user->phongban->tenDM }}</td>
+                            <td>{{ $item->created_at }}</td>
+                            <td>
+                                <?php
+                                    $data =date('Y-m-d H:i:s', strtotime('+'. ($item->tg_thuc . 'days') , strtotime($item->created_at)));
+                                    echo $data;
+                                ?>
+                            </td>
+                            <td>{{ $item->trang_thai }} </td>
                         </tr>
-                        </thead>
-                        <tbody>
-                        @foreach( $hoso->xlhs as $key => $item )
-                            <tr>
-                                <td>{{ $key+1 }}</td>
-                                <td>{{ $item->user->name}}</td>
-                                <td>{{ $item->noi_dung_xu_ly }}</td>
-                                <td>{{ $item->user->phongban->tenDM }}</td>
-                                <td>{{ $item->created_at }}</td>
-                                <td>
-                                    <?php
-                                        $data =date('Y-m-d H:i:s', strtotime('+'. ($item->tg_thuc . 'days') , strtotime($item->created_at)));
-                                        echo $data;
-                                    ?>
-                                </td>
-                                <td>{{ $item->trang_thai }} </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
+        </div>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="width: 100%;">
         <div class="modal-dialog modal-lg">
