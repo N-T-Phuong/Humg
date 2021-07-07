@@ -7,6 +7,7 @@ use App\Models\DanhMuc;
 use App\Models\ThuTuc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
 
 class ThuTucController extends Controller
 {
@@ -17,7 +18,10 @@ class ThuTucController extends Controller
      */
     public function index()
     {
-        $thutuc = ThuTuc::with('danhmuc')->get();
+        $thutuc = ThuTuc::query()
+                ->with('danhmuc')
+                ->withCount(['hosodangxuly', 'hosodaxuly','hosohuy', 'hosochuaxuly', 'hosotiepnhan'])
+                ->get();
         return view('backend.thutuc.index', compact('thutuc'));
     }
 

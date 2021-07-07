@@ -7,7 +7,7 @@
         <div class="col-md-6"><h5>Chỉnh sửa và cập nhật hồ sơ</h5></div>
         <div class="col-md-6">
             <button class="btn btn-primary float-right mr-3" type="button" data-toggle="modal" data-target="#exampleModal">
-                Xử lý hồ sơ
+                Xử lý
             </button>
         </div>
     </div>
@@ -48,11 +48,11 @@
                     <div class="form-group">
                         <label for="">Trạng thái</label>
                         <select name="trang_thai" class="form-control form-control-sm">
-                            <option value="Chờ tiếp nhận"> Chờ tiếp nhận </option>
+                            <option value="Hủy bỏ"> Chờ tiếp nhận</option>
                             <option value="Tiếp nhận"> Tiếp nhận</option>
-                            <option value="Đang xử lý"> Đang xử lý </option>
-                            <option value="Hoàn thành"> Đã hoàn thành</option>
-                            <option value="Hủy bỏ"> Hủy hồ sơ</option>
+                            {{--<option value="Đang xử lý"> Đang xử lý </option>--}}
+                            {{--<option value="Hoàn thành"> Đã hoàn thành</option>--}}
+                            {{--<option value="Hủy bỏ"> Hủy hồ sơ</option>--}}
                         </select>
                     </div>
                     <button type="submit" class="btn btn-block btn-danger">Cập nhật hồ sơ</button>
@@ -87,7 +87,7 @@
                                     echo $data;
                                 ?>
                             </td>
-                            <td>{{ $item->trang_thai }} </td>
+                            <td>{{ $item->hoso->trang_thai }} </td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -150,11 +150,18 @@
                                 <div class="col-md-5 ">
                                     <label for="" class=" col-form-label mr-2">Thời gian thực hiện</label>
                                     <span class="text-red" title="Trường bắt buộc">*</span>
-                                    <input type="text" name="tg_thuc" id="phone" class="form-control" value="" placeholder="Số ngày thực hiện từng phòng ban" required >
+                                    <input type="text" name="tg_thuc" id="phone" class="form-control" value="" placeholder="Số ngày thực hiện từng phòng ban"  >
                                 </div>
                                 <div class="col-md-5 offset-2">
-                                    <label class=" col-form-label ">Trạng thái</label>
-                                    <input type="text" name="trang_thai" id="name" class="form-control" value="" placeholder="" required >
+                                    {{--<input type="text" name="trang_thai" id="name" class="form-control" value="{{$hoso->trang_thai}}" placeholder="" required >--}}
+                                    <input type="hidden" name="trang_thai" value="{{$hoso->trang_thai}}"  >
+                                    <label class=" col-form-label for=">Trạng thái</label>
+                                    <select name="trang_thai" class="form-control form-control-sm">
+                                        <option value="Tiếp nhận"> Tiếp nhận</option>
+                                        <option value="Đang xử lý"> Đang xử lý </option>
+                                        <option value="Hoàn thành"> Đã hoàn thành</option>
+                                        <option value="Hủy hồ sơ"> Hủy hồ sơ</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

@@ -82,9 +82,11 @@
                             </tr>
                         </table>
                     </div>
+                    <a href="{{ route('hoso.edit', $hoso->id)}}" class="btn btn-outline-success btn-sm mt-3 float-right text-bold" >Xử lý hồ sơ</a>
                 </div>
             </div>
         </form>
+
     </div>
 @endsection
 <style>

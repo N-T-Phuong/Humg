@@ -24,6 +24,7 @@ class HosoRequest extends FormRequest
     public function rules()
     {
         return [
+
             'phone' => 'required|min:10',
             'dia_chi' => 'required',
         ];

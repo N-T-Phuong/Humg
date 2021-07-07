@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\HoSo;
 use App\Models\ThuTuc;
 use App\Models\User;
-use App\Models\XuLyHoSo;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +47,25 @@ class HomeController extends Controller
             'Tiếp nhận' => 'Tiếp nhận'
          ];
          $hs = $hs->orderBy('id', 'desc')->paginate(10);
-        return view('backend.dash.baocao', compact( 'hs', 'params', 'options', 'tinhtrang'));
+        return view('backend.dash.baocao_hs', compact( 'hs', 'params', 'options', 'tinhtrang'));
+     }
+     public function baocao_tt (Request $request)
+     {
+         $params = $request->all();
+         $startDate = Arr::get($params, 'txt_TU_NGAY', null);
+         $endDate = Arr::get($params, 'txt_DEN_NGAY', null);
+         $hs = HoSo::query();
+         if($startDate) {
+            $hs = $hs->whereDate('created_at', '>=', Carbon::create($startDate));
+         }
+         if($endDate) {
+            $hs = $hs->whereDate('created_at', '<=', Carbon::create($endDate));
+         }
+         $hs->tt = ThuTuc::query()
+             ->with('danhmuc')
+             ->withCount(['hosodangxuly', 'hosodaxuly','hosohuy', 'hosochuaxuly', 'hosotiepnhan'])
+             ->orderBy('id', 'desc')->paginate(100);
+        return view('backend.dash.baocao_tt', compact( 'hs',  'params'));
      }
      public function home ()
      {

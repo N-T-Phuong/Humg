@@ -16,15 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet" href="{{ asset('hs/vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset('hs/vendor/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('hs/vendor/jqvmap/jquery.vmap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('hs/css/adminlte.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('hs/vendor/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('hs/vendor/daterangepicker/daterangepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('hs/vendor/summernote/summernote-bs4.css') }}">
     <link href="{{asset('hs/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link href="{{asset('hs/css/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('hs/css/select2.min.css')}}">

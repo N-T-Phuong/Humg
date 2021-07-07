@@ -3,11 +3,8 @@
     <!-- Page level plugins -->
     <script src="{{ asset('hs/vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('hs/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('hs/vendor/datatables/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('hs/vendor/datatables/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-    <!-- Page level custom scripts -->
-    <script src="{{asset('hs/js/demo/datatables-demo.js')}}"></script>
-    <!-- page script -->
+    {{--<script src="{{ asset('hs/vendor/datatables/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>--}}
+    {{--<script src="{{ asset('hs/vendor/datatables/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>--}}
     <script>
         $(function () {
             $('#dataTable').DataTable({
@@ -58,16 +55,18 @@
                                     <td>Tên Thủ Tục</td>
                                     <td> Phòng ban</td>
                                     <td>Thời gian giải quyết</td>
+                                    {{--<td>Ví dụ: số hồ sơ đang xử lý</td>--}}
                                     <td class="text-center">Hành động</td>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody >
                                 @foreach($thutuc as $item)
                                     <tr>
                                         <td>{{$item->maTT}}</td>
                                         <td>{{$item->tenTT}}</td>
                                         <td>{{$item->danhmuc->tenDM}}</td>
                                         <td>{{$item->tg_giai_quyet}} ngày</td>
+                                        {{--<td>{{$item->hosodangxuly_count}}</td>--}}
                                         <td class="text-center">
                                             <a href="{{ route('tt.edit', $item->id)}}" class="btn btn-primary btn-sm img-circle" ><i class="far fa-edit"></i></a>
                                             <form action="{{ route('tt.destroy', $item->id)}}" method="post"
@@ -86,7 +85,6 @@
                     </div>
                 </div>
             </div>
-            <!-- /.card-body -->
         </div>
     </div>
 @endsection

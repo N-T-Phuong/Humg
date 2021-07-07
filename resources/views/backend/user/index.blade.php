@@ -51,8 +51,8 @@
                                 <tr class="font-weight-bold">
                                     <td>STT</td>
                                     <td>Tên </td>
-                                    <td>Mã</td>
                                     <td>Email</td>
+                                    <td>Vai trò</td>
                                     <td class="text-center">Hành động</td>
                                 </tr>
                                 </thead>
@@ -61,8 +61,8 @@
                                     <tr>
                                         <td>{{$item->id}}</td>
                                         <td>{{$item->name}}</td>
-                                        <td>{{$item->ma}}</td>
                                         <td>{{$item->email}}</td>
+                                        <td>{{$item->roles[0]->name}}</td>
                                         <td class="text-center">
                                             <a href="{{ route('users.edit', $item->id)}}" class="btn btn-primary btn-sm img-circle" ><i class="far fa-edit"></i></a>
                                             <form action="{{ route('users.destroy', $item->id)}}" method="post"

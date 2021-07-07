@@ -89,7 +89,7 @@
                                         </td>
                                         <td class="text-center">
                                             <a class="btn btn-sm btn-info  img-circle"  href="{{route('hoso.show',$item->id)}}"> <i class="fas fa-file-alt"></i></a>
-                                            <a href="{{ route('hoso.edit', $item->id)}}" class="btn btn-primary btn-sm img-circle"><i class="far fa-edit"></i></a>
+                                            {{--<a href="{{ route('hoso.edit', $item->id)}}" class="btn btn-primary btn-sm img-circle"><i class="far fa-edit"></i></a>--}}
                                             <form action="{{ route('hoso.destroy', $item->id)}}" method="post" style="display: inline-block">
                                                 @csrf
                                                 @method('DELETE')

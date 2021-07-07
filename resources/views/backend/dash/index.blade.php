@@ -1,13 +1,7 @@
 
 @extends('backend.layout.index')
 @section('js_footer')
-    <script src="{{ asset('hs/vendor/chart.js/Chart.min.css') }}"></script>
-    <script src="{{ asset('hs/vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-    <script src="{{ asset('hs/vendor/daterangepicker/daterangepicker.js') }}"></script>
-    <script src="{{ asset('hs/vendor/summernote/summernote-bs4.min.js') }}"></script>
-    <script src="{{ asset('hs/vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
-    <script src="{{ asset('hs/vendor/jqvmap/jquery.vmap.min.js') }}"></script>
-    <script src="{{ asset('hs/vendor/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
+
 @endsection
 @section('content')
 <div class="container">
@@ -95,47 +89,6 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-    <br>
-    {{--<form id="formMain">--}}
-        {{--<div class="">--}}
-            {{--<div class="row">--}}
-                {{--<div class="col-sm-3 col-xs-12">--}}
-                    {{--<div class="form-group">--}}
-                        {{--<label>Từ ngày</label>--}}
-                        {{--<span class="input-group-addon"><i class="fa fa-calendar"></i></span>--}}
-                        {{--<input class="form-control" type="date" style="width:100%" name="txt_TU_NGAY" id="txt_TU_NGAY" value="{{$params['txt_TU_NGAY'] ?? ''}}">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-sm-3 col-xs-12">--}}
-                    {{--<div class="form-group">--}}
-                        {{--<label>Đến ngày:</label>--}}
-                        {{--<span class="input-group-addon"><i class="fa fa-calendar"></i></span>--}}
-                        {{--<input class="form-control" type="date" style="width:100%" name="txt_DEN_NGAY" id="txt_DEN_NGAY" value="{{$params['txt_DEN_NGAY'] ?? ''}}">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-sm-3 col-xs-12">--}}
-                    {{--<div class="form-group">--}}
-                        {{--<label>Tình trạng:</label>--}}
-                        {{--<span class="input-group-addon"><i class="fa fa-calendar"></i></span>--}}
-                        {{--<select class="form-control" type="date" style="width:100%" name="tinh_trang" id="tinh_trang">--}}
-                            {{--@foreach ($options as $value => $option)--}}
-                                {{--<option value="{{$value}}" {{$tinhtrang == $value ? 'selected' : ''}}>--}}
-                                    {{--{{$option}}--}}
-                                {{--</option>--}}
-                            {{--@endforeach--}}
-                        {{--</select>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="actions form-group">--}}
-                    {{--<label></label>--}}
-                    {{--<div class="input" style="margin-top: 8px">--}}
-                        {{--<button id="timKiem" class="btn btn-success"><i class="fa fa-search"></i> Lọc</button>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-
-        {{--</div>--}}
-    {{--</form>--}}
     <br>
     <br>
     <!-- /.content -->

@@ -64,7 +64,7 @@
                 <table class="table table-bordered margin-0">
                     <thead>
                     <tr>
-                        <th class="text-center">STT</th>
+                        {{--<th class="text-center">STT</th>--}}
                         <th class="text-center">Thủ tục</th>
                         <th class="text-center">Mã hồ sơ</th>
                         <th class="text-center">Họ và tên</th>
@@ -77,7 +77,7 @@
                     <tbody>
                     @foreach( $hoso as $key => $hs)
                         <tr>
-                            <td>{{ $key+1 }}</td>
+                            {{--<td>{{ $key+1 }}</td>--}}
                             <td>
                                 <a class="collapsed" data-toggle="collapse" data-parent="#user-ticket-history" href="#info">
                                     {{ $hs->thutuc->tenTT }}
@@ -146,13 +146,13 @@
                                                         <td>{{ $item->user->phongban->tenDM }}</td>
                                                         <td class="text-center">{{ $item->user->name }}</td>
                                                         <td class="text-center">{{ $item->created_at }}</td>
-                                                        <td class="text-center">
-                                                            <?php
-                                                            $data =date('Y-m-d H:i:s', strtotime('+'. ($item->tg_thuc . 'days') , strtotime($item->created_at)));
-                                                            echo $data;
-                                                            ?>
+                                                        <td class="text-center"> {{ $item-> ngay_hen_tra }}
+{{--<!--                                                            --><?php--}}
+{{--//                                                            $data =date('Y-m-d H:i:s', strtotime('+'. ($item->tg_thuc . 'days') , strtotime($item->created_at)));--}}
+{{--//                                                            echo $data;--}}
+{{--//                                                            ?>--}}
                                                         </td>
-                                                        <td class="text-center">{{ $item->trang_thai }}</td>
+                                                        <td class="text-center">{{ $item->hoso->trang_thai }}</td>
                                                     </tr>
                                                 @endforeach
                                                 </tbody>

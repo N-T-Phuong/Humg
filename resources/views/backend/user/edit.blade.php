@@ -89,7 +89,7 @@
                             </div>
                             <div class="form-group col-12">
                                 <label for="" class="lable-title">Địa chỉ:</label>
-                                <input type="text" name="address" class="form-control" id="" placeholder="Your Address" value="{{ $user->diachi }}">
+                                <input type="text" name="diachi" class="form-control" id="" placeholder="Your Address" value="{{ $user->diachi }}">
                             </div>
                             <div class="form-group input-group col-4">
                                 <label for="" class="lable-title mt-2 mr-2">Mật khẩu:</label>

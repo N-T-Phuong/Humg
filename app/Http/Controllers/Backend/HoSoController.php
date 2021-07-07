@@ -111,7 +111,14 @@ class HoSoController extends Controller
         $update = $request->validate([
             'trang_thai'     => 'required',
         ]);
-        HoSo::whereId($id)->update($update);
+        $trangThai = $request->trang_thai;
+        $hoso = Hoso::findOrFail($id);
+        if($hoso->trang_thai == 'Chờ tiếp nhận' && $trangThai == 'Tiếp nhận'){
+            $hoso->trang_thai = $trangThai;
+            $hoso->ngay_nhan = Carbon::now();
+            $hoso->ngay_hen_tra = Carbon::now()->addDay($hoso->thutuc->tg_giai_quyet);
+        }
+        $hoso->save();
         return redirect()->route('hoso.index')->with('error','Sửa thành công');
     }
 
@@ -133,9 +140,9 @@ class HoSoController extends Controller
         $hoso = HoSo::find($id);
         if($hoso->trang_thai=='Chờ tiếp nhận')
         {
+            //a = date('Y-m-d H:i:s', strtotime('+'. '5 days' , strtotime($hoso->ngay_nhan)));
             $hoso->ngay_nhan = Carbon::now(); //date('Y-m-d H:i:s'); //
-//            $hoso->ngay_hen_tra = date('Y-m-d H:i:s', strtotime('+'. '5 days' , strtotime($hoso->ngay_nhan)));
-            $hoso->trang_thai = HoSo::STATUS_DONE;
+//            $hoso->ngay_hen_trhoso->trang_thai = HoSo::STATUS_DONE;
         } elseif($hoso->trang_thai=='Tiếp nhận'){
             $hoso->trang_thai = HoSo::STATUS_DONE1;
         }else{
@@ -149,16 +156,16 @@ class HoSoController extends Controller
 //        dd($request->all());
         $request->validate([
             'noi_dung_xu_ly'        => 'required|max:255',
-            'phong_ban_xu_ly'        => 'required|max:255',
              ]);
         XuLyHoSo::create([
         'hoso_id'           => $hoso->id,
         'user_id'           => Auth::id(),
         'tg_thuc'           => $request->tg_thuc,
         'noi_dung_xu_ly'    => $request->noi_dung_xu_ly ,
-        'phong_ban_xu_ly'   => $request->phong_ban_xu_ly ,
-        'trang_thai'        => $request->trang_thai ,
+        'phong_ban_xu_ly'   => $request->phong_ban_xu_ly
     ]);
+        $hoso->trang_thai = $request->trang_thai;
+        $hoso->save();
         return redirect()->back();
     }
 }

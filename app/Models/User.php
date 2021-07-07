@@ -79,4 +79,9 @@ class User extends Authenticatable
     //     $permissionMapping = array_flip(config('permission')); //tìm file per
     //     return $permissionMapping[$this->role];
     // }
+
+    public function vaitro()
+    {
+        return $this->roles[0];
+    }
 }

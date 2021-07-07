@@ -58,11 +58,28 @@
                         <p>Hồ sơ</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('bao_cao') }}" class="nav-link">
-                        <i class="nav-icon fas fa-file"></i>
-                        <p>Báo cáo</p>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class=" nav-icon fas fa-chart-line"></i>
+                        <p>
+                            Báo cáo - Thống kê
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('bao_cao_tt')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Báo cáo thủ tục</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('bao_cao')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Báo cáo hồ sơ</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
