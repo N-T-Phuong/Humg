@@ -47,14 +47,14 @@
                         <div class="col-sm-12">
                             <table id="dataTable" width="100%" cellspacing="0" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
                                 <thead>
-                                <tr class="font-weight-bold">
-                                    <td>STT</td>
-                                    <td>Mã hồ sơ</td>
+                                <tr class="font-weight-bold text-center">
+                                    <td width="3%" >STT</td>
+                                    <td width="16%">Mã hồ sơ</td>
                                     {{--<td>Sinh Viên</td>--}}
-                                    <td>Thủ tục</td>
-                                    <td>Ngày nộp</td>
-                                    <td>Trạng thái</td>
-                                    <td class="text-center">Hành động</td>
+                                    <td width="36%">Thủ tục</td>
+                                    <td width="15%">Ngày nộp</td>
+                                    <td width="20%">Trạng thái</td>
+                                    <td width="10%" >Hành động</td>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -89,7 +89,7 @@
                                         </td>
                                         <td class="text-center">
                                             <a class="btn btn-sm btn-info  img-circle"  href="{{route('hoso.show',$item->id)}}"> <i class="fas fa-file-alt"></i></a>
-                                            {{--<a href="{{ route('hoso.edit', $item->id)}}" class="btn btn-primary btn-sm img-circle"><i class="far fa-edit"></i></a>--}}
+                                            {{-- <a href="{{ route('hoso.edit', $item->id)}}" class="btn btn-primary btn-sm img-circle"><i class="far fa-edit"></i></a> --}}
                                             <form action="{{ route('hoso.destroy', $item->id)}}" method="post" style="display: inline-block">
                                                 @csrf
                                                 @method('DELETE')

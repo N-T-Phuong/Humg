@@ -65,10 +65,10 @@
                                 <tr>
                                     <th>Ngày hẹn trả</th>
                                     <td>
-                                        {{--{{ $hoso->ngay_hen_tra }}--}}
+                                        {{ $hoso->ngay_hen_tra }}
                                         <?php
-                                            $data = date('Y-m-d H:i:s', strtotime('+'. ($hoso->thutuc->tg_giai_quyet. 'days'), strtotime($hoso->ngay_nhan)));
-                                            echo $data;
+                                            // $data = date('Y-m-d H:i:s', strtotime('+'. ($hoso->thutuc->tg_giai_quyet. 'days'), strtotime($hoso->ngay_nhan)));
+                                            // echo $data;
                                         ?>
                                     </td>
                                 </tr>

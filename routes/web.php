@@ -28,13 +28,13 @@ Route::group([
 ], function () {
     Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard')->middleware('role:admin|canbo');
     Route::get('/bao-cao', 'HomeController@baocao')->name('bao_cao')->middleware('role:admin|canbo');
-    Route::get('/bao-cao-loai-thu-tuc', 'HomeController@baocao_tt' )->name('bao_cao_tt')->middleware('role:admin|canbo');
+    Route::get('/bao-cao-loai-thu-tuc', 'HomeController@baocao_tt')->name('bao_cao_tt')->middleware('role:admin|canbo');
     Route::resource('users', 'Backend\UserController')->middleware('role:admin');
     Route::resource('hp', 'Backend\HocPhanController')->middleware('role:admin|canbo');
     Route::resource('danhmuc', 'Backend\DanhMucController')->only('index', 'create', 'store', 'edit', 'update', 'destroy')->middleware('role:admin');
     Route::resource('tt', 'Backend\ThuTucController')->middleware('role:admin|canbo');
-    Route::resource('hoso', 'Backend\HoSoController')->only('index', 'edit', 'update', 'destroy','show')
-                                                        ->middleware('role:admin|canbo');
+    Route::resource('hoso', 'Backend\HoSoController')->only('index', 'edit', 'update', 'destroy', 'show')
+        ->middleware('role:admin|canbo');
     Route::post('/tt-form/{thutuc}', 'BieuMauController@createForm')->name('create_input_form')->middleware('role:admin|canbo');
     Route::delete('/form/{id}', 'BieuMauController@destroy_bm')->name('destroy_form')->middleware('role:admin|canbo');
 
@@ -48,3 +48,5 @@ Route::get('/profile/{id}', 'ProfileController@index')->name('profile');
 Route::put('/profile/{id}', 'ProfileController@updateProfile')->name('profile.update');
 Route::get('/doi-mat-khau/{id}', 'ProfileController@change_Pass')->name('change_pass');
 Route::put('/doi-mat-khau/{id}', 'ProfileController@update_change_Pass')->name('update_change_pass');
+
+Route::get('/canbo/soluongsohoxuly', [HomeController::class, 'soluongsohoxuly'])->name('canbo_sl_hs')->middleware('role:admin|canbo');

@@ -22,18 +22,12 @@
                 <div class="row">
                     <div class="col-sm-3 col-xs-12">
                         <div class="form-group">
-                            <label>Từ ngày</label>
+                            <label>Tháng</label>
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            <input class="form-control" type="date" style="width:100%" name="txt_TU_NGAY" id="txt_TU_NGAY" value="{{$params['txt_TU_NGAY'] ?? ''}}">
+                            <input class="form-control" type="" style="width:100%" name="txt_thang" id="txt_thang" value="{{$startDate}}">
                         </div>
                     </div>
-                    <div class="col-sm-3 col-xs-12">
-                        <div class="form-group">
-                            <label>Đến ngày:</label>
-                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            <input class="form-control" type="date" style="width:100%" name="txt_DEN_NGAY" id="txt_DEN_NGAY" value="{{$params['txt_DEN_NGAY'] ?? ''}}">
-                        </div>
-                    </div>
+
                     <div class="actions form-group">
                         <label></label>
                         <div class="input" style="margin-top: 8px">
@@ -55,31 +49,30 @@
                             <i class="fas fa-folder-plus"></i>
                         </div>
                     </div>
-                    <h5 class="pl-2" style=" margin: -11px 0 0 2em; ">Thống kê </h5>
+                    <h5 class="pl-2" style=" margin: -11px 0 0 2em; ">Thống kê cán bộ tiếp nhận </h5>
                 </div>
                 <div class="card-body">
                     <table class="table border table-bordered table-striped " id="sortable-table">
                         <thead class=" text-center" >
                         <tr>
-                            <th scope="col" width="3%" >STT</th>
-                            <th scope="col" width="45%">Loại thủ tục </th>
-                            <th scope="col" width="12%">Hoàn thành (hồ sơ)</th>
-                            <th scope="col" width="10%" >Đang xử lý (hồ sơ)</th>
-                            <th scope="col" width="10%">Chưa xử lý (hồ sơ)</th>
-                            <th scope="col" width="8%">Hủy bỏ (hồ sơ)</th>
-                            {{--<th scope="col">Ghi chú</th>--}}
+                            <th scope="col" width="7%" >STT</th>
+                            <th scope="col" width="30%"> Cán bộ </th>
+                            <th scope="col" width="30%"> Phòng ban </th>
+                            <th scope="col" width="18%" >Số lượng hồ sơ</th>
+                            <th scope="col" width="15%"> Ghi chú </th>
+                            {{-- <th scope="col" width="8%">Hủy bỏ (hồ sơ)</th> --}}
+
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach( $thutuc as $key => $value)
-                            @if($value->hosodaxuly_count > 0 || $value->hosodangxuly_count > 0 || $value->hosochuaxuly_count > 0 || $value->hosohuy_count >0)
+                        @foreach( $canbo as $key => $value)
+                            @if($value->xulyhoso_count > 0 )
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $value->tenTT }}</td>
-                                <td class=" text-center">{{ $value->hosodaxuly_count }}</td>
-                                <td class=" text-center">{{ $value->hosodangxuly_count }}</td>
-                                <td class=" text-center">{{ $value->hosochuaxuly_count }}</td>
-                                <td class=" text-center">{{ $value->hosohuy_count }}</td>
+                                <td>{{ $value->name }}</td>
+                                <td>{{ $value->phongban->tenDM }}</td>
+                                <td class=" text-center">{{ $value->xulyhoso_count }}</td>
+                                <td class=" text-center"></td>
                             </tr>
                             @endif
                         @endforeach

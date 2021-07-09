@@ -18,8 +18,8 @@ class CreateThutucTable extends Migration
             $table->string('maTT');
             $table->string('tenTT');
             $table->tinyInteger('danhmuc_id');
-            $table->text('mota') ->nullable();
-            $table->integer('tg_giai_quyet');
+            $table->text('mota')->nullable();
+            $table->tinyInteger('tg_giai_quyet');
             $table->timestamps();
         });
     }

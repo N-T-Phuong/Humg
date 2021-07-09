@@ -79,6 +79,12 @@
                                 <p>Báo cáo hồ sơ</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('canbo_sl_hs')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Báo cáo cán bộ</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>

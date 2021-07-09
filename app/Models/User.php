@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
@@ -68,17 +70,22 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\XuLyHoSo', 'user_id');
     }
 
-    //    public  function  profile()
-    //    {
-    //        return $this->hasOne(Profile::class,'user_id','id' );
-    //    }
+    public function hosodatiepnhan(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            'App\Models\Hoso',
+            'xulyhoso',
+            'user_id',
+            'hoso_id'
+        )->where('trang_thai', '=', 'Tiếp nhận');  // where('trang_thai', '!=', 'Chờ tiếp nhận');
+    }
 
-    // public function getStrRole()
-    // {
-    //     //đảo mảng array_flip đẻ lấy mảng key=>value(string)
-    //     $permissionMapping = array_flip(config('permission')); //tìm file per
-    //     return $permissionMapping[$this->role];
-    // }
+    public function xulyhoso(): HasMany
+    {
+        return $this->hasMany(
+            'App\Models\XuLyHoSo',
+        );
+    }
 
     public function vaitro()
     {

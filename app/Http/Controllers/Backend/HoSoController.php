@@ -44,7 +44,7 @@ class HoSoController extends Controller
      */
     public function store(Request $request)
     {
-        $code = date('dmY',time()) .'-'. substr(md5(microtime()), rand(0,26),5);
+        $code = date('dmY', time()) . '-' . substr(md5(microtime()), rand(0, 26), 5);
         // dd($request->all());
         $hoso = HoSo::create([
             'hoso_code'   => $code,
@@ -55,7 +55,7 @@ class HoSoController extends Controller
             'ngay_nhan'   => $request->ngay_nhan,
             'ngay_hen_tra'   => $request->ngay_hen,
         ]);
-//         dd($hoso);
+        //         dd($hoso);
         $thutuc = Thutuc::findOrFail($hoso['thutuc_id']);
         if ($request->field) {
             for ($i = 0; $i < count($request->field); $i++) {
@@ -72,7 +72,7 @@ class HoSoController extends Controller
                 ]);
             }
         }
-        return redirect( route('thong_bao') )->with('error', " " . $hoso->hoso_code );
+        return redirect(route('thong_bao'))->with('error', " " . $hoso->hoso_code);
     }
     /**
      * Display the specified resource.
@@ -94,9 +94,9 @@ class HoSoController extends Controller
      */
     public function edit($id)
     {
-         $hoso = HoSo::findOrFail($id);
-         $hoso->xlhs;
-         return view('backend.hoso.edit', compact('hoso'));
+        $hoso = HoSo::findOrFail($id);
+        $hoso->xlhs;
+        return view('backend.hoso.edit', compact('hoso'));
     }
 
     /**
@@ -113,13 +113,13 @@ class HoSoController extends Controller
         ]);
         $trangThai = $request->trang_thai;
         $hoso = Hoso::findOrFail($id);
-        if($hoso->trang_thai == 'Chờ tiếp nhận' && $trangThai == 'Tiếp nhận'){
+        if ($trangThai == 'Tiếp nhận') { //$hoso->trang_thai == 'Chờ tiếp nhận' &&
             $hoso->trang_thai = $trangThai;
             $hoso->ngay_nhan = Carbon::now();
             $hoso->ngay_hen_tra = Carbon::now()->addDay($hoso->thutuc->tg_giai_quyet);
         }
         $hoso->save();
-        return redirect()->route('hoso.index')->with('error','Sửa thành công');
+        return redirect()->route('hoso.index')->with('error', 'Sửa thành công');
     }
 
     /**
@@ -135,35 +135,34 @@ class HoSoController extends Controller
         return redirect(route('hoso.index'))->with('error', 'xóa thành công hồ sơ' . "  " . $hoso->hoso_code);
     }
 
-   public function up_Status( $id, Request $request)
+    public function up_Status($id, Request $request)
     {
         $hoso = HoSo::find($id);
-        if($hoso->trang_thai=='Chờ tiếp nhận')
-        {
+        if ($hoso->trang_thai == 'Chờ tiếp nhận') {
             //a = date('Y-m-d H:i:s', strtotime('+'. '5 days' , strtotime($hoso->ngay_nhan)));
             $hoso->ngay_nhan = Carbon::now(); //date('Y-m-d H:i:s'); //
-//            $hoso->ngay_hen_trhoso->trang_thai = HoSo::STATUS_DONE;
-        } elseif($hoso->trang_thai=='Tiếp nhận'){
+            //            $hoso->ngay_hen_trhoso->trang_thai = HoSo::STATUS_DONE;
+        } elseif ($hoso->trang_thai == 'Tiếp nhận') {
             $hoso->trang_thai = HoSo::STATUS_DONE1;
-        }else{
+        } else {
             $hoso->trang_thai = HoSo::STATUS_DONE2;
         }
         $hoso->save();
-        return redirect()->back()->with('success','Cập nhật hồ sơ thành công');
+        return redirect()->back()->with('success', 'Cập nhật hồ sơ thành công');
     }
     public function xu_ly_ho_so(Request $request, HoSo $hoso)
     {
-//        dd($request->all());
+        //        dd($request->all());
         $request->validate([
             'noi_dung_xu_ly'        => 'required|max:255',
-             ]);
+        ]);
         XuLyHoSo::create([
-        'hoso_id'           => $hoso->id,
-        'user_id'           => Auth::id(),
-        'tg_thuc'           => $request->tg_thuc,
-        'noi_dung_xu_ly'    => $request->noi_dung_xu_ly ,
-        'phong_ban_xu_ly'   => $request->phong_ban_xu_ly
-    ]);
+            'hoso_id'           => $hoso->id,
+            'user_id'           => Auth::id(),
+            'tg_thuc'           => $request->tg_thuc,
+            'noi_dung_xu_ly'    => $request->noi_dung_xu_ly,
+            'phong_ban_xu_ly'   => $request->phong_ban_xu_ly
+        ]);
         $hoso->trang_thai = $request->trang_thai;
         $hoso->save();
         return redirect()->back();
