@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\HoSoMail;
 use App\Models\DanhMuc;
 use App\Models\FormType;
 use App\Models\HoSo;
@@ -12,6 +13,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail as FacadesMail;
+use Mail;
 
 class HoSoController extends Controller
 {
@@ -22,6 +26,7 @@ class HoSoController extends Controller
      */
     public function index()
     {
+
         $hoso = HoSo::with('formTypes')->get();
         return view('backend.hoso.index', compact('hoso'));
     }
@@ -72,7 +77,9 @@ class HoSoController extends Controller
                 ]);
             }
         }
-        return redirect(route('thong_bao'))->with('error', " " . $hoso->hoso_code);
+        FacadesMail::to(Auth::user()->email)
+            ->send(new HoSoMail($code));
+        return redirect()->back();
     }
     /**
      * Display the specified resource.
@@ -161,7 +168,8 @@ class HoSoController extends Controller
             'user_id'           => Auth::id(),
             'tg_thuc'           => $request->tg_thuc,
             'noi_dung_xu_ly'    => $request->noi_dung_xu_ly,
-            'phong_ban_xu_ly'   => $request->phong_ban_xu_ly
+            'phong_ban_xu_ly'   => $request->phong_ban_xu_ly,
+            'trang_thai' => $request->trang_thai
         ]);
         $hoso->trang_thai = $request->trang_thai;
         $hoso->save();

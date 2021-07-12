@@ -54,7 +54,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </form>
         <br>
@@ -65,12 +64,10 @@
                 <div class="card-header ">
                     <div class="d-flex" style="margin-top: -2em;">
                         <div class="border border-warning rounded" style="background-color: #9f81d6; padding:8px 10px;">
-                            <i class="fas fa-folder-plus"></i>
+                            <i class="fas fa-book-medical"></i>
                         </div>
                     </div>
-                    <h5 class="pl-2" style=" margin: -11px 0 0 2em; ">Hồ sơ </h5>
-                </div>
-                <div class="card-body">
+                    <h5 class="pl-2" style=" margin: -11px 0 0 2em; ">Báo cáo hồ sơ </h5>
                     <table class="table table-striped">
                         <thead>
                         <tr>

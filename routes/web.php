@@ -31,7 +31,7 @@ Route::group([
     Route::get('/bao-cao-loai-thu-tuc', 'HomeController@baocao_tt')->name('bao_cao_tt')->middleware('role:admin|canbo');
     Route::resource('users', 'Backend\UserController')->middleware('role:admin');
     Route::resource('hp', 'Backend\HocPhanController')->middleware('role:admin|canbo');
-    Route::resource('danhmuc', 'Backend\DanhMucController')->only('index', 'create', 'store', 'edit', 'update', 'destroy')->middleware('role:admin');
+    Route::resource('danhmuc', 'Backend\DanhMucController')->only('index', 'create', 'store', 'edit', 'update', 'destroy')->middleware('role:admin|canbo');
     Route::resource('tt', 'Backend\ThuTucController')->middleware('role:admin|canbo');
     Route::resource('hoso', 'Backend\HoSoController')->only('index', 'edit', 'update', 'destroy', 'show')
         ->middleware('role:admin|canbo');

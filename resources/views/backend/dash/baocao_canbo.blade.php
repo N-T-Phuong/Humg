@@ -17,7 +17,7 @@
         </div>
 
         <br>
-        <form id="formMain">
+        <!--/<form id="formMain">
             <div class="">
                 <div class="row">
                     <div class="col-sm-3 col-xs-12">
@@ -37,7 +37,7 @@
                 </div>
 
             </div>
-        </form>
+        </form>-->
         <br>
         <br>
         <!-- /.content -->
@@ -45,11 +45,11 @@
             <div class="card">
                 <div class="card-header ">
                     <div class="d-flex" style="margin-top: -2em;">
-                        <div class="border border-warning rounded" style="background-color: #9f81d6; padding:8px 10px;">
-                            <i class="fas fa-folder-plus"></i>
+                        <div class="border border-warning rounded" style="background-color: #97e768; padding:8px 10px;">
+                            <i class="fas fa-chalkboard-teacher"></i>
                         </div>
                     </div>
-                    <h5 class="pl-2" style=" margin: -11px 0 0 2em; ">Thống kê cán bộ tiếp nhận </h5>
+                    <h5 class="pl-2" style=" margin: -11px 0 0 2em; ">Thống kê cán bộ </h5>
                 </div>
                 <div class="card-body">
                     <table class="table border table-bordered table-striped " id="sortable-table">

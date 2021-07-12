@@ -55,7 +55,15 @@
                             {{--<option value="Hủy bỏ"> Hủy hồ sơ</option>--}}
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-block btn-danger">Cập nhật hồ sơ</button>
+                    <div class="row ml-5">
+                        <div class="col-md-6">
+                            <a class="btn" href="{{route('hoso.show',$hoso->id)}}" style="background-color: rgb(188, 243, 115); color: rgb(44, 13, 156);">Quay lại</a>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn  btn-danger">Cập nhật hồ sơ</button>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>
@@ -87,7 +95,7 @@
                                     echo $data;
                                 ?>
                             </td>
-                            <td>{{ $item->hoso->trang_thai }} </td>
+                            <td>{{ $item->trang_thai }} </td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -157,6 +165,7 @@
                                     <input type="hidden" name="trang_thai" value="{{$hoso->trang_thai}}"  >
                                     <label class=" col-form-label for=">Trạng thái</label>
                                     <select name="trang_thai" class="form-control form-control-sm">
+                                        <option value=""> --chọn--</option>
                                         <option value="Tiếp nhận"> Tiếp nhận</option>
                                         <option value="Đang xử lý"> Đang xử lý </option>
                                         <option value="Hoàn thành"> Đã hoàn thành</option>
