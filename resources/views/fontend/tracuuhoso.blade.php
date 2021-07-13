@@ -18,6 +18,19 @@
 <section id="guide" class="guide-page">
     <div class="container">
         <div class="row">
+            @if(session('error'))
+                <div class="" style=" padding: 1em;">
+                    <div class="text-center">
+                        <img src="{{ asset('fe/img/thongbao.jpg') }}" alt="gửi thông tin thành công" width="140px">
+                    </div>
+                    <h2 class="text-center font-weight-bold font-size-17" style="color: #138f30; margin-top: 10px">Đã gửi thông tin hồ sơ thành công</h2>
+                    <div class="font-size-20 text-center alert" style="color: #0e0ca1">
+                        Sinh viên lấy<strong>mã hồ sơ</strong> tra cứu tại email cá nhân
+                    </div>
+            @endif
+        </div>
+        <br>
+        <div class="row">
             <div class=" col-md-2"></div>
             <div class="col-md-8 offset-2">
                 <div class="guide-page__body bg-color-light box-shadow-main">
@@ -65,8 +78,8 @@
                     <thead>
                     <tr>
                         {{--<th class="text-center">STT</th>--}}
-                        <th class="text-center">Thủ tục</th>
                         <th class="text-center">Mã hồ sơ</th>
+                        <th class="text-center">Thủ tục</th>
                         <th class="text-center">Họ và tên</th>
                         <th class="text-center">Ngày nộp</th>
                         <th class="text-center">Ngày tiếp nhận</th>
@@ -79,13 +92,13 @@
                         <tr>
                             {{--<td>{{ $key+1 }}</td>--}}
                             <td>
-                                <a class="collapsed" data-toggle="collapse" data-parent="#user-ticket-history" href="#info">
-                                    {{ $hs->thutuc->tenTT }}
+                                <a class="collapsed" data-toggle="collapse" data-parent="#user-ticket-history"  href="#info">
+                                    {{ $hs->hoso_code }}
                                 </a>
                             </td>
                             <td>
-                                <a class="collapsed" data-toggle="collapse" data-parent="#user-ticket-history"  href="#info">
-                                    {{ $hs->hoso_code }}
+                                <a class="collapsed" data-toggle="collapse" data-parent="#user-ticket-history" href="#info">
+                                    {{ $hs->thutuc->tenTT }}
                                 </a>
                             </td>
                             <td>{{ $hs->user->name }}</td>

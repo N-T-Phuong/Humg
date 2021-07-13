@@ -57,7 +57,7 @@
             </div>
             <div class="col-md-6">
                 <div class="service-civil__info-detail">
-                    <div class="service__title secondary-color font-size-14 text-uppercase font-weight-bold">Danh Sách Dịch Vụ</div>
+                    <div class="service__title secondary-color font-size-14 text-uppercase font-weight-bold">Danh Sách Loại Thủ Tục</div>
                     <div>
                         <div class="service-civil__info-content">
                             <form action="" method="GET" role="form">

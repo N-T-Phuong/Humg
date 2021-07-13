@@ -79,7 +79,8 @@ class HoSoController extends Controller
         }
         FacadesMail::to(Auth::user()->email)
             ->send(new HoSoMail($code));
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect(route('tra_cuu'))->with('error', " "); //. $hoso->hoso_code
     }
     /**
      * Display the specified resource.
@@ -169,7 +170,7 @@ class HoSoController extends Controller
             'tg_thuc'           => $request->tg_thuc,
             'noi_dung_xu_ly'    => $request->noi_dung_xu_ly,
             'phong_ban_xu_ly'   => $request->phong_ban_xu_ly,
-            'trang_thai' => $request->trang_thai
+            'trang_thai'        => $request->trang_thai
         ]);
         $hoso->trang_thai = $request->trang_thai;
         $hoso->save();

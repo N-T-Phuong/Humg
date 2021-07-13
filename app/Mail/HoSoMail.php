@@ -29,6 +29,6 @@ class HoSoMail extends Mailable
      */
     public function build()
     {
-        return $this->view('fontend.thongbao');
+        return $this->view('fontend.sendMail_hoso');
     }
 }

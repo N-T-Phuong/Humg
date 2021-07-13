@@ -77,7 +77,7 @@
                             <div class="item">
                                 <span class="item__step">Bước 6</span>
                                 <div class="item__desc color-55">
-                                    <p class="margin-0">Thông tin đăng ký thành công sẽ đi đến trang hướng dẫn .</p>
+                                    <p class="margin-0">Thông tin đăng ký thành công sẽ đi đến trang thông báo kết quả.</p>
                                     <p class="margin-0">Sinh viên lưu lại Mã hồ sơ để Tra cứu tình trạng hồ sơ. Xem thêm Cách
                                         <a href="{{ route('tra_cuu') }}" class="primary-color">Tra Cứu Thông Tin Hồ Sơ.</a> </p>
                                 </div>
