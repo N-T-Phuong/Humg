@@ -36,8 +36,8 @@ class LoginController extends Controller
             if (Auth::user()->hasRole('admin')) // Check admin => dashboard
                 return redirect()->route('dashboard');
             if (Auth::user()->hasRole('canbo')) // check can bo => canbo
-                return redirect()->route('huong_dan');
-            return redirect()->route('nop_ho_so');
+                return redirect()->route('dang_nhap');
+            return redirect()->route('dang_nhap');
         } else {
             return redirect()->route('login')->with('error', 'Tài khoản hoặc mật khẩu không đúng');
         }

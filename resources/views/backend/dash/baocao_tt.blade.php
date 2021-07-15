@@ -65,20 +65,20 @@
                             <th scope="col" width="45%">Loại thủ tục </th>
                             <th scope="col" width="12%">Hoàn thành (hồ sơ)</th>
                             <th scope="col" width="10%" >Đang xử lý (hồ sơ)</th>
-                            <th scope="col" width="10%">Chưa xử lý (hồ sơ)</th>
+                            <th scope="col" width="10%">Tiếp nhận (hồ sơ)</th>
                             <th scope="col" width="8%">Hủy bỏ (hồ sơ)</th>
                             {{--<th scope="col">Ghi chú</th>--}}
                         </tr>
                         </thead>
                         <tbody>
                         @foreach( $thutuc as $key => $value)
-                            @if($value->hosodaxuly_count > 0 || $value->hosodangxuly_count > 0 || $value->hosochuaxuly_count > 0 || $value->hosohuy_count >0)
+                            @if($value->hosodaxuly_count > 0 || $value->hosodangxuly_count > 0 || $value->hosotiepnhan_count > 0|| $value->hosochuaxuly_count > 0 || $value->hosohuy_count >0)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $value->tenTT }}</td>
                                 <td class=" text-center">{{ $value->hosodaxuly_count }}</td>
                                 <td class=" text-center">{{ $value->hosodangxuly_count }}</td>
-                                <td class=" text-center">{{ $value->hosochuaxuly_count }}</td>
+                                <td class=" text-center">{{ $value->hosotiepnhan_count }}</td>
                                 <td class=" text-center">{{ $value->hosohuy_count }}</td>
                             </tr>
                             @endif

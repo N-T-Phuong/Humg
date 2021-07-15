@@ -25,7 +25,7 @@
                     </div>
                     <h2 class="text-center font-weight-bold font-size-17" style="color: #138f30; margin-top: 10px">Đã gửi thông tin hồ sơ thành công</h2>
                     <div class="font-size-20 text-center alert" style="color: #0e0ca1">
-                        Sinh viên lấy<strong>mã hồ sơ</strong> tra cứu tại email cá nhân
+                        Sinh viên lấy <strong>mã hồ sơ</strong> tra cứu tại email cá nhân
                     </div>
             @endif
         </div>
@@ -159,11 +159,11 @@
                                                         <td>{{ $item->user->phongban->tenDM }}</td>
                                                         <td class="text-center">{{ $item->user->name }}</td>
                                                         <td class="text-center">{{ $item->created_at }}</td>
-                                                        <td class="text-center"> {{ $item-> ngay_hen_tra }}
-{{--<!--                                                            --><?php--}}
-{{--//                                                            $data =date('Y-m-d H:i:s', strtotime('+'. ($item->tg_thuc . 'days') , strtotime($item->created_at)));--}}
-{{--//                                                            echo $data;--}}
-{{--//                                                            ?>--}}
+                                                        <td class="text-center">
+                                                            <?php
+                                                            $data =date('Y-m-d H:i:s', strtotime('+'. ($item->tg_thuc . 'days') , strtotime($item->created_at)));
+                                                            echo $data;
+                                                            ?>
                                                         </td>
                                                         <td class="text-center">{{ $item->hoso->trang_thai }}</td>
                                                     </tr>

@@ -70,19 +70,19 @@
                         <li class="nav-item">
                             <a href="{{route('bao_cao_tt')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Báo cáo thủ tục</p>
+                                <p>Thống kê thủ tục</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('bao_cao')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Báo cáo hồ sơ</p>
+                                <p>Thống kê hồ sơ</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('canbo_sl_hs')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Báo cáo cán bộ</p>
+                                <p>Thống kê cán bộ</p>
                             </a>
                         </li>
                     </ul>

@@ -14,7 +14,7 @@
                                 <div class="col-md-1"></div>
                                 <div class="col-md-10 font-size-16" style="text-align:justify">
                                         <div class="alert ">
-                                            <strong>Mã hồ sơ:  </strong>  {{ $code }}
+                                            <strong>Mã hồ sơ:  </strong> {{ $code }}
                                             {{-- <a href="{{ route('tra_cuu') }}">{{$code}}</a> --}}
                                         </div>
                                     <hr>
